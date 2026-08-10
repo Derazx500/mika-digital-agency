@@ -1,0 +1,36 @@
+{
+  "name": "mika-digital-agency",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio web de Mika Digital Agency — agencia de diseño web, SEO y branding.",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "^15.5.23",
+    "@types/mdx": "^2.0.14",
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^1.30.0",
+    "next": "^15.5.4",
+    "next-mdx-remote": "^6.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "remark-gfm": "^4.0.1",
+    "shaders": "^3.0.448"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  }
+}

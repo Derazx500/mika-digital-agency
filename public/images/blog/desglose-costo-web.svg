@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Desglose del costo de un proyecto web por etapa">
+  <defs>
+    <style>
+      .t { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+      .h { font-size: 46px; font-weight: 600; fill: #0a0a0a; letter-spacing: -1.2px; }
+      .sub { font-size: 24px; fill: #6b7280; }
+      .lbl { font-size: 26px; font-weight: 600; fill: #0a0a0a; }
+      .pct { font-size: 26px; font-weight: 700; fill: #0167f3; }
+      .desc { font-size: 20px; fill: #6b7280; }
+      .cap { font-size: 20px; fill: #9ca3af; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#f7f9fc"/>
+
+  <text class="t h" x="90" y="118">¿En qué se va el presupuesto?</text>
+  <text class="t sub" x="90" y="162">Reparto típico de un proyecto de diseño y desarrollo web</text>
+
+  <!-- Barra apilada -->
+  <g>
+    <rect x="90" y="215" width="204"  height="56" rx="8" fill="#0167f3" opacity="0.35"/>
+    <rect x="302" y="215" width="408" height="56" rx="8" fill="#0167f3" opacity="0.55"/>
+    <rect x="718" y="215" width="476" height="56" rx="8" fill="#0167f3"/>
+    <rect x="1202" y="215" width="136" height="56" rx="8" fill="#0167f3" opacity="0.75"/>
+    <rect x="1346" y="215" width="136" height="56" rx="8" fill="#0a0a0a" opacity="0.75"/>
+  </g>
+
+  <!-- Filas -->
+  <g>
+    <rect x="90" y="330" width="1392" height="1" fill="#e5e7eb"/>
+    <circle cx="112" cy="382" r="11" fill="#0167f3" opacity="0.35"/>
+    <text class="t lbl" x="146" y="391">Estrategia y descubrimiento</text>
+    <text class="t desc" x="620" y="391">Entender tu negocio, tu cliente y tu competencia</text>
+    <text class="t pct" x="1440" y="391" text-anchor="end">15%</text>
+
+    <rect x="90" y="426" width="1392" height="1" fill="#e5e7eb"/>
+    <circle cx="112" cy="478" r="11" fill="#0167f3" opacity="0.55"/>
+    <text class="t lbl" x="146" y="487">Diseño UX/UI</text>
+    <text class="t desc" x="620" y="487">Arquitectura, wireframes y diseño de cada pantalla</text>
+    <text class="t pct" x="1440" y="487" text-anchor="end">30%</text>
+
+    <rect x="90" y="522" width="1392" height="1" fill="#e5e7eb"/>
+    <circle cx="112" cy="574" r="11" fill="#0167f3"/>
+    <text class="t lbl" x="146" y="583">Desarrollo</text>
+    <text class="t desc" x="620" y="583">Código rápido, accesible y bien estructurado</text>
+    <text class="t pct" x="1440" y="583" text-anchor="end">35%</text>
+
+    <rect x="90" y="618" width="1392" height="1" fill="#e5e7eb"/>
+    <circle cx="112" cy="670" r="11" fill="#0167f3" opacity="0.75"/>
+    <text class="t lbl" x="146" y="679">SEO técnico y rendimiento</text>
+    <text class="t desc" x="620" y="679">Que Google lo entienda y que cargue rápido</text>
+    <text class="t pct" x="1440" y="679" text-anchor="end">10%</text>
+
+    <rect x="90" y="714" width="1392" height="1" fill="#e5e7eb"/>
+    <circle cx="112" cy="766" r="11" fill="#0a0a0a" opacity="0.75"/>
+    <text class="t lbl" x="146" y="775">Pruebas, capacitación y lanzamiento</text>
+    <text class="t desc" x="620" y="775">Revisión en dispositivos reales y entrega</text>
+    <text class="t pct" x="1440" y="775" text-anchor="end">10%</text>
+    <rect x="90" y="810" width="1392" height="1" fill="#e5e7eb"/>
+  </g>
+
+  <text class="t cap" x="90" y="858">Programar es solo un tercio del trabajo.</text>
+</svg>

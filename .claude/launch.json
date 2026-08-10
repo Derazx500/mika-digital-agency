@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mika-dev",
+      "//": "Se invoca node.exe por ruta absoluta porque Node se instalo con winget y no queda en el PATH que hereda el servidor de preview. Sin flag de puerto: Next toma el que le asigne PORT.",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "dev"],
+      "autoPort": true,
+      "port": 3000
+    }
+  ]
+}

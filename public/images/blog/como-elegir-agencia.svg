@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Portada: cómo elegir una agencia de diseño web">
+  <defs>
+    <style>
+      .t { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+      .kicker { font-size: 24px; font-weight: 600; fill: #0167f3; letter-spacing: 3px; }
+      .h { font-size: 74px; font-weight: 600; fill: #0a0a0a; letter-spacing: -2.4px; }
+      .item { font-size: 24px; fill: #374151; }
+      .sub { font-size: 23px; fill: #6b7280; }
+    </style>
+    <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0167f3" stop-opacity="0.12"/>
+      <stop offset="70%" stop-color="#0167f3" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="#ffffff"/>
+  <rect width="1600" height="900" fill="url(#g2)"/>
+
+  <text class="t kicker" x="110" y="150">GUÍA PRÁCTICA</text>
+  <text class="t h" x="110" y="254">Cómo elegir una</text>
+  <text class="t h" x="110" y="336">agencia de diseño web</text>
+  <text class="t sub" x="110" y="392">Las 10 preguntas que hay que hacer antes de firmar</text>
+
+  <!-- Lista de verificación -->
+  <g>
+    <g fill="#0167f3">
+      <circle cx="132" cy="486" r="15"/><circle cx="132" cy="552" r="15"/>
+      <circle cx="132" cy="618" r="15"/><circle cx="132" cy="684" r="15"/>
+      <circle cx="132" cy="750" r="15"/>
+    </g>
+    <g stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M125 486l5 5 10-11"/><path d="M125 552l5 5 10-11"/>
+      <path d="M125 618l5 5 10-11"/><path d="M125 684l5 5 10-11"/>
+      <path d="M125 750l5 5 10-11"/>
+    </g>
+
+    <text class="t item" x="174" y="495">¿Puedo hablar con quien va a hacer el trabajo?</text>
+    <text class="t item" x="174" y="561">¿El dominio y el hosting quedan a mi nombre?</text>
+    <text class="t item" x="174" y="627">¿Voy a poder editar el contenido yo mismo?</text>
+    <text class="t item" x="174" y="693">¿Qué incluye exactamente el SEO?</text>
+    <text class="t item" x="174" y="759">¿Cuál es el precio final y qué lo puede cambiar?</text>
+  </g>
+
+  <!-- Acento de marca -->
+  <circle cx="1470" cy="770" r="26" fill="#0167f3"/>
+  <path d="M1380 742h60l-30 56z" fill="#0167f3" opacity="0.55"/>
+</svg>

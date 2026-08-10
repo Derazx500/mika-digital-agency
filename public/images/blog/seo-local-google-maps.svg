@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Portada: SEO local para aparecer en Google Maps">
+  <defs>
+    <style>
+      .t { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+      .kicker { font-size: 24px; font-weight: 600; fill: #0167f3; letter-spacing: 3px; }
+      .h { font-size: 74px; font-weight: 600; fill: #0a0a0a; letter-spacing: -2.4px; }
+      .sub { font-size: 23px; fill: #6b7280; }
+      .biz { font-size: 24px; font-weight: 600; fill: #0a0a0a; }
+      .meta { font-size: 19px; fill: #6b7280; }
+      .rank { font-size: 20px; font-weight: 700; fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#f7f9fc"/>
+
+  <!-- Retícula tipo mapa -->
+  <g stroke="#e3e9f2" stroke-width="2">
+    <path d="M0 220h1600M0 400h1600M0 580h1600M0 760h1600"/>
+    <path d="M900 0v900M1100 0v900M1300 0v900M1500 0v900"/>
+  </g>
+  <path d="M900 300 L1180 300 L1180 640 L1500 640" stroke="#cfdcf0" stroke-width="14" fill="none" stroke-linecap="round"/>
+
+  <text class="t kicker" x="110" y="150">SEO LOCAL</text>
+  <text class="t h" x="110" y="256">Cómo aparecer</text>
+  <text class="t h" x="110" y="338">en Google Maps</text>
+  <text class="t sub" x="110" y="396">El bloque de tres negocios se lleva la mayoría de los clics</text>
+
+  <!-- Local pack -->
+  <g>
+    <rect x="110" y="460" width="700" height="106" rx="14" fill="#ffffff" stroke="#0167f3" stroke-width="3"/>
+    <circle cx="160" cy="513" r="22" fill="#0167f3"/>
+    <text class="t rank" x="160" y="521" text-anchor="middle">1</text>
+    <text class="t biz" x="200" y="505">Tu negocio</text>
+    <text class="t meta" x="200" y="537">★ 4.9 · 127 reseñas · Ciudad de México</text>
+
+    <rect x="110" y="580" width="700" height="106" rx="14" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+    <circle cx="160" cy="633" r="22" fill="#9ca3af"/>
+    <text class="t rank" x="160" y="641" text-anchor="middle">2</text>
+    <text class="t biz" x="200" y="625" fill="#6b7280">Competidor</text>
+    <text class="t meta" x="200" y="657">★ 4.4 · 38 reseñas</text>
+
+    <rect x="110" y="700" width="700" height="106" rx="14" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+    <circle cx="160" cy="753" r="22" fill="#9ca3af"/>
+    <text class="t rank" x="160" y="761" text-anchor="middle">3</text>
+    <text class="t biz" x="200" y="745" fill="#6b7280">Competidor</text>
+    <text class="t meta" x="200" y="777">★ 4.1 · 12 reseñas</text>
+  </g>
+
+  <!-- Marcador principal -->
+  <g transform="translate(1150 380)">
+    <ellipse cx="0" cy="196" rx="46" ry="13" fill="#0167f3" opacity="0.16"/>
+    <path d="M0 190C0 190 -74 106 -74 62A74 74 0 1 1 74 62C74 106 0 190 0 190Z" fill="#0167f3"/>
+    <circle cx="0" cy="62" r="28" fill="#ffffff"/>
+  </g>
+
+  <!-- Marcadores secundarios -->
+  <g opacity="0.35">
+    <path d="M1420 250C1420 250 1382 206 1382 183A38 38 0 1 1 1458 183C1458 206 1420 250 1420 250Z" fill="#0167f3"/>
+    <circle cx="1420" cy="183" r="14" fill="#f7f9fc"/>
+    <path d="M980 720C980 720 942 676 942 653A38 38 0 1 1 1018 653C1018 676 980 720 980 720Z" fill="#0167f3"/>
+    <circle cx="980" cy="653" r="14" fill="#f7f9fc"/>
+  </g>
+</svg>

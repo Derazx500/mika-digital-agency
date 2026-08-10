@@ -1,0 +1,78 @@
+# =====================================================================
+# Mika Digital Agency — configuración de Apache para HostGator
+#
+# Este archivo se copia solo a la carpeta `out/` al compilar. Súbelo tal
+# cual junto con el resto del sitio, a la raíz de public_html.
+# =====================================================================
+
+# ---------- Forzar HTTPS y dominio con www ----------
+# Google trata http://, https://, con www y sin www como cuatro sitios
+# distintos. Unificarlos concentra toda la autoridad en una sola versión.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://www.mikadigitalagency.com/$1 [R=301,L]
+
+  RewriteCond %{HTTP_HOST} ^mikadigitalagency\.com [NC]
+  RewriteRule ^(.*)$ https://www.mikadigitalagency.com/$1 [R=301,L]
+</IfModule>
+
+# ---------- Página 404 ----------
+ErrorDocument 404 /404.html
+
+# ---------- Compresión ----------
+# Reduce entre 60% y 80% el peso de HTML, CSS y JS. Impacto directo en
+# los Core Web Vitals, que sí son factor de posicionamiento.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml application/rss+xml
+  AddOutputFilterByType DEFLATE font/woff2 font/woff application/font-woff
+</IfModule>
+
+# ---------- Caché del navegador ----------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Los archivos de /_next/static/ llevan hash en el nombre: si cambian,
+  # cambia la URL. Por eso se pueden cachear un año sin riesgo.
+  <FilesMatch "\.(js|css|woff2|woff|ttf|otf)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, immutable"
+  </FilesMatch>
+
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|ico)$">
+    ExpiresDefault "access plus 6 months"
+  </FilesMatch>
+
+  <FilesMatch "\.(mp4|webm)$">
+    ExpiresDefault "access plus 6 months"
+  </FilesMatch>
+
+  # El HTML no se cachea: así los cambios de contenido se ven de inmediato.
+  <FilesMatch "\.html$">
+    ExpiresDefault "access plus 0 seconds"
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ---------- Cabeceras de seguridad ----------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ---------- Tipos MIME que HostGator no siempre reconoce ----------
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType image/avif .avif
+  AddType font/woff2 .woff2
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# ---------- Evitar listados de directorios ----------
+Options -Indexes

@@ -1,0 +1,230 @@
+# =====================================================================
+# Panel de administración de Mika Digital Agency (Decap CMS)
+#
+# Este archivo define qué se puede editar desde mikadigitalagency.com/admin.
+# Al guardar un cambio, Decap hace un commit en GitHub y Vercel recompila y
+# publica el sitio solo, en aproximadamente un minuto.
+#
+# ANTES DE USARLO hay que rellenar `repo` con tu usuario/organización de
+# GitHub. Está explicado paso a paso en el README.
+# =====================================================================
+
+backend:
+  name: github
+  repo: TU-USUARIO/mika-digital-agency # <-- CAMBIA ESTO
+  branch: main
+  # Proxy OAuth incluido en este mismo proyecto (src/app/api/auth).
+  # Evita depender de Netlify para iniciar sesión.
+  base_url: https://www.mikadigitalagency.com
+  auth_endpoint: api/auth
+
+# Permite editar en local con `npx decap-server` sin tocar GitHub.
+local_backend: true
+
+# Idioma del panel
+locale: es
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+# Los borradores se guardan como Pull Request en GitHub en vez de publicarse
+# directo. Útil para revisar antes de que salga en vivo.
+publish_mode: simple
+
+collections:
+  # -----------------------------------------------------------------
+  # BLOG
+  # -----------------------------------------------------------------
+  - name: blog
+    label: Artículos del blog
+    label_singular: Artículo
+    folder: content/blog
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: frontmatter
+    preview_path: 'blog/{{slug}}'
+    summary: '{{title}} — {{date | date("d/MM/yyyy")}}'
+    sortable_fields: ['date', 'title']
+    view_filters:
+      - label: Borradores
+        field: draft
+        pattern: true
+    fields:
+      - label: Título
+        name: title
+        widget: string
+        hint: El titular que se ve en la página. Sin límite estricto de largo.
+
+      - label: Título para Google (SEO)
+        name: seoTitle
+        widget: string
+        required: false
+        pattern: ['^.{0,60}$', 'Máximo 60 caracteres: Google corta lo que sobra.']
+        hint: >-
+          Aparece en el resultado de búsqueda. Máximo 60 caracteres, con la
+          palabra clave al principio. Si lo dejas vacío se usa el título.
+
+      - label: Meta descripción
+        name: description
+        widget: text
+        pattern:
+          ['^.{50,165}$', 'Entre 50 y 165 caracteres. Ahora tiene otro número.']
+        hint: >-
+          El texto gris bajo el título en Google. Entre 150 y 160 caracteres es
+          lo ideal. No cambia el ranking, pero sí cuánta gente hace clic.
+
+      - label: Fecha de publicación
+        name: date
+        widget: datetime
+        date_format: 'DD/MM/YYYY'
+        time_format: false
+        picker_utc: true
+
+      - label: Autor
+        name: author
+        widget: string
+        default: 'Mika Digital Agency'
+
+      - label: Categoría
+        name: category
+        widget: select
+        options:
+          - Diseño web
+          - SEO
+          - Branding
+          - Guías
+          - Casos de estudio
+          - Nuevas tecnologías
+
+      - label: Palabra clave objetivo
+        name: keyword
+        widget: string
+        required: false
+        hint: >-
+          Solo para uso interno, no se muestra. Sirve para no escribir dos
+          artículos que compitan entre sí por la misma búsqueda.
+
+      - label: Imagen de portada
+        name: cover
+        widget: image
+        media_library:
+          config:
+            max_file_size: 2000000
+        hint: >-
+          1600 × 900 px. También es la miniatura que aparece al compartir el
+          artículo en WhatsApp. Sube WebP o JPG optimizado.
+
+      - label: Descripción de la portada
+        name: coverAlt
+        widget: string
+        hint: >-
+          Describe lo que se ve en la imagen. Lo leen Google y los lectores de
+          pantalla. Ejemplo: "Equipo revisando el diseño de un sitio web".
+
+      - label: Borrador
+        name: draft
+        widget: boolean
+        default: false
+        required: false
+        hint: Si está activado, el artículo no se publica ni entra al sitemap.
+
+      - label: Contenido
+        name: body
+        widget: markdown
+        hint: >-
+          Usa "Cita" para las cajas destacadas azules. Para insertar una imagen
+          dentro del texto usa el botón de imagen y escribe el pie en el campo
+          "título".
+
+  # -----------------------------------------------------------------
+  # PORTAFOLIO
+  # -----------------------------------------------------------------
+  - name: proyectos
+    label: Proyectos del portafolio
+    label_singular: Proyecto
+    folder: content/proyectos
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: frontmatter
+    preview_path: 'portafolio/{{slug}}'
+    summary: '{{name}} — {{year}}'
+    sortable_fields: ['order', 'year', 'name']
+    fields:
+      - label: Nombre del cliente
+        name: name
+        widget: string
+
+      - label: Sector
+        name: industry
+        widget: string
+        hint: 'Ej: Educación, Retail, Servicios industriales.'
+
+      - label: Año
+        name: year
+        widget: string
+        pattern: ['^\d{4}$', 'Cuatro dígitos, ej. 2025.']
+
+      - label: Resumen
+        name: summary
+        widget: text
+        hint: >-
+          Una o dos líneas que se ven en la tarjeta del portafolio. Di el
+          resultado, no adjetivos: "Sitio que triplicó las solicitudes de
+          cotización" convence más que "sitio moderno y atractivo".
+
+      - label: Servicios aplicados
+        name: tags
+        widget: list
+        default: ['Diseño web']
+        hint: 'Ej: Diseño web, SEO, Branding, E-commerce.'
+
+      - label: Imagen principal
+        name: image
+        widget: image
+        hint: '1320 × 990 px (apaisada) o 1200 × 1200 px (cuadrada).'
+
+      - label: Formato de la tarjeta
+        name: aspect
+        widget: select
+        options:
+          - { label: Apaisada, value: wide }
+          - { label: Cuadrada, value: square }
+        default: wide
+        hint: >-
+          Alterna apaisada y cuadrada entre proyectos consecutivos: la
+          retícula se ve mucho mejor.
+
+      - label: Mostrar en la portada
+        name: featured
+        widget: boolean
+        default: false
+        hint: Los proyectos destacados aparecen en la home. Recomendado, 4.
+
+      - label: Orden
+        name: order
+        widget: number
+        value_type: int
+        default: 10
+        hint: Menor número, aparece antes en el portafolio.
+
+      - label: Sitio en vivo
+        name: url
+        widget: string
+        required: false
+        hint: URL del sitio publicado, si sigue en línea.
+
+      - label: Borrador
+        name: draft
+        widget: boolean
+        default: false
+        required: false
+
+      - label: Caso de estudio
+        name: body
+        widget: markdown
+        hint: >-
+          Escribe El reto / Lo que hicimos / Resultados. Los números concretos
+          (más solicitudes, menos tiempo de carga, posiciones ganadas) son lo
+          que de verdad convierte.

@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand: #0167f3;
+    --brand-dark: #0053c9;
+    --ink: #0a0a0a;
+    --muted: #6b7280;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Compensa el navbar fijo al saltar a un ancla. */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-white text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Foco visible y consistente: requisito de accesibilidad y lo revisa Lighthouse. */
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Respeta a quien pidió menos movimiento en su sistema operativo. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Contenedor maestro: todo el sitio respeta este ancho y estos paddings. */
+  .container-mika {
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Titular grande (hero, encabezados de sección principales). */
+  .h-display {
+    font-size: clamp(1.75rem, 7vw, 4.2rem);
+    @apply font-medium leading-[1.08] tracking-[-0.03em];
+  }
+  @screen sm {
+    .h-display {
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+    }
+  }
+
+  /* Titular de sección secundaria. */
+  .h-section {
+    font-size: clamp(1.5rem, 4vw, 3.2rem);
+    @apply font-medium leading-[1.12] tracking-[-0.02em];
+  }
+
+  .liquid-glass {
+    position: relative;
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.18);
+  }
+
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      140deg,
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0.35)
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .liquid-glass-strong {
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.18);
+  }
+}
