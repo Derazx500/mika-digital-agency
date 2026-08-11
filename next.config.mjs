@@ -22,10 +22,28 @@ const nextConfig = {
   // El paquete `shaders` publica ESM moderno; Next lo transpila para el bundle.
   transpilePackages: ['shaders'],
 
-  // El panel vive como HTML estático en public/admin/. Sin esta regla, entrar
-  // a /admin daría 404: Next solo sirve la ruta exacta del archivo.
-  async rewrites() {
-    return [{ source: '/admin', destination: '/admin/index.html' }];
+  /*
+   * El panel es HTML estático en public/admin/. Next sirve el archivo exacto
+   * (/admin/index.html) pero no la carpeta (/admin/), así que hace falta
+   * mandar ahí a quien escriba solo /admin.
+   *
+   * OJO: tiene que ser `redirects`, NO `rewrites`. Con un rewrite, Next busca
+   * el destino entre las rutas de la aplicación, no lo encuentra y cae al
+   * Pages Router, que exige un _document inexistente: el build revienta con
+   * "Cannot find module for page: /_document". Una redirección solo devuelve
+   * un 308 al navegador y no resuelve nada del lado del servidor.
+   */
+  async redirects() {
+    return [
+      {
+        // Con `trailingSlash: true`, Next ya redirige /admin a /admin/ antes
+        // de mirar esta tabla. Por eso el origen lleva la barra final: si se
+        // pone sin ella, esta regla nunca llega a aplicarse.
+        source: '/admin/',
+        destination: '/admin/index.html',
+        permanent: false, // 307: por si algún día el panel cambia de sitio.
+      },
+    ];
   },
 };
 
