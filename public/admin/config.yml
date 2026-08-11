@@ -13,9 +13,13 @@ backend:
   name: github
   repo: Derazx500/mika-digital-agency
   branch: main
-  # Proxy OAuth incluido en este mismo proyecto (src/app/api/auth).
-  # Evita depender de Netlify para iniciar sesión.
-  base_url: https://www.mikadigitalagency.com
+  # Proxy OAuth incluido en este mismo proyecto (src/app/api/auth), para no
+  # depender de Netlify al iniciar sesión.
+  #
+  # `base_url` NO se pone aquí: lo calcula index.html a partir del origen
+  # actual. Si se escribiera fijo, el login se enviaría siempre a ese dominio
+  # aunque el sitio esté respondiendo en otro (la URL de Vercel, por ejemplo)
+  # y devolvería un 404.
   auth_endpoint: api/auth
 
 # Permite editar en local con `npx decap-server` sin tocar GitHub.

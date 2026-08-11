@@ -64,7 +64,9 @@
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npm run typecheck 2>&1 | Select-Object -Last 4; \"typecheck exit=$LASTEXITCODE\"; \"=== cambios ===\"; git status --porcelain)",
       "Bash(git push *)",
       "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('vercel.json','utf8'\\)\\); console.log\\('vercel.json: JSON valido'\\)\")",
-      "PowerShell(try { $j = Get-Content \".\\\\vercel.json\" -Raw | ConvertFrom-Json; \"vercel.json: JSON valido\"; \"propiedades: $\\(\\($j.PSObject.Properties.Name\\) -join ', '\\)\" } catch { \"JSON INVALIDO: $\\($_.Exception.Message\\)\" })"
+      "PowerShell(try { $j = Get-Content \".\\\\vercel.json\" -Raw | ConvertFrom-Json; \"vercel.json: JSON valido\"; \"propiedades: $\\(\\($j.PSObject.Properties.Name\\) -join ', '\\)\" } catch { \"JSON INVALIDO: $\\($_.Exception.Message\\)\" })",
+      "PowerShell($req=[System.Net.WebRequest]::Create\\(\"http://localhost:3100/api/auth\"\\); $req.AllowAutoRedirect=$false; $req.Timeout=15000; try { $resp=$req.GetResponse\\(\\); $code=[int]$resp.StatusCode; $loc=$resp.Headers['Location']; \"/api/auth -> HTTP $code\"; if\\($loc\\){ \"   Location: $\\($loc.Substring\\(0,[Math]::Min\\(120,$loc.Length\\)\\)\\)\" }; $resp.Close\\(\\) } catch { $r=$_.Exception.Response; $code=[int]$r.StatusCode; \"/api/auth -> HTTP $code\"; $sr=New-Object System.IO.StreamReader\\($r.GetResponseStream\\(\\)\\); $body=$sr.ReadToEnd\\(\\); \"   cuerpo: $\\($body.Substring\\(0,[Math]::Min\\(160,$body.Length\\)\\)\\)\" })",
+      "PowerShell($req=[System.Net.WebRequest]::Create\\(\"http://localhost:3100/api/auth/\"\\); $req.AllowAutoRedirect=$false; $req.Timeout=15000; try { $resp=$req.GetResponse\\(\\); \"HTTP $\\([int]$resp.StatusCode\\)  Location: $\\($resp.Headers['Location']\\)\"; $resp.Close\\(\\) } catch { $r=$_.Exception.Response; \"HTTP $\\([int]$r.StatusCode\\)\"; $sr=New-Object System.IO.StreamReader\\($r.GetResponseStream\\(\\)\\); \"cuerpo: $\\($sr.ReadToEnd\\(\\)\\)\" })"
     ]
   }
 }

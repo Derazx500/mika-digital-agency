@@ -10,11 +10,36 @@
   </head>
   <body>
     <!--
-      Decap CMS se carga desde su CDN. Es la forma que recomiendan y mantiene
-      el panel actualizado sin tener que recompilar el sitio.
+      Decap CMS se carga desde su CDN, que es la forma que recomiendan.
       La versión está fijada a propósito: así una actualización del CDN no
       puede romper el panel sin avisar.
     -->
+    <script>
+      // Arrancamos el panel a mano para poder ajustar la configuración antes
+      // de que se inicialice.
+      window.CMS_MANUAL_INIT = true;
+    </script>
     <script src="https://unpkg.com/decap-cms@3.8.4/dist/decap-cms.js"></script>
+    <script>
+      /*
+       * El proxy OAuth (/api/auth y /api/callback) vive en este mismo sitio,
+       * así que `base_url` tiene que ser el origen actual.
+       *
+       * Se calcula aquí en vez de escribirlo en config.yml porque el sitio
+       * cambia de dirección: hoy responde en la URL de Vercel y mañana en
+       * mikadigitalagency.com. Con una URL fija, el login se enviaría al
+       * dominio equivocado y devolvería un 404.
+       *
+       * Lo que se pasa aquí se combina con lo que hay en config.yml; solo
+       * sobrescribe `backend.base_url`.
+       */
+      window.CMS.init({
+        config: {
+          backend: {
+            base_url: window.location.origin,
+          },
+        },
+      });
+    </script>
   </body>
 </html>
