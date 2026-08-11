@@ -242,3 +242,5 @@ Se puede, pero **pierdes el panel y el despliegue automático**: ambos necesitan
 Síntoma: los archivos de `/images/` y `/logo/` responden, pero ninguna página existe. Significa que Vercel publicó solo la carpeta `public/` y descartó el build de Next.js.
 
 Se arregla en **Settings → Build and Deployment**: *Framework Preset* debe ser **Next.js** y el override de *Output Directory* debe estar **desactivado**. El [`vercel.json`](vercel.json) de la raíz ya lo fija desde el repositorio para que no vuelva a pasar.
+
+> `vercel.json` no admite comentarios: su esquema rechaza cualquier propiedad que no reconozca, incluidas las claves `"//"` que se usan como truco en otros JSON. Si el build falla con *"should NOT have additional property"*, es eso.
