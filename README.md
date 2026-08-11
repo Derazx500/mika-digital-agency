@@ -233,4 +233,12 @@ El sitio anterior tenía `<title>mika - digital agency</title>` y la meta descri
 
 ### Volver a HostGator
 
-Se puede, pero **pierdes el panel y el despliegue automático**: ambos necesitan rutas de servidor que un hosting compartido no ejecuta. Si aun así hiciera falta, en [`next.config.mjs`](next.config.mjs) están comentadas las dos líneas que reactivan el export estático, y el `.htaccess` sigue en `public/`.
+Se puede, pero **pierdes el panel y el despliegue automático**: ambos necesitan rutas de servidor que un hosting compartido no ejecuta. Si aun así hiciera falta, en [`next.config.mjs`](next.config.mjs) están comentadas las dos líneas que reactivan el export estático, y la configuración de Apache está guardada en [`docs/htaccess-hostgator.txt`](docs/htaccess-hostgator.txt) — hay que renombrarla a `.htaccess` y subirla a la raíz de `public_html`.
+
+> Está fuera de `public/` a propósito: todo lo que hay en esa carpeta se publica tal cual en internet, y un archivo de configuración del servidor no tiene por qué ser legible por cualquiera.
+
+### Si el sitio despliega pero todas las páginas dan 404
+
+Síntoma: los archivos de `/images/` y `/logo/` responden, pero ninguna página existe. Significa que Vercel publicó solo la carpeta `public/` y descartó el build de Next.js.
+
+Se arregla en **Settings → Build and Deployment**: *Framework Preset* debe ser **Next.js** y el override de *Output Directory* debe estar **desactivado**. El [`vercel.json`](vercel.json) de la raíz ya lo fija desde el repositorio para que no vuelva a pasar.

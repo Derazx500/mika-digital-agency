@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+
+  "//": "Fija el framework en el repositorio para que no dependa de la deteccion automatica ni de los ajustes del panel. Sin esto, si el proyecto queda configurado con Output Directory = public, Vercel publica solo los archivos estaticos y descarta el build de Next.js: los assets responden pero todas las paginas dan 404.",
+
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "installCommand": "npm install",
+
+  "//regions": "Washington DC. Es el datacenter mas cercano a Mexico de los disponibles en el plan gratuito.",
+  "regions": ["iad1"]
+}
