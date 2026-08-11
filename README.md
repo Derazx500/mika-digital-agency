@@ -53,7 +53,7 @@ git add -A; git commit -m "Sitio web de Mika Digital Agency"
 ```
 
 ```bash
-git remote add origin https://github.com/TU-USUARIO/mika-digital-agency.git; git push -u origin main
+git remote add origin https://github.com/Derazx500/mika-digital-agency.git; git push -u origin main
 ```
 
 ### 2. Conectar Vercel
@@ -84,13 +84,9 @@ Vuelve a desplegar para que tomen efecto.
 
 ### 4. Apuntar el panel a tu repositorio
 
-En [`public/admin/config.yml`](public/admin/config.yml), línea 12, cambia:
+Ya está hecho: [`public/admin/config.yml`](public/admin/config.yml) apunta a `Derazx500/mika-digital-agency`. Solo cámbialo si le pones otro nombre al repositorio.
 
-```yaml
-repo: TU-USUARIO/mika-digital-agency
-```
-
-Listo. Entra a `https://www.mikadigitalagency.com/admin`.
+Entra a `https://www.mikadigitalagency.com/admin`.
 
 > **Para dar acceso a Deraz** (o a quien sea): invítalo como colaborador del repositorio en GitHub. Con eso ya puede entrar al panel con su propia cuenta. No necesita saber nada de código ni de GitHub.
 

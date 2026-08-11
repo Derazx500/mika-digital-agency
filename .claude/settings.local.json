@@ -44,7 +44,8 @@
       "Bash(git commit *)",
       "PowerShell(\"=== estado ===\")",
       "PowerShell(\"=== diff ===\")",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "PowerShell(foreach\\($c in @\\('gh','vercel'\\)\\){ try { $p=\\(Get-Command $c -ErrorAction Stop\\).Source; \"$c : $p\" } catch { \"$c : no instalado\" } }; \"--- remotes configurados ---\"; $r = git remote -v; if\\($r\\){ $r } else { \"ninguno\" })"
     ]
   }
 }

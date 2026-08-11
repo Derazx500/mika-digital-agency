@@ -5,13 +5,13 @@
 # Al guardar un cambio, Decap hace un commit en GitHub y Vercel recompila y
 # publica el sitio solo, en aproximadamente un minuto.
 #
-# ANTES DE USARLO hay que rellenar `repo` con tu usuario/organización de
-# GitHub. Está explicado paso a paso en el README.
+# El repositorio tiene que existir en GitHub y llamarse exactamente igual que
+# lo que dice `repo`. Si le pones otro nombre al crearlo, cámbialo aquí.
 # =====================================================================
 
 backend:
   name: github
-  repo: TU-USUARIO/mika-digital-agency # <-- CAMBIA ESTO
+  repo: Derazx500/mika-digital-agency
   branch: main
   # Proxy OAuth incluido en este mismo proyecto (src/app/api/auth).
   # Evita depender de Netlify para iniciar sesión.
