@@ -19,10 +19,36 @@ export async function GET(request: NextRequest) {
   const clientId = process.env.GITHUB_OAUTH_ID;
 
   if (!clientId) {
+    /*
+     * Diagnóstico de la configuración.
+     *
+     * Solo expone NOMBRES de variables, nunca valores, para poder distinguir
+     * los tres motivos por los que esto falla:
+     *   - la variable no se guardó
+     *   - se guardó con el nombre mal escrito
+     *   - se guardó pero no para el entorno de producción, o no se
+     *     redesplegó después (Vercel solo las inyecta al desplegar)
+     */
+    const nombresGithub = Object.keys(process.env)
+      .filter((k) => k.toUpperCase().includes('GITHUB'))
+      .sort();
+
     return NextResponse.json(
       {
         error:
           'Falta la variable de entorno GITHUB_OAUTH_ID. Configúrala en Vercel.',
+        diagnostico: {
+          GITHUB_OAUTH_ID: process.env.GITHUB_OAUTH_ID ? 'definida' : 'NO definida',
+          GITHUB_OAUTH_SECRET: process.env.GITHUB_OAUTH_SECRET
+            ? 'definida'
+            : 'NO definida',
+          entorno: process.env.VERCEL_ENV ?? 'desconocido',
+          variablesConGithubEnElNombre: nombresGithub,
+          commitDesplegado:
+            process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? 'desconocido',
+        },
+        ayuda:
+          'Si "variablesConGithubEnElNombre" sale vacío, las variables no llegaron a este despliegue: guárdalas marcando Production y vuelve a desplegar. Si aparece algún nombre parecido pero distinto, es un error de escritura.',
       },
       { status: 500 },
     );
