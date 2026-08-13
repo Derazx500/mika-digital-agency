@@ -33,6 +33,32 @@ const nextConfig = {
    * "Cannot find module for page: /_document". Una redirección solo devuelve
    * un 308 al navegador y no resuelve nada del lado del servidor.
    */
+  /*
+   * Archivos que se sirven pero no deben aparecer en Google.
+   *
+   * Se usa la cabecera X-Robots-Tag y NO una regla en robots.txt, aunque
+   * parezca lo obvio. Motivo: robots.txt impide *rastrear*, no *indexar*.
+   * Si alguien enlaza el PDF desde otro sitio, Google puede listarlo igual
+   * (solo la URL, sin descripción) precisamente porque tiene prohibido
+   * entrar a leer la instrucción de no indexar.
+   *
+   * Dejándolo rastreable pero con noindex, Google lo descarga, ve la
+   * cabecera y lo excluye del índice de verdad.
+   */
+  async headers() {
+    return [
+      {
+        source: '/bamboohouse/:archivo*',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+          // El menú cambia de vez en cuando: una hora de caché evita servir
+          // una versión vieja durante días si lo actualizan.
+          { key: 'Cache-Control', value: 'public, max-age=3600' },
+        ],
+      },
+    ];
+  },
+
   async redirects() {
     return [
       {

@@ -70,7 +70,9 @@
       "Bash(mkdir -p \"C:/Users/domin/Documents/CLAUDE/MIKA INVITACIONES/assets/css\" \"C:/Users/domin/Documents/CLAUDE/MIKA INVITACIONES/assets/js\" \"C:/Users/domin/Documents/CLAUDE/MIKA INVITACIONES/assets/img/muestras\" \"C:/Users/domin/Documents/CLAUDE/MIKA INVITACIONES/assets/img/og\")",
       "Read(//c/Users/domin/Documents/CLAUDE/**)",
       "PowerShell($p = \\(Get-Command python -ErrorAction SilentlyContinue\\).Source; if \\($p\\) { \"python: $p\" } else { \"no python\" }; $py = \\(Get-Command py -ErrorAction SilentlyContinue\\).Source; if \\($py\\) { \"py: $py\" } else { \"no py\" })",
-      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npm run typecheck 2>&1 | Select-Object -Last 5; \"typecheck exit=$LASTEXITCODE\")"
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npm run typecheck 2>&1 | Select-Object -Last 5; \"typecheck exit=$LASTEXITCODE\")",
+      "PowerShell($p = \".\\\\bamboohouse\"; if\\(Test-Path $p\\){ Get-ChildItem $p -Recurse -Force | ForEach-Object { \"{0,12:N0} b  {1}\" -f $_.Length, $_.FullName.Replace\\(\\(Get-Location\\).Path + \"\\\\\",\"\"\\) } } else { \"no existe .\\\\bamboohouse\"; \"--- carpetas en la raiz ---\"; Get-ChildItem -Directory | Select-Object -ExpandProperty Name })",
+      "Bash(\"/c/Program Files/nodejs/node.exe\" node_modules/next/dist/bin/next start -p 3100)"
     ]
   }
 }

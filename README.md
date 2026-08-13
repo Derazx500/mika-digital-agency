@@ -168,6 +168,22 @@ Nombres esperados: `cia-escenicas-lurvik`, `cobi-education`, `cqda`, `corporativ
 
 ---
 
+## Archivos sueltos para compartir
+
+Lo que se deja en `public/` se publica tal cual en internet. Por ejemplo, el menú de Bamboo House está en `public/bamboohouse/menu.pdf` y se comparte como:
+
+```
+https://mikadigitalagency.com/bamboohouse/menu.pdf
+```
+
+Esa carpeta se sirve con la cabecera `X-Robots-Tag: noindex`, definida en [`next.config.mjs`](next.config.mjs), para que no aparezca en Google: el material de un cliente colgando del dominio de la agencia confunde a Google sobre de qué trata el sitio.
+
+> Se usa la cabecera y **no** una regla en `robots.txt` a propósito. `robots.txt` impide *rastrear*, no *indexar*: si alguien enlaza el PDF desde otro sitio, Google puede listarlo igualmente —solo la URL, sin descripción— justo porque tiene prohibido entrar a leer la instrucción de no indexar. Dejándolo rastreable pero con `noindex`, Google lo descarga, ve la cabecera y lo excluye de verdad.
+
+Para añadir otro archivo así: déjalo en `public/loquesea/` y, si tampoco debe indexarse, añade su ruta al bloque `headers()` de `next.config.mjs`.
+
+Nombra los archivos en minúsculas y sin espacios ni acentos: las URLs con mayúsculas o caracteres especiales dan problemas según el servidor y el navegador.
+
 ## Dónde se edita cada cosa
 
 | Qué | Dónde | Quién |
