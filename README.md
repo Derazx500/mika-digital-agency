@@ -72,8 +72,10 @@ Esto es lo que permite entrar al panel. En <https://github.com/settings/develope
 | Campo | Valor |
 | --- | --- |
 | Application name | `Mika CMS` |
-| Homepage URL | `https://www.mikadigitalagency.com` |
-| Authorization callback URL | `https://www.mikadigitalagency.com/api/callback` |
+| Homepage URL | `https://mikadigitalagency.com` |
+| Authorization callback URL | `https://mikadigitalagency.com/api/callback` |
+
+> **Sin `www`.** Vercel tiene el dominio corto como principal y redirige `www` hacia él. GitHub solo acepta una URL de callback y exige coincidencia exacta: si la registras con `www`, el login falla con *redirect_uri mismatch*.
 
 Copia el **Client ID**, genera un **Client Secret** y ponlos en Vercel (**Settings → Environment Variables**):
 
@@ -86,7 +88,7 @@ Vuelve a desplegar para que tomen efecto.
 
 Ya está hecho: [`public/admin/config.yml`](public/admin/config.yml) apunta a `Derazx500/mika-digital-agency`. Solo cámbialo si le pones otro nombre al repositorio.
 
-Entra a `https://www.mikadigitalagency.com/admin`.
+Entra a `https://mikadigitalagency.com/admin`.
 
 > **Para dar acceso a Deraz** (o a quien sea): invítalo como colaborador del repositorio en GitHub. Con eso ya puede entrar al panel con su propia cuenta. No necesita saber nada de código ni de GitHub.
 
@@ -215,7 +217,7 @@ El sitio anterior tenía `<title>mika - digital agency</title>` y la meta descri
 
 ### Qué tienes que hacer tú después de publicar
 
-1. **Google Search Console** — verifica el dominio y envía `https://www.mikadigitalagency.com/sitemap.xml`.
+1. **Google Search Console** — verifica el dominio y envía `https://mikadigitalagency.com/sitemap.xml`.
 2. **Google Analytics 4** — crea la propiedad y pásame el ID de medición para insertarlo.
 3. **Google Business Profile** — complétalo al 100%. Para una agencia local es lo que más mueve la aguja; está explicado en el artículo de SEO local del blog.
 4. **Reseñas** — pídelas a tus últimos clientes satisfechos.

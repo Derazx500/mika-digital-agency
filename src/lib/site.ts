@@ -9,8 +9,17 @@
 export const SITE = {
   name: 'Mika Digital Agency',
   shortName: 'Mika',
-  /** Cambia esto si publicas en otro dominio. Se usa para canonical y sitemap. */
-  url: 'https://www.mikadigitalagency.com',
+  /**
+   * Dominio canónico. Se usa en canonical, sitemap, Open Graph y schema.
+   *
+   * Va sin `www` porque es el que Vercel tiene como principal: las peticiones
+   * a www.mikadigitalagency.com se redirigen aquí. Si apuntara a www, cada
+   * URL canónica del sitio acabaría en una redirección, que es justo lo que
+   * una canónica debe evitar.
+   *
+   * Si algún día cambias el dominio principal en Vercel, cambia también esto.
+   */
+  url: 'https://mikadigitalagency.com',
   locale: 'es_MX',
   lang: 'es',
   founded: '2020',
