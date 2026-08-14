@@ -39,6 +39,21 @@ export const metadata: Metadata = {
     url: SITE.url,
     siteName: SITE.name,
   },
+  /*
+   * Verificación de propiedad en Google Search Console.
+   *
+   * Genera <meta name="google-site-verification"> en todas las páginas.
+   * El token es público por diseño: va en el HTML para que Google lo lea, no
+   * da acceso a nada y no es un secreto.
+   *
+   * Esto verifica la propiedad de tipo "prefijo de URL". La de tipo
+   * "Dominio" —que es la que cubre www, sin www y todos los subdominios— se
+   * verifica con un registro TXT en el DNS; está explicado en el README.
+   */
+  verification: {
+    google: 'DxgNLUUlTcfZPj4grRwsPtDbZXubWzc2XbFrLUag6tc',
+  },
+
   // El icono se toma de src/app/icon.svg (convención de Next). Sustitúyelo por
   // el isotipo real de Mika y se propaga a la pestaña del navegador.
 };

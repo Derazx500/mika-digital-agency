@@ -170,10 +170,10 @@ Nombres esperados: `cia-escenicas-lurvik`, `cobi-education`, `cqda`, `corporativ
 
 ## Archivos sueltos para compartir
 
-Lo que se deja en `public/` se publica tal cual en internet. Por ejemplo, el menú de Bamboo House está en `public/bamboohouse/menu.pdf` y se comparte como:
+Lo que se deja en `public/` se publica tal cual en internet. Por ejemplo, el menú de Bamboo House está en `public/bamboohouse/BambooHouse-Menu.pdf` y se comparte como:
 
 ```
-https://mikadigitalagency.com/bamboohouse/menu.pdf
+https://mikadigitalagency.com/bamboohouse/BambooHouse-Menu.pdf
 ```
 
 Esa carpeta se sirve con la cabecera `X-Robots-Tag: noindex`, definida en [`next.config.mjs`](next.config.mjs), para que no aparezca en Google: el material de un cliente colgando del dominio de la agencia confunde a Google sobre de qué trata el sitio.
@@ -182,7 +182,7 @@ Esa carpeta se sirve con la cabecera `X-Robots-Tag: noindex`, definida en [`next
 
 Para añadir otro archivo así: déjalo en `public/loquesea/` y, si tampoco debe indexarse, añade su ruta al bloque `headers()` de `next.config.mjs`.
 
-Nombra los archivos en minúsculas y sin espacios ni acentos: las URLs con mayúsculas o caracteres especiales dan problemas según el servidor y el navegador.
+Evita espacios y acentos en los nombres de archivo. Las mayúsculas funcionan, pero la URL pasa a distinguirlas: `/BambooHouse-Menu.pdf` y `/bamboohouse-menu.pdf` son direcciones distintas, y quien la escriba a mano acabará en un 404. Si el enlace se va a teclear o dictar, en minúsculas es más seguro.
 
 ## Dónde se edita cada cosa
 
@@ -233,13 +233,55 @@ El sitio anterior tenía `<title>mika - digital agency</title>` y la meta descri
 
 ### Qué tienes que hacer tú después de publicar
 
-1. **Google Search Console** — verifica el dominio y envía `https://mikadigitalagency.com/sitemap.xml`.
+1. **Google Search Console** — verifica el dominio y envía `https://mikadigitalagency.com/sitemap.xml`. Detalle abajo.
 2. **Google Analytics 4** — crea la propiedad y pásame el ID de medición para insertarlo.
 3. **Google Business Profile** — complétalo al 100%. Para una agencia local es lo que más mueve la aguja; está explicado en el artículo de SEO local del blog.
 4. **Reseñas** — pídelas a tus últimos clientes satisfechos.
 5. **Redirecciones 301** — si alguna URL del sitio viejo tiene visitas, hay que redirigirla o pierdes ese tráfico. Pásame la lista y te dejo las reglas.
 
 ---
+
+## Google Search Console
+
+Hay dos tipos de propiedad y no son equivalentes:
+
+| Tipo | Qué cubre | Cómo se verifica |
+| --- | --- | --- |
+| **Dominio** | `www`, sin `www`, http, https y **todos los subdominios** | registro TXT en el DNS |
+| Prefijo de URL | solo la variante exacta que registres | meta etiqueta, archivo HTML, Analytics |
+
+**Usa la de Dominio.** Si registras solo `https://mikadigitalagency.com`, las visitas que lleguen por `www` cuentan como otra propiedad distinta y ves los datos partidos a la mitad.
+
+### Verificar la propiedad de Dominio
+
+En **cPanel de HostGator → Editor de Zona DNS**, añade:
+
+| Campo | Valor |
+| --- | --- |
+| Tipo | `TXT` |
+| Nombre / Host | `@` (o `mikadigitalagency.com`) |
+| Valor | `google-site-verification=DxgNLUUlTcfZPj4grRwsPtDbZXubWzc2XbFrLUag6tc` |
+| TTL | `14400` (el que venga por defecto) |
+
+Tarda de minutos a unas horas en propagarse. Después, botón **Verificar** en Search Console.
+
+> El DNS sigue gestionándose en HostGator aunque el sitio esté en Vercel: allí solo se cambiaron los registros `A` y `CNAME`. **No toques los `MX`**, que son el correo.
+
+La meta etiqueta también está puesta en [`src/app/layout.tsx`](src/app/layout.tsx) (`metadata.verification.google`) como respaldo para la propiedad de prefijo de URL.
+
+### Después de verificar
+
+1. **Sitemaps** → envía `sitemap.xml`.
+2. **Inspección de URLs** → pega la home y dale a *Solicitar indexación*. Repite con las tres páginas de servicio y la de precios: acelera el primer rastreo.
+3. Los datos tardan **2 o 3 días** en aparecer. Es normal que el primer día esté vacío.
+
+### Qué mirar cada mes
+
+- **Rendimiento** → filtra por *Consultas* para ver por qué búsquedas apareces. Las que tienen muchas impresiones y pocos clics son las que hay que trabajar: ya te ve gente, pero el título no convence.
+- **Indexación → Páginas** → confirma que las 29 URLs estén indexadas y revisa las excluidas.
+- **Experiencia → Core Web Vitals** → debería estar en verde; si algo se pone en rojo, suele ser una imagen pesada recién subida.
+
+> Search Console te dice **cómo te encuentran en Google**. Para saber qué hace la gente ya dentro del sitio (páginas más vistas, cuántos llegan al WhatsApp) hace falta **Google Analytics 4**, que es aparte. Pásame el ID de medición (`G-XXXXXXX`) y lo conecto.
 
 ## Detalles técnicos
 
