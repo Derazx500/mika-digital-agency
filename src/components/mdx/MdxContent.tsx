@@ -1,3 +1,4 @@
+import { Children, isValidElement, type ReactNode } from 'react';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
 import Link from 'next/link';
@@ -14,14 +15,73 @@ import { Figure } from '@/components/blog/Figure';
  * enlaces automáticos —, que el editor del panel escribe de forma natural.
  */
 
+/**
+ * Saca el texto plano de un encabezado.
+ *
+ * Hace falta porque un título con formato —`## Los **cinco** factores`— llega
+ * como un array de nodos de React, y convertirlo con String() daría
+ * "[object Object]". El `id` quedaría inservible y el enlace del índice
+ * lateral no llevaría a ninguna parte.
+ */
+function textoDe(nodo: React.ReactNode): string {
+  if (nodo === null || nodo === undefined || typeof nodo === 'boolean') return '';
+  if (typeof nodo === 'string' || typeof nodo === 'number') return String(nodo);
+  if (Array.isArray(nodo)) return nodo.map(textoDe).join('');
+  if (typeof nodo === 'object' && 'props' in nodo) {
+    return textoDe((nodo as { props: { children?: React.ReactNode } }).props.children);
+  }
+  return '';
+}
+
 function slugify(children: React.ReactNode): string {
-  return String(children)
+  return textoDe(children)
     .toLowerCase()
     .normalize('NFD')
     // Elimina los acentos que la normalización NFD dejó sueltos.
     .replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
+}
+
+/**
+ * Imagen dentro de un artículo, escrita como Markdown normal:
+ * `![alt](/ruta.webp "pie de foto")`. El atributo `title` se aprovecha como
+ * pie, así que quien escribe en el panel no necesita sintaxis especial.
+ */
+function ImagenDeArticulo({
+  src,
+  alt,
+  title,
+}: {
+  src?: string;
+  alt?: string;
+  title?: string;
+}) {
+  return <Figure src={String(src ?? '')} alt={alt ?? ''} caption={title} wide />;
+}
+
+/**
+ * ¿El párrafo contiene únicamente una imagen?
+ *
+ * Markdown envuelve toda imagen suelta en un `<p>`, y nuestra imagen
+ * renderiza un `<figure>`. Un `<figure>` dentro de un `<p>` es HTML
+ * inválido: al analizarlo, el navegador cierra el párrafo por su cuenta, el
+ * DOM resultante deja de coincidir con el que React espera y **la
+ * hidratación falla en toda la página**.
+ *
+ * El síntoma es traicionero, porque el artículo se ve perfecto pero ningún
+ * componente interactivo llega a activarse.
+ */
+function soloContieneImagen(children: ReactNode): boolean {
+  const relevantes = Children.toArray(children).filter(
+    (hijo) => !(typeof hijo === 'string' && hijo.trim() === ''),
+  );
+
+  return (
+    relevantes.length === 1 &&
+    isValidElement(relevantes[0]) &&
+    relevantes[0].type === ImagenDeArticulo
+  );
 }
 
 const components = {
@@ -41,11 +101,16 @@ const components = {
       {children}
     </h3>
   ),
-  p: ({ children }: { children?: React.ReactNode }) => (
-    <p className="mt-5 text-[16px] leading-[1.75] text-gray-700 sm:text-[17px]">
-      {children}
-    </p>
-  ),
+  p: ({ children }: { children?: React.ReactNode }) => {
+    // Una imagen sola no se envuelve en <p>: ver soloContieneImagen.
+    if (soloContieneImagen(children)) return <>{children}</>;
+
+    return (
+      <p className="mt-5 text-[16px] leading-[1.75] text-gray-700 sm:text-[17px]">
+        {children}
+      </p>
+    );
+  },
   ul: ({ children }: { children?: React.ReactNode }) => (
     <ul className="mt-5 list-disc space-y-2 pl-5 text-[16px] leading-[1.7] text-gray-700 marker:text-brand-500 sm:text-[17px]">
       {children}
@@ -101,14 +166,7 @@ const components = {
 
   hr: () => <hr className="my-10 border-gray-200" />,
 
-  /**
-   * Imagen escrita como Markdown normal: ![alt](/ruta.webp "pie de foto").
-   * El atributo `title` se aprovecha como pie de foto, así que quien escribe
-   * en el panel no necesita ninguna sintaxis especial.
-   */
-  img: ({ src, alt, title }: { src?: string; alt?: string; title?: string }) => (
-    <Figure src={String(src ?? '')} alt={alt ?? ''} caption={title} wide />
-  ),
+  img: ImagenDeArticulo,
 
   table: ({ children }: { children?: React.ReactNode }) => (
     <div className="mt-6 overflow-x-auto">

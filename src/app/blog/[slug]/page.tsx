@@ -9,7 +9,9 @@ import { articleSchema, breadcrumbSchema, buildMetadata } from '@/lib/seo';
 import { PageHero } from '@/components/sections/PageHero';
 import { CtaBand } from '@/components/sections/CtaBand';
 import { Thumb } from '@/components/ui/Thumb';
+import { ArticleSidebar } from '@/components/blog/ArticleSidebar';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { extraerSecciones } from '@/lib/toc';
 
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -48,6 +50,9 @@ export default async function ArticuloPage({ params }: Props) {
     .filter((p) => p.slug !== post.slug)
     .slice(0, 2);
 
+  // Índice de secciones para la barra lateral, sacado del propio Markdown.
+  const secciones = extraerSecciones(post.body);
+
   return (
     <>
       <PageHero badge={post.category} title={post.title} breadcrumbs={crumbs}>
@@ -75,16 +80,39 @@ export default async function ArticuloPage({ params }: Props) {
             </div>
           </div>
 
-          {/* Ancho de lectura cómodo: entre 65 y 75 caracteres por línea. */}
-          <div className="max-w-[46rem]">
-            <MdxContent source={post.body} />
+          {/*
+            Dos columnas a partir de lg. El texto se queda en 46rem —entre 65
+            y 75 caracteres por línea, que es lo cómodo de leer— y el espacio
+            que sobraba a la derecha pasa a ser útil.
+
+            La barra lateral es `sticky` y vive dentro de esta retícula, cuya
+            altura es la del artículo: por eso acompaña la lectura y se suelta
+            justo al terminar el texto.
+          */}
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,46rem)_minmax(16rem,1fr)] lg:gap-12 xl:gap-16">
+            <div className="min-w-0">
+              <MdxContent source={post.body} />
+            </div>
+
+            <ArticleSidebar
+              secciones={secciones}
+              relacionados={others.map((o) => ({
+                slug: o.slug,
+                title: o.title,
+                category: o.category,
+                readingTime: o.readingTime,
+              }))}
+              tituloArticulo={post.title}
+            />
           </div>
         </div>
       </article>
 
-      {/* Otros artículos */}
+      {/* Otros artículos.
+          Oculto en escritorio: ahí ya están en la barra lateral y salían dos
+          veces en la misma pantalla. */}
       {others.length > 0 && (
-        <section className="bg-[#F5F5F5] py-16 sm:py-20">
+        <section className="bg-[#F5F5F5] py-16 sm:py-20 lg:hidden">
           <div className="container-mika">
             <h2 className="mb-8 text-[20px] font-medium tracking-tight text-gray-900 sm:text-[24px]">
               Sigue leyendo
