@@ -13,6 +13,7 @@ import {
 } from '@/lib/seo';
 
 import { PageHero } from '@/components/sections/PageHero';
+import { ServiceVisual } from '@/components/sections/ServiceVisual';
 import { PlanCard } from '@/components/sections/PlanCard';
 import { Faq } from '@/components/sections/Faq';
 import { CtaBand } from '@/components/sections/CtaBand';
@@ -78,6 +79,14 @@ export default async function ServicePage({ params }: Props) {
           Cotizar por WhatsApp
         </TextRollButton>
       </PageHero>
+
+      {/* Ilustración del servicio. No todas las landings tienen una todavía;
+          las que no, simplemente pasan directo a la siguiente sección. */}
+      <section className="bg-white pb-12 sm:pb-16">
+        <div className="container-mika">
+          <ServiceVisual slug={service.slug} />
+        </div>
+      </section>
 
       {/* Qué incluye */}
       <section className="bg-[#F5F5F5] py-16 sm:py-20 lg:py-24">

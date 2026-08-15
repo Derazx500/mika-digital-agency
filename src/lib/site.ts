@@ -80,33 +80,15 @@ export const NAV_LINKS = [
 /* Servicios                                                           */
 /* ------------------------------------------------------------------ */
 
-export type Service = {
-  slug: string;
-  /** Nombre corto para menús y tarjetas. */
-  name: string;
-  /** H1 de la landing: aquí va la keyword principal. */
-  h1: string;
-  /** <title> de la página. Máx ~60 caracteres para que Google no lo corte. */
-  title: string;
-  /** meta description. 150-160 caracteres. */
-  description: string;
-  /** Frase de una línea para las tarjetas de la home. */
-  tagline: string;
-  /** Palabra clave principal que ataca esta página. */
-  keyword: string;
-  /** Precio de entrada, en MXN. */
-  priceFrom: number;
-  /** Qué incluye — se muestra como lista con check. */
-  deliverables: string[];
-  /** Proceso paso a paso. */
-  process: { step: string; title: string; body: string }[];
-  /** Preguntas frecuentes. Alimentan el schema FAQPage (rich snippet en Google). */
-  faqs: { q: string; a: string }[];
-  /** Servicios relacionados, para enlazado interno (importante para SEO). */
-  related: string[];
-};
+import { SERVICIOS_ESPECIALIZADOS, type Service } from '@/lib/services';
 
-export const SERVICES: Service[] = [
+export type { Service };
+
+/**
+ * Los tres servicios núcleo. El resto de landings especializadas viven en
+ * `services.ts`, que ya era demasiado contenido para tenerlo aquí.
+ */
+const SERVICIOS_NUCLEO: Service[] = [
   {
     slug: 'diseno-web',
     name: 'Diseño y desarrollo web',
@@ -329,50 +311,49 @@ export const SERVICES: Service[] = [
   },
 ];
 
+/**
+ * Todos los servicios con landing propia.
+ *
+ * El orden importa: es el que se usa en el pie de página, en /servicios y en
+ * el selector de contacto. Los tres núcleo van primero porque son los que
+ * más se venden y los que más tráfico deben captar.
+ */
+export const SERVICES: Service[] = [
+  ...SERVICIOS_NUCLEO,
+  ...SERVICIOS_ESPECIALIZADOS,
+];
+
 export function getService(slug: string): Service | undefined {
   return SERVICES.find((s) => s.slug === slug);
 }
 
 /**
- * Servicios que no tienen landing propia pero se listan en la home y en
- * /servicios. Si más adelante quieres posicionarlos, se promueven a SERVICES.
+ * Servicios que se mencionan pero todavía no tienen landing propia.
+ *
+ * Los que estaban aquí antes —programación, video, podcast, fotografía,
+ * social media y NFC— se promovieron a página completa en `services.ts`,
+ * porque cada uno tiene su propia búsqueda y su propio público.
+ *
+ * Si alguno de estos empieza a pedirse mucho, toca promoverlo igual.
  */
 export const SECONDARY_SERVICES = [
   {
-    name: 'Programación a la medida',
+    name: 'Realidad aumentada',
     tagline:
-      'Sistemas web, automatizaciones, integraciones y APIs para lo que tu operación necesita.',
-    icon: 'Code2',
-  },
-  {
-    name: 'Producción audiovisual',
-    tagline:
-      'Edición de video, reels, animación de logotipo y contenido para redes.',
-    icon: 'Video',
-  },
-  {
-    name: 'Podcast',
-    tagline:
-      'Grabación, edición, identidad sonora y distribución en plataformas.',
-    icon: 'Mic',
-  },
-  {
-    name: 'Fotografía',
-    tagline:
-      'Fotografía de producto, corporativa y retoque profesional para tu catálogo.',
-    icon: 'Camera',
-  },
-  {
-    name: 'Social media',
-    tagline:
-      'Estrategia de contenido, parrilla, diseño de piezas y campañas pagadas.',
-    icon: 'Share2',
-  },
-  {
-    name: 'Nuevas tecnologías',
-    tagline:
-      'Tarjetas digitales NFC, realidad aumentada y modelado 3D para destacar.',
+      'Experiencias AR para catálogos, empaques y activaciones de marca.',
     icon: 'Sparkles',
+  },
+  {
+    name: 'Modelado 3D',
+    tagline:
+      'Producto en 3D para renders, animación y visualizadores interactivos.',
+    icon: 'Boxes',
+  },
+  {
+    name: 'Mantenimiento web',
+    tagline:
+      'Respaldos, actualizaciones de seguridad, monitoreo y cambios de contenido.',
+    icon: 'Wrench',
   },
 ] as const;
 

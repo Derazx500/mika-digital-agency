@@ -1,15 +1,19 @@
 import Link from 'next/link';
 import {
   ArrowUpRight,
+  Boxes,
   Camera,
   Code2,
+  CreditCard,
   Mic,
   Monitor,
   Palette,
   Search,
   Share2,
+  ShoppingBag,
   Sparkles,
   Video,
+  Wrench,
   type LucideIcon,
 } from 'lucide-react';
 import { SECONDARY_SERVICES, SERVICES } from '@/lib/site';
@@ -17,17 +21,29 @@ import { mxn } from '@/lib/pricing';
 import { SectionBadge } from '@/components/ui/SectionBadge';
 import { Reveal } from '@/components/ui/Reveal';
 
+/** Un icono por slug de servicio, más los de la lista secundaria. */
 const ICONS: Record<string, LucideIcon> = {
   'diseno-web': Monitor,
   'posicionamiento-seo': Search,
   'diseno-grafico-branding': Palette,
-  Code2,
-  Video,
-  Mic,
-  Camera,
-  Share2,
+  'tienda-en-linea': ShoppingBag,
+  'desarrollo-de-software': Code2,
+  'produccion-de-video': Video,
+  'produccion-de-podcast': Mic,
+  'fotografia-profesional': Camera,
+  'social-media': Share2,
+  'tarjetas-digitales-nfc': CreditCard,
   Sparkles,
+  Boxes,
+  Wrench,
 };
+
+/** Sufijo del precio según la unidad del servicio. */
+function sufijoDePrecio(unidad?: 'proyecto' | 'mes' | 'pieza'): string {
+  if (unidad === 'mes') return ' / mes';
+  if (unidad === 'pieza') return ' c/u';
+  return '';
+}
 
 export function ServicesGrid({ number = '2' }: { number?: string }) {
   return (
@@ -74,6 +90,7 @@ export function ServicesGrid({ number = '2' }: { number?: string }) {
                       desde{' '}
                       <span className="font-semibold text-gray-900">
                         {mxn(service.priceFrom)}
+                        {sufijoDePrecio(service.priceUnit)}
                       </span>
                     </span>
                     <span className="flex items-center gap-1.5 font-medium text-brand-500">
