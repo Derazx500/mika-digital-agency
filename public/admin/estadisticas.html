@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Estadísticas — Mika Digital Agency</title>
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+      :root {
+        --brand: #0167f3;
+        --ink: #0a0a0a;
+        --muted: #6b7280;
+        --linea: #e5e7eb;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: #f7f9fc;
+        color: var(--ink);
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      }
+      .barra {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 24px;
+        background: #fff;
+        border-bottom: 1px solid var(--linea);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .barra img { height: 24px; width: auto; display: block; }
+      .volver {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 16px;
+        border-radius: 999px;
+        background: var(--ink);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+      }
+      .contenido { padding: 28px 24px 48px; max-width: 1500px; margin: 0 auto; }
+      h1 { margin: 0 0 6px; font-size: 26px; letter-spacing: -0.6px; }
+      .sub { margin: 0 0 24px; color: var(--muted); font-size: 14px; }
+      .informe {
+        width: 100%;
+        height: 1150px;
+        border: 0;
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+      }
+      .aviso {
+        padding: 30px;
+        border: 1px dashed #cbd5e1;
+        border-radius: 14px;
+        background: #fff;
+      }
+      .aviso h2 { margin: 0 0 8px; font-size: 20px; }
+      .aviso p { margin: 0 0 20px; color: var(--muted); font-size: 14.5px; line-height: 1.65; max-width: 680px; }
+      .aviso ol { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.9; max-width: 680px; color: #374151; }
+      .aviso code {
+        background: #eef2f7;
+        padding: 2px 6px;
+        border-radius: 5px;
+        font-size: 13px;
+      }
+      h2.seccion { margin: 34px 0 12px; font-size: 16px; }
+      .enlaces { display: flex; flex-wrap: wrap; gap: 12px; }
+      .enlaces a {
+        flex: 1 1 230px;
+        min-width: 230px;
+        padding: 17px 19px;
+        border: 1px solid var(--linea);
+        border-radius: 13px;
+        background: #fff;
+        text-decoration: none;
+        transition: border-color .2s ease, transform .2s ease;
+      }
+      .enlaces a:hover { border-color: var(--brand); transform: translateY(-2px); }
+      .enlaces strong { display: block; font-size: 15px; color: var(--ink); }
+      .enlaces span { display: block; margin-top: 4px; font-size: 13px; color: var(--muted); line-height: 1.5; }
+      @media (max-width: 640px) {
+        .contenido { padding: 20px 14px 40px; }
+        .informe { height: 780px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="barra">
+      <img src="/logo/mika-logo.png" alt="Mika Digital Agency" />
+      <a class="volver" href="/admin/index.html">← Volver al contenido</a>
+    </div>
+
+    <div class="contenido">
+      <h1>Estadísticas</h1>
+      <p class="sub">Tráfico y búsquedas de mikadigitalagency.com</p>
+
+      <!--
+        PARA ACTIVAR EL INFORME:
+        1. Crea el informe en Looker Studio (instrucciones abajo en la página).
+        2. Copia la URL de inserción.
+        3. Sustituye TODO el bloque <div class="aviso">…</div> por:
+
+           <iframe class="informe" src="URL_DE_INSERCION"
+                   title="Informe de estadísticas" allowfullscreen></iframe>
+      -->
+      <div class="aviso">
+        <h2>Falta conectar el informe</h2>
+        <p>
+          Los datos ya se están recogiendo desde el sitio. Para verlos aquí
+          dentro hay que crear el informe una sola vez en Looker Studio, que es
+          gratuito y trae plantillas listas para Analytics y Search Console.
+        </p>
+        <ol>
+          <li>Entra a <strong>lookerstudio.google.com</strong> con la cuenta que tiene Analytics.</li>
+          <li><strong>Crear → Informe</strong>. En «Añadir datos» elige <strong>Google Analytics</strong> y selecciona la propiedad de Mika.</li>
+          <li>Añade también <strong>Search Console</strong> para incluir los datos de búsquedas.</li>
+          <li>Arriba a la derecha: <strong>Compartir → Insertar informe</strong>, activa «Habilitar inserción» y copia la URL.</li>
+          <li>Pega esa URL en <code>public/admin/estadisticas.html</code>, siguiendo el comentario que hay justo encima de este bloque.</li>
+        </ol>
+      </div>
+
+      <h2 class="seccion">Abrir en Google</h2>
+      <div class="enlaces">
+        <a href="https://analytics.google.com/analytics/web/" target="_blank" rel="noopener noreferrer">
+          <strong>Google Analytics</strong>
+          <span>Visitas, páginas más vistas y clics a WhatsApp.</span>
+        </a>
+        <a href="https://search.google.com/search-console?resource_id=sc-domain%3Amikadigitalagency.com" target="_blank" rel="noopener noreferrer">
+          <strong>Search Console</strong>
+          <span>Qué se busca en Google para llegar a tu sitio.</span>
+        </a>
+        <a href="https://lookerstudio.google.com/" target="_blank" rel="noopener noreferrer">
+          <strong>Looker Studio</strong>
+          <span>Donde se crea y edita el informe de esta página.</span>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

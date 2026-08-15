@@ -308,6 +308,27 @@ Está en [`WhatsAppTracking.tsx`](src/components/analytics/WhatsAppTracking.tsx)
 
 **Márcalo como conversión** en Analytics: *Administrar → Eventos → `contacto_whatsapp` → Marcar como evento clave*. A partir de ahí, los informes te dicen qué páginas y qué canales traen clientes de verdad, no solo visitas.
 
+### Pestaña de estadísticas dentro del panel
+
+En `/admin` hay un botón flotante **📊 Estadísticas** que lleva a `/admin/estadisticas.html`, una página pensada para incrustar un informe de **Looker Studio** —la herramienta gratuita de Google para paneles— junto con accesos directos a Analytics, Search Console y Looker.
+
+**Para activar el informe** (una sola vez):
+
+1. Entra a [lookerstudio.google.com](https://lookerstudio.google.com/) con la cuenta que tiene Analytics.
+2. **Crear → Informe**. En «Añadir datos» elige **Google Analytics** y la propiedad de Mika.
+3. Añade también **Search Console** para incluir los datos de búsquedas.
+4. **Compartir → Insertar informe**, activa «Habilitar inserción» y copia la URL.
+5. En [`public/admin/estadisticas.html`](public/admin/estadisticas.html), sustituye el bloque `<div class="aviso">…</div>` por:
+
+   ```html
+   <iframe class="informe" src="URL_DE_INSERCION"
+           title="Informe de estadísticas" allowfullscreen></iframe>
+   ```
+
+Mientras no esté configurado, la página muestra esas mismas instrucciones en vez de un hueco vacío.
+
+> **Por qué un botón flotante y no una entrada en el menú lateral:** Decap CMS 3.8 no expone `registerAdditionalLink` —la API que documentan otras versiones— así que no admite páginas propias en su menú. El botón se añade al `body`, sin depender de ninguna clase interna de Decap, de modo que una actualización suya no puede romperlo.
+
 > Si Google te ofrece *"Use the Google tag found on your website"*, **no la elijas**: esa etiqueta era del sitio anterior en HostGator y ya no existe. Hay que instalarla en el código, que es lo que está hecho aquí.
 
 ## Detalles técnicos
