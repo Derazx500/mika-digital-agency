@@ -8,6 +8,15 @@ category: "Guías"
 keyword: "cómo elegir agencia de diseño web"
 cover: "/images/blog/como-elegir-agencia.svg"
 coverAlt: "Lista de verificación con cinco de las diez preguntas clave que hay que hacerle a una agencia de diseño web antes de firmar."
+faqs:
+  - q: "¿Qué debo preguntar antes de contratar una agencia de diseño web?"
+    a: "Si puedes hablar con quien hará el trabajo, cuántas rondas de ajuste incluye, si el dominio y el hosting quedan a tu nombre, si podrás editar el contenido tú mismo y qué incluye exactamente el SEO. Esas cinco descartan a la mayoría."
+  - q: "¿El dominio debe quedar a mi nombre?"
+    a: "Siempre, y por escrito en el contrato. Si está a nombre de la agencia no eres dueño de tu propia dirección: hay negocios que perdieron su dominio porque el proveedor desapareció o hubo un desacuerdo."
+  - q: "¿Es mala señal que una agencia sea muy barata?"
+    a: "Suele serlo. Un precio muy por debajo del resto no significa que sean más eficientes, sino que van a hacer una fracción del trabajo: sin estrategia, sin SEO técnico, sin pruebas y sin soporte después de cobrar."
+  - q: "¿Cómo sé si una agencia entiende mi negocio?"
+    a: "Por las preguntas que hace en la primera llamada. Si solo hablaron ellos de lo buenos que son y no preguntaron por tu cliente, tu competencia ni tus objetivos, el diseño va a ser decoración, no una herramienta de venta."
 ---
 
 Contratar mal una agencia de diseño web cuesta más que el dinero: cuesta tres meses de tu tiempo, un sitio que no puedes editar y, a veces, tener que empezar de cero con alguien más.

@@ -4,10 +4,11 @@ import type { Metadata } from 'next';
 
 import { formatDate, getAllPosts, getPost } from '@/lib/posts';
 import { MdxContent } from '@/components/mdx/MdxContent';
-import { articleSchema, breadcrumbSchema, buildMetadata } from '@/lib/seo';
+import { articleSchema, breadcrumbSchema, buildMetadata, faqSchema } from '@/lib/seo';
 
 import { PageHero } from '@/components/sections/PageHero';
 import { CtaBand } from '@/components/sections/CtaBand';
+import { Faq } from '@/components/sections/Faq';
 import { Thumb } from '@/components/ui/Thumb';
 import { ArticleSidebar } from '@/components/blog/ArticleSidebar';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -108,6 +109,20 @@ export default async function ArticuloPage({ params }: Props) {
         </div>
       </article>
 
+      {/* Preguntas frecuentes del artículo.
+          Solo aparece si el artículo define alguna. Alimenta el schema
+          FAQPage, que es el que puede ganar las preguntas desplegables en
+          el resultado de Google. */}
+      {post.faqs.length > 0 && (
+        <Faq
+          faqs={post.faqs}
+          number="—"
+          label="Preguntas frecuentes"
+          title="Lo que suelen preguntarnos sobre esto"
+          tone="gray"
+        />
+      )}
+
       {/* Otros artículos.
           Oculto en escritorio: ahí ya están en la barra lateral y salían dos
           veces en la misma pantalla. */}
@@ -159,10 +174,12 @@ export default async function ArticuloPage({ params }: Props) {
           description: post.description,
           slug: post.slug,
           date: post.date,
+          updated: post.updated,
           author: post.author,
           image: post.cover,
         })}
       />
+      {post.faqs.length > 0 && <JsonLd data={faqSchema(post.faqs)} />}
       <JsonLd data={breadcrumbSchema(crumbs)} />
     </>
   );

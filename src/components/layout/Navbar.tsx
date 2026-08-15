@@ -63,8 +63,14 @@ export function Navbar() {
     <>
       <header className="fixed inset-x-0 top-0 z-40">
         <div className="mx-auto w-full max-w-[1440px] p-2 sm:p-3">
+          {/*
+            El navbar flota sobre el shader del hero, que es justo donde un
+            cristal tiene sentido: se ve el color en movimiento a través de
+            él. En el resto de páginas el fondo es blanco y queda como una
+            píldora blanca normal, sin llamar la atención.
+          */}
           <nav
-            className="flex items-center justify-between rounded-full bg-white p-[5px] shadow-[0_2px_20px_rgba(0,0,0,0.06)]"
+            className="liquid-glass flex items-center justify-between rounded-full p-[13px]"
             aria-label="Navegación principal"
           >
             {/* Izquierda: logo + enlaces */}

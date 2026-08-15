@@ -8,6 +8,17 @@ category: "SEO"
 keyword: "SEO local México"
 cover: "/images/blog/seo-local-google-maps.svg"
 coverAlt: "El bloque de tres resultados locales de Google sobre un mapa, con un negocio en primera posición."
+faqs:
+  - q: "¿Cómo aparezco en Google Maps con mi negocio?"
+    a: "Reclama y verifica tu Google Business Profile, elige bien la categoría principal, completa el 100% de los campos y consigue reseñas de forma constante. La categoría principal es la señal de relevancia que más pesa."
+  - q: "¿Cuánto tarda el SEO local en dar resultados?"
+    a: "Los primeros movimientos se notan entre la semana 4 y la 8. Los resultados sólidos, entre el mes 3 y el 6. Es de lo más rápido dentro del SEO porque compites solo con los negocios de tu zona, no con todo internet."
+  - q: "¿Cuántas reseñas necesito para aparecer en el mapa?"
+    a: "No hay un número mágico: necesitas más que tus competidores directos y, sobre todo, un flujo constante. Diez reseñas nuevas este trimestre pesan más que cuarenta de hace dos años."
+  - q: "¿Qué es la consistencia NAP y por qué importa?"
+    a: "NAP es nombre, dirección y teléfono. Deben ser idénticos en tu sitio, tu ficha de Google, tus redes y los directorios. Para un algoritmo, 'Av. Insurgentes 123' y 'Avenida Insurgentes #123' son direcciones distintas, y cada inconsistencia diluye la señal."
+  - q: "¿Sirve el SEO local si no tengo local físico?"
+    a: "Sí. Google permite configurar un área de servicio en vez de una dirección visible, pensada justo para negocios que van al cliente. Se optimiza igual, definiendo las zonas que cubres."
 ---
 
 Cuando alguien busca "dentista cerca de mí" o "agencia de diseño web en la Roma", Google no muestra primero los diez enlaces azules. Muestra un mapa con tres negocios. Ese bloque se llama **local pack**, y se lleva la mayoría de los clics.

@@ -126,6 +126,18 @@ collections:
           Describe lo que se ve en la imagen. Lo leen Google y los lectores de
           pantalla. Ejemplo: "Equipo revisando el diseño de un sitio web".
 
+      - label: Fecha de última revisión
+        name: updated
+        widget: datetime
+        date_format: 'DD/MM/YYYY'
+        time_format: false
+        picker_utc: true
+        required: false
+        hint: >-
+          Actualízala cuando revises el artículo. Google la usa como señal de
+          frescura: un texto revisado hace un mes compite mejor que uno de
+          hace dos años. Si la dejas vacía se usa la de publicación.
+
       - label: Borrador
         name: draft
         widget: boolean
@@ -140,6 +152,34 @@ collections:
           Usa "Cita" para las cajas destacadas azules. Para insertar una imagen
           dentro del texto usa el botón de imagen y escribe el pie en el campo
           "título".
+
+      - label: Preguntas frecuentes
+        name: faqs
+        label_singular: Pregunta
+        widget: list
+        required: false
+        collapsed: false
+        summary: '{{fields.q}}'
+        hint: >-
+          Lo que más rinde en SEO de todo este formulario. Se muestran al final
+          del artículo y se envían a Google como datos estructurados, que es lo
+          que permite que aparezcan desplegables en el resultado de búsqueda y
+          te ocupen más espacio que la competencia. Con 4 o 5 basta.
+        fields:
+          - label: Pregunta
+            name: q
+            widget: string
+            hint: >-
+              Escríbela tal como la teclearía alguien en Google, con sus
+              palabras. "¿Cuánto cuesta una tienda en línea?" funciona;
+              "Sobre nuestros precios" no.
+          - label: Respuesta
+            name: a
+            widget: text
+            hint: >-
+              Responde de verdad y en las primeras dos líneas. Entre 40 y 60
+              palabras. Google solo muestra respuestas que resuelven la duda
+              sin rodeos.
 
   # -----------------------------------------------------------------
   # PORTAFOLIO

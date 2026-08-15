@@ -220,6 +220,7 @@ export function articleSchema({
   description,
   slug,
   date,
+  updated,
   author,
   image,
 }: {
@@ -227,6 +228,8 @@ export function articleSchema({
   description: string;
   slug: string;
   date: string;
+  /** Última revisión. Google la usa como señal de frescura del contenido. */
+  updated?: string;
   author: string;
   image?: string;
 }) {
@@ -238,7 +241,7 @@ export function articleSchema({
     // Google pide la imagen para poder mostrar el artículo con miniatura.
     ...(image ? { image: [`${SITE.url}${image}`] } : {}),
     datePublished: date,
-    dateModified: date,
+    dateModified: updated ?? date,
     author: { '@type': 'Person', name: author },
     publisher: { '@id': `${SITE.url}/#organization` },
     mainEntityOfPage: `${SITE.url}/blog/${slug}/`,

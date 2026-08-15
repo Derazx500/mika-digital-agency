@@ -66,12 +66,38 @@
     @apply font-medium leading-[1.12] tracking-[-0.02em];
   }
 
+  /*
+   * Cristal líquido.
+   *
+   * No es solo un desenfoque. Lo que hace que un cristal parezca cristal y
+   * no un rectángulo borroso son cuatro cosas, y aquí están las cuatro:
+   *
+   * 1. `saturate(180%)`: el vidrio real concentra el color de lo que hay
+   *    detrás. Sin esto el desenfoque se ve gris y sucio; con esto, el azul
+   *    del shader se intensifica al pasar por debajo.
+   * 2. Degradado en el fondo, no un blanco plano: simula que la luz incide
+   *    con un ángulo y no de frente.
+   * 3. `inset` superior blanco: el reflejo del canto superior, que es lo que
+   *    le da grosor. Un cristal sin canto se ve como papel translúcido.
+   * 4. Borde de 1px con degradado (el ::before): el brillo especular que
+   *    recorre el borde y se apaga en el centro. Es el detalle que más
+   *    trabajo da y el que más se nota.
+   */
   .liquid-glass {
     position: relative;
-    background: rgba(255, 255, 255, 0.01);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.18);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(255, 255, 255, 0.62) 45%,
+      rgba(255, 255, 255, 0.74) 100%
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.4),
+      0 8px 32px rgba(10, 10, 10, 0.08),
+      0 1px 3px rgba(10, 10, 10, 0.04);
   }
 
   .liquid-glass::before {
@@ -81,11 +107,11 @@
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(
-      140deg,
-      rgba(255, 255, 255, 0.6),
-      rgba(255, 255, 255, 0) 40%,
-      rgba(255, 255, 255, 0) 60%,
-      rgba(255, 255, 255, 0.35)
+      135deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 255, 255, 0.15) 38%,
+      rgba(255, 255, 255, 0.05) 62%,
+      rgba(255, 255, 255, 0.65)
     );
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
@@ -98,10 +124,29 @@
     pointer-events: none;
   }
 
+  /*
+   * Si el navegador no soporta backdrop-filter, el fondo translúcido dejaría
+   * el texto ilegible sobre el shader. Se cae a blanco casi sólido.
+   */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.94);
+    }
+  }
+
+  /* Variante para superficies grandes, donde conviene desenfocar más. */
   .liquid-glass-strong {
-    background: rgba(255, 255, 255, 0.01);
-    backdrop-filter: blur(50px);
-    -webkit-backdrop-filter: blur(50px);
-    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(44px) saturate(160%);
+    -webkit-backdrop-filter: blur(44px) saturate(160%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 12px 40px rgba(10, 10, 10, 0.1);
+  }
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .liquid-glass-strong {
+      background: rgba(255, 255, 255, 0.96);
+    }
   }
 }

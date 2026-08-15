@@ -3,6 +3,22 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import { NAV_LINKS, SERVICES, SITE, waLink } from '@/lib/site';
 import { Logo } from '@/components/ui/Logo';
 import { TextRollButton } from '@/components/ui/TextRollButton';
+import { SOCIAL_ICONS, type SocialKey } from '@/components/ui/SocialIcons';
+
+/**
+ * Redes del pie de página.
+ *
+ * WhatsApp va aquí a propósito aunque no sea una red social: para un negocio
+ * en México es el canal por el que más gente escribe, y quien busca el
+ * contacto lo busca entre los iconos.
+ */
+const REDES: { clave: SocialKey; nombre: string; url: string }[] = [
+  { clave: 'whatsapp', nombre: 'WhatsApp', url: waLink() },
+  { clave: 'instagram', nombre: 'Instagram', url: SITE.social.instagram },
+  { clave: 'facebook', nombre: 'Facebook', url: SITE.social.facebook },
+  { clave: 'linkedin', nombre: 'LinkedIn', url: SITE.social.linkedin },
+  { clave: 'behance', nombre: 'Behance', url: SITE.social.behance },
+];
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -124,27 +140,27 @@ export function Footer() {
               </li>
             </ul>
 
-            <ul className="mt-5 flex gap-4 text-[13px]">
-              <li>
-                <a
-                  href={SITE.social.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/60 transition-colors hover:text-white"
-                >
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  href={SITE.social.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/60 transition-colors hover:text-white"
-                >
-                  Facebook
-                </a>
-              </li>
+            <ul className="mt-5 flex flex-wrap gap-2.5">
+              {REDES.map((red) => {
+                const Icono = SOCIAL_ICONS[red.clave];
+                return (
+                  <li key={red.clave}>
+                    <a
+                      href={red.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      // El nombre va en aria-label porque el icono es solo
+                      // una forma: sin esto, un lector de pantalla anuncia
+                      // "enlace" y ya.
+                      aria-label={red.nombre}
+                      title={red.nombre}
+                      className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/60 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10 hover:text-white"
+                    >
+                      <Icono className="h-[18px] w-[18px]" />
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

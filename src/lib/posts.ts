@@ -20,6 +20,19 @@ type PostFrontmatter = {
   keyword?: string;
   cover: string;
   coverAlt: string;
+  /**
+   * Fecha de la última revisión. Google la usa como señal de frescura: un
+   * artículo revisado hace un mes compite mejor que uno de hace dos años.
+   */
+  updated?: string | Date;
+  /**
+   * Preguntas frecuentes del artículo.
+   *
+   * Se muestran al final y alimentan el schema FAQPage, que es el que puede
+   * ganar espacio extra en el resultado de Google con las preguntas
+   * desplegables. De los datos estructurados, es el de mejor retorno.
+   */
+  faqs?: { q: string; a: string }[];
   /** Marca el artículo como borrador: no se publica ni entra al sitemap. */
   draft?: boolean;
 };
@@ -34,6 +47,10 @@ export type Post = {
   category: string;
   cover: string;
   coverAlt: string;
+  /** Fecha de última revisión. Si no se define, es la de publicación. */
+  updated: string;
+  /** Preguntas frecuentes. Vacío si el artículo no define ninguna. */
+  faqs: { q: string; a: string }[];
   /** Minutos de lectura, calculados a partir del texto. */
   readingTime: number;
   body: string;
@@ -52,6 +69,11 @@ function toPost(doc: RawDoc<PostFrontmatter>): Post {
     category: data.category,
     cover: data.cover,
     coverAlt: data.coverAlt,
+    updated: data.updated ? toIsoDate(data.updated) : toIsoDate(data.date),
+    // Se filtran las entradas a medio llenar: el panel crea la fila en
+    // cuanto pulsas "añadir", y una pregunta sin respuesta en el schema
+    // hace que Google descarte el bloque entero.
+    faqs: (data.faqs ?? []).filter((f) => f?.q?.trim() && f?.a?.trim()),
     readingTime: readingTime(body),
     body,
   };

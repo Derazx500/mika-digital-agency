@@ -8,6 +8,15 @@ category: "Diseño web"
 keyword: "cuánto cuesta una página web en México"
 cover: "/images/blog/cuanto-cuesta-una-pagina-web.svg"
 coverAlt: "Precios de referencia de diseño web en México: landing desde $9,500, sitio corporativo desde $18,000 y tienda en línea desde $35,000 pesos."
+faqs:
+  - q: "¿Cuánto cuesta una página web en México en 2026?"
+    a: "Una landing page va de $9,000 a $20,000 MXN, un sitio corporativo de $18,000 a $60,000 y una tienda en línea de $35,000 a $150,000. Por debajo de esos rangos casi siempre es una plantilla con tu logo encima, sin estrategia ni SEO."
+  - q: "¿Por qué hay tanta diferencia entre una cotización y otra?"
+    a: "Porque no cotizan lo mismo. El costo de un sitio está en estrategia, diseño y pruebas, no en programar. Una cotización de $4,000 no es la misma web más barata: es la misma web sin el 60% del trabajo."
+  - q: "¿Qué costos aparecen después que nadie me menciona?"
+    a: "Dominio (~$300 MXN al año), hosting (desde $1,500 al año), correos corporativos, mantenimiento mensual y licencias de plugins si es WordPress. Pide siempre que la cotización diga por escrito qué incluye y qué no."
+  - q: "¿Cuánto debería invertir en mi sitio web?"
+    a: "Entre el 5% y el 15% de lo que esperas que te genere en su primer año. Si el sitio va a traerte cuatro clientes de $50,000, gastar $25,000 en uno que convierta es una decisión fácil."
 ---
 
 Si estás buscando cotizar un sitio web, ya te habrá pasado: pides tres presupuestos y te llegan $3,000, $25,000 y $180,000 pesos. Los tres dicen "página web profesional". Ninguno explica por qué la diferencia.
