@@ -71,6 +71,30 @@ export function buildMetadata({
   };
 }
 
+/**
+ * Recorta una meta descripción al largo que Google muestra.
+ *
+ * Google corta alrededor de los 155-160 caracteres. Pasarse no penaliza el
+ * posicionamiento, pero la frase queda truncada a media palabra en el
+ * resultado de búsqueda y se pierde justo el final, que suele ser la razón
+ * para hacer clic.
+ *
+ * Corta por espacio para no partir palabras y solo añade puntos suspensivos
+ * si de verdad sobró texto.
+ */
+export function recortarDescripcion(texto: string, maximo = 155): string {
+  const limpio = texto.replace(/\s+/g, ' ').trim();
+  if (limpio.length <= maximo) return limpio;
+
+  const cortado = limpio.slice(0, maximo);
+  const ultimoEspacio = cortado.lastIndexOf(' ');
+  // Si no hay espacios cerca del final, se corta en seco antes que devolver
+  // una cadena vacía.
+  const base = ultimoEspacio > maximo * 0.6 ? cortado.slice(0, ultimoEspacio) : cortado;
+
+  return base.replace(/[.,;:]$/, '') + '…';
+}
+
 /* ------------------------------------------------------------------ */
 /* Datos estructurados (JSON-LD)                                       */
 /* ------------------------------------------------------------------ */

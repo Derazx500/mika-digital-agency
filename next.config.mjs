@@ -48,6 +48,31 @@ const nextConfig = {
   async headers() {
     return [
       {
+        /*
+         * Cabeceras de seguridad para todo el sitio.
+         *
+         * Estaban en el .htaccess de HostGator y se perdieron al migrar a
+         * Vercel, que no lee ese archivo. Aquí se reponen:
+         *
+         * - nosniff: impide que el navegador adivine el tipo de un archivo
+         *   e interprete como script algo que no lo es.
+         * - SAMEORIGIN: evita que terceros incrusten el sitio en un iframe
+         *   para superponer botones invisibles (clickjacking).
+         * - Referrer-Policy: al salir hacia otro dominio manda solo el
+         *   origen, no la URL completa que estaba viendo el visitante.
+         */
+        source: '/:ruta*',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          {
+            key: 'Permissions-Policy',
+            value: 'geolocation=(), microphone=(), camera=()',
+          },
+        ],
+      },
+      {
         source: '/bamboohouse/:archivo*',
         headers: [
           { key: 'X-Robots-Tag', value: 'noindex, nofollow' },

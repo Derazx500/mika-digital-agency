@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 
 import { getAllProjects, getProject } from '@/lib/projects';
 import { MdxContent } from '@/components/mdx/MdxContent';
-import { breadcrumbSchema, buildMetadata } from '@/lib/seo';
+import { breadcrumbSchema, buildMetadata, recortarDescripcion } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
 import { PageHero } from '@/components/sections/PageHero';
@@ -26,7 +26,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return buildMetadata({
     title: `${project.name} — Caso de estudio`,
-    description: `${project.summary} Proyecto de ${project.tags.join(', ').toLowerCase()} realizado por Mika Digital Agency en ${project.year}.`,
+    // Se recorta porque el resumen lo escribe quien edita desde el panel y
+    // no tiene por qué saber cuánto muestra Google.
+    description: recortarDescripcion(
+      `${project.summary} Proyecto de ${project.tags.join(', ').toLowerCase()} realizado por Mika Digital Agency en ${project.year}.`,
+    ),
     path: `/portafolio/${project.slug}/`,
   });
 }

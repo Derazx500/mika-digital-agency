@@ -77,7 +77,9 @@
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npm install @next/third-parties@^15.5.4 --no-audit --no-fund 2>&1 | Select-Object -First 2; npm ls @next/third-parties next --depth=0)",
       "Bash(\"/c/Program Files/nodejs/node.exe\" node_modules/next/dist/bin/next dev -p 3200)",
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npm install rehype-unwrap-images --no-audit --no-fund 2>&1 | Select-Object -First 2; npm ls rehype-unwrap-images --depth=0)",
-      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npm uninstall rehype-unwrap-images --no-audit --no-fund 2>&1 | Select-Object -First 2; npm run typecheck 2>&1 | Select-Object -Last 5; \"typecheck exit=$LASTEXITCODE\")"
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npm uninstall rehype-unwrap-images --no-audit --no-fund 2>&1 | Select-Object -First 2; npm run typecheck 2>&1 | Select-Object -Last 5; \"typecheck exit=$LASTEXITCODE\")",
+      "PowerShell(& \"C:\\\\Users\\\\domin\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-domin-Documents-CLAUDE-MIKA-DIGITAL-AGENCY\\\\f424022a-5b67-4052-9c1c-f7fab1ff04e8\\\\scratchpad\\\\auditoria.ps1\")",
+      "PowerShell(& \"C:\\\\Users\\\\domin\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-domin-Documents-CLAUDE-MIKA-DIGITAL-AGENCY\\\\f424022a-5b67-4052-9c1c-f7fab1ff04e8\\\\scratchpad\\\\auditoria2.ps1\")"
     ]
   }
 }
