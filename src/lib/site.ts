@@ -42,6 +42,18 @@ export const SITE = {
   /** Zona horaria del reloj en vivo del navbar. */
   timezone: 'America/Mexico_City',
   timezoneLabel: 'CDMX',
+
+  /**
+   * ID de medición de Google Analytics 4.
+   *
+   * Es público: viaja en el HTML de todas las páginas, cualquiera puede
+   * verlo y no da acceso a los informes. Por eso está aquí y no en una
+   * variable de entorno, que solo complicaría el despliegue.
+   *
+   * Solo se carga en producción (ver layout.tsx): así las pruebas en local
+   * no ensucian las estadísticas.
+   */
+  analyticsId: 'G-6YD2E6YQ6B',
 } as const;
 
 /**

@@ -72,7 +72,9 @@
       "PowerShell($p = \\(Get-Command python -ErrorAction SilentlyContinue\\).Source; if \\($p\\) { \"python: $p\" } else { \"no python\" }; $py = \\(Get-Command py -ErrorAction SilentlyContinue\\).Source; if \\($py\\) { \"py: $py\" } else { \"no py\" })",
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npm run typecheck 2>&1 | Select-Object -Last 5; \"typecheck exit=$LASTEXITCODE\")",
       "PowerShell($p = \".\\\\bamboohouse\"; if\\(Test-Path $p\\){ Get-ChildItem $p -Recurse -Force | ForEach-Object { \"{0,12:N0} b  {1}\" -f $_.Length, $_.FullName.Replace\\(\\(Get-Location\\).Path + \"\\\\\",\"\"\\) } } else { \"no existe .\\\\bamboohouse\"; \"--- carpetas en la raiz ---\"; Get-ChildItem -Directory | Select-Object -ExpandProperty Name })",
-      "Bash(\"/c/Program Files/nodejs/node.exe\" node_modules/next/dist/bin/next start -p 3100)"
+      "Bash(\"/c/Program Files/nodejs/node.exe\" node_modules/next/dist/bin/next start -p 3100)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npm install @next/third-parties --no-audit --no-fund 2>&1 | Select-Object -First 3; npm ls @next/third-parties --depth=0)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npm install @next/third-parties@^15.5.4 --no-audit --no-fund 2>&1 | Select-Object -First 2; npm ls @next/third-parties next --depth=0)"
     ]
   }
 }

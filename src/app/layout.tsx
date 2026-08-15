@@ -2,9 +2,12 @@ import type { Metadata, Viewport } from 'next';
 import { DM_Sans } from 'next/font/google';
 import './globals.css';
 
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppFab } from '@/components/ui/WhatsAppFab';
+import { WhatsAppTracking } from '@/components/analytics/WhatsAppTracking';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { organizationSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
@@ -87,6 +90,21 @@ export default function RootLayout({
 
         {/* Schema de organización: se declara una vez y vale para todo el sitio. */}
         <JsonLd data={organizationSchema()} />
+
+        {/*
+          Analytics solo en producción: así las pruebas en local y los
+          despliegues de previsualización no ensucian las estadísticas.
+
+          GoogleAnalytics de @next/third-parties carga el script de forma
+          diferida, después de que la página sea usable, para que medir no
+          penalice la velocidad —que sí es factor de posicionamiento—.
+        */}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <GoogleAnalytics gaId={SITE.analyticsId} />
+            <WhatsAppTracking />
+          </>
+        )}
       </body>
     </html>
   );

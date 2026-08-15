@@ -281,7 +281,32 @@ La meta etiqueta también está puesta en [`src/app/layout.tsx`](src/app/layout.
 - **Indexación → Páginas** → confirma que las 29 URLs estén indexadas y revisa las excluidas.
 - **Experiencia → Core Web Vitals** → debería estar en verde; si algo se pone en rojo, suele ser una imagen pesada recién subida.
 
-> Search Console te dice **cómo te encuentran en Google**. Para saber qué hace la gente ya dentro del sitio (páginas más vistas, cuántos llegan al WhatsApp) hace falta **Google Analytics 4**, que es aparte. Pásame el ID de medición (`G-XXXXXXX`) y lo conecto.
+> Search Console te dice **cómo te encuentran en Google**. Lo que hace la gente ya dentro del sitio lo mide Analytics, que es aparte y está explicado abajo.
+
+## Google Analytics 4
+
+Instalado con el ID `G-6YD2E6YQ6B`, definido en [`src/lib/site.ts`](src/lib/site.ts) (`analyticsId`).
+
+Detalles de cómo está montado:
+
+- **Solo carga en producción.** Las pruebas en local y los despliegues de previsualización no ensucian las estadísticas.
+- Usa `@next/third-parties`, que carga el script **después** de que la página sea usable. Medir no debe penalizar la velocidad, que sí es factor de posicionamiento.
+- El ID es público: viaja en el HTML y no da acceso a los informes.
+
+### Evento de conversión: `contacto_whatsapp`
+
+Cada clic a WhatsApp se registra como el evento **`contacto_whatsapp`**, con dos datos:
+
+| Parámetro | Para qué sirve |
+| --- | --- |
+| `pagina` | Desde qué página escribieron. Revela qué contenido convierte. |
+| `boton` | Qué botón usaron: el flotante, el del hero, el de un paquete… |
+
+Está en [`WhatsAppTracking.tsx`](src/components/analytics/WhatsAppTracking.tsx) como un único escuchador de clics a nivel de documento, en vez de un manejador por botón. Así cubre los más de 40 enlaces a WhatsApp del sitio y los que se añadan después, sin tocar ningún componente.
+
+**Márcalo como conversión** en Analytics: *Administrar → Eventos → `contacto_whatsapp` → Marcar como evento clave*. A partir de ahí, los informes te dicen qué páginas y qué canales traen clientes de verdad, no solo visitas.
+
+> Si Google te ofrece *"Use the Google tag found on your website"*, **no la elijas**: esa etiqueta era del sitio anterior en HostGator y ya no existe. Hay que instalarla en el código, que es lo que está hecho aquí.
 
 ## Detalles técnicos
 
