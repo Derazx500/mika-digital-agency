@@ -53,7 +53,7 @@ export const SITE = {
    * Solo se carga en producción (ver layout.tsx): así las pruebas en local
    * no ensucian las estadísticas.
    */
-  analyticsId: 'G-6YD2E6YQ6B',
+  analyticsId: 'G-1BY4770KW4',
 } as const;
 
 /**

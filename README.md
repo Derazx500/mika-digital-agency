@@ -285,7 +285,9 @@ La meta etiqueta también está puesta en [`src/app/layout.tsx`](src/app/layout.
 
 ## Google Analytics 4
 
-Instalado con el ID `G-6YD2E6YQ6B`, definido en [`src/lib/site.ts`](src/lib/site.ts) (`analyticsId`).
+Instalado con el ID `G-1BY4770KW4`, definido en [`src/lib/site.ts`](src/lib/site.ts) (`analyticsId`). Si algún día cambias de propiedad, esa línea es lo único que hay que tocar.
+
+No hace falta pegar el fragmento `<script>` que da Google: `@next/third-parties` genera exactamente ese mismo código, pero cargándolo de forma diferida.
 
 Detalles de cómo está montado:
 
