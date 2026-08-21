@@ -12,6 +12,36 @@
  * El razonamiento de cada palabra clave está en docs/estrategia-seo.md.
  */
 
+import type { Beneficio } from '@/components/sections/Beneficios';
+import type { ItemGaleria } from '@/components/sections/Galeria';
+
+/**
+ * Configuración extra para las landings de conversión.
+ *
+ * Los servicios que la definen renderizan una página de venta completa
+ * —cabecera con precio, beneficios, galería, paquetes y reseñas— en lugar de
+ * la página de servicio estándar.
+ *
+ * Se hace sobre la MISMA URL y no en una página aparte a propósito: dos
+ * páginas atacando la búsqueda "tarjetas digitales NFC" competirían entre
+ * sí, Google elegiría una —casi nunca la que quieres— y la otra quedaría
+ * muerta.
+ */
+export type ConfigLanding = {
+  /** Texto junto a las estrellas, arriba del titular. */
+  badge: string;
+  /** Subtítulo del hero: qué gana el cliente. */
+  promesa: string;
+  /** Tres datos cortos que dan confianza. */
+  pruebas: string[];
+  /** Mensaje precargado del botón principal de WhatsApp. */
+  mensajeWhatsApp: string;
+  beneficios: Beneficio[];
+  galeria: ItemGaleria[];
+  /** Qué juego de paquetes mostrar. */
+  planes: 'web' | 'seo' | 'branding' | 'ecommerce' | 'nfc';
+};
+
 export type Service = {
   slug: string;
   /** Nombre corto para menús y tarjetas. */
@@ -38,6 +68,8 @@ export type Service = {
   faqs: { q: string; a: string }[];
   /** Servicios relacionados, para enlazado interno (importante para SEO). */
   related: string[];
+  /** Si está definida, la página se renderiza como landing de conversión. */
+  landing?: ConfigLanding;
 };
 
 export const SERVICIOS_ESPECIALIZADOS: Service[] = [
@@ -107,6 +139,89 @@ export const SERVICIOS_ESPECIALIZADOS: Service[] = [
       },
     ],
     related: ['diseno-web', 'fotografia-profesional'],
+    landing: {
+      badge: 'Tiendas que venden desde el primer mes',
+      promesa:
+        'Catálogo, pagos, envíos e inventario. Una tienda que administras tú, que carga rápido y que Google encuentra cuando buscan lo que vendes.',
+      pruebas: [
+        'Tarjeta, SPEI, OXXO y MSI',
+        'La administras sin depender de nadie',
+        'Lista en 5 a 6 semanas',
+      ],
+      mensajeWhatsApp:
+        'Hola Mika, quiero crear mi tienda en línea. ¿Me pueden dar información?',
+      planes: 'ecommerce',
+      beneficios: [
+        {
+          icono: 'dinero',
+          titulo: 'Cobras como compra tu cliente',
+          texto:
+            'Tarjeta, SPEI, OXXO y meses sin intereses. En México, quitar el efectivo de la ecuación deja fuera a buena parte del mercado.',
+        },
+        {
+          icono: 'velocidad',
+          titulo: 'Carga rápido o no vende',
+          texto:
+            'Cada segundo de espera se lleva compradores. Optimizamos imágenes y código para que la ficha abra al instante en datos móviles.',
+        },
+        {
+          icono: 'crecimiento',
+          titulo: 'Tus productos aparecen en Google',
+          texto:
+            'Cada ficha se optimiza para su búsqueda. Una tienda sin SEO depende por completo de que pagues publicidad todos los meses.',
+        },
+        {
+          icono: 'llave',
+          titulo: 'Subes productos tú mismo',
+          texto:
+            'Te capacitamos y te dejamos el panel listo. Depender de la agencia para cambiar un precio es la forma más rápida de quedarte desactualizado.',
+        },
+        {
+          icono: 'metricas',
+          titulo: 'Menos carritos abandonados',
+          texto:
+            'Diseñamos la ruta de compra para quitar pasos. Cada campo que sobra en el checkout es gente que se va antes de pagar.',
+        },
+        {
+          icono: 'escudo',
+          titulo: 'La tienda es tuya',
+          texto:
+            'Dominio, hosting y accesos a tu nombre. Si algún día quieres seguir con otro proveedor, te llevas todo.',
+        },
+      ],
+      galeria: [
+        {
+          src: '/images/landings/ecommerce/tienda-inicio.webp',
+          alt: 'Página de inicio de una tienda en línea diseñada por Mika Digital Agency.',
+          titulo: 'Portada de tienda',
+        },
+        {
+          src: '/images/landings/ecommerce/ficha-producto.webp',
+          alt: 'Ficha de producto con galería de fotos, variantes y botón de compra.',
+          titulo: 'Ficha de producto',
+        },
+        {
+          src: '/images/landings/ecommerce/carrito.webp',
+          alt: 'Carrito de compra optimizado con resumen del pedido y costos de envío.',
+          titulo: 'Carrito y checkout',
+        },
+        {
+          src: '/images/landings/ecommerce/movil.webp',
+          alt: 'Tienda en línea vista en un teléfono móvil durante una compra.',
+          titulo: 'Todo pensado para móvil',
+        },
+        {
+          src: '/images/landings/ecommerce/panel.webp',
+          alt: 'Panel de administración de la tienda con inventario y pedidos.',
+          titulo: 'Tu panel de control',
+        },
+        {
+          src: '/images/landings/ecommerce/categorias.webp',
+          alt: 'Página de categoría con filtros de búsqueda y retícula de productos.',
+          titulo: 'Categorías con filtros',
+        },
+      ],
+    },
   },
 
   /* ---------------------------------------------------------------- */
@@ -518,5 +633,88 @@ export const SERVICIOS_ESPECIALIZADOS: Service[] = [
       },
     ],
     related: ['diseno-grafico-branding', 'diseno-web'],
+    landing: {
+      badge: 'Diseño propio, no plantilla',
+      promesa:
+        'Acercas la tarjeta a cualquier celular y se abre tu perfil: datos, redes y botón de WhatsApp. Sin apps, y sin volver a imprimir cada vez que cambia un número.',
+      pruebas: [
+        'Funciona en iPhone y Android',
+        'Editable desde tu panel',
+        'Entrega en 5 a 7 días',
+      ],
+      mensajeWhatsApp:
+        'Hola Mika, quiero una tarjeta digital NFC. ¿Me pueden dar información?',
+      planes: 'nfc',
+      beneficios: [
+        {
+          icono: 'brillo',
+          titulo: 'Se acuerdan de ti',
+          texto:
+            'Acercar una tarjeta y que se abra tu perfil genera una reacción que un cartón no provoca. Es la parte de la reunión que se cuenta después.',
+        },
+        {
+          icono: 'llave',
+          titulo: 'Cambias los datos, no la tarjeta',
+          texto:
+            'Nuevo teléfono, nuevo puesto, nueva promoción. Lo editas en tu panel y la misma tarjeta muestra lo nuevo al instante.',
+        },
+        {
+          icono: 'dinero',
+          titulo: 'Dejas de tirar cajas enteras',
+          texto:
+            'Cada cambio de dato ya no significa reimprimir mil tarjetas de las que repartiste doscientas.',
+        },
+        {
+          icono: 'metricas',
+          titulo: 'Sabes si funcionó',
+          texto:
+            'Ves cuántas veces se abrió tu perfil y desde dónde. Un cartón nunca te dijo si acabó en la basura.',
+        },
+        {
+          icono: 'verificado',
+          titulo: 'Diseñada, no elegida de un catálogo',
+          texto:
+            'Casi toda la competencia te vende el plástico con una plantilla. Aquí la tarjeta y el perfil se diseñan con tu identidad.',
+        },
+        {
+          icono: 'equipo',
+          titulo: 'Pensada para equipos',
+          texto:
+            'Cada persona con su perfil, todas con el mismo diseño, y un panel central para dar de alta y baja sin reimprimir nada.',
+        },
+      ],
+      galeria: [
+        {
+          src: '/images/landings/nfc/tarjeta-frente.webp',
+          alt: 'Tarjeta de presentación digital NFC en PVC negro con logotipo grabado.',
+          titulo: 'Acabado mate con chip NFC',
+        },
+        {
+          src: '/images/landings/nfc/perfil-movil.webp',
+          alt: 'Perfil digital abierto en un teléfono tras acercar la tarjeta NFC.',
+          titulo: 'El perfil que ve tu contacto',
+        },
+        {
+          src: '/images/landings/nfc/tarjeta-reverso.webp',
+          alt: 'Reverso de la tarjeta NFC con el código QR de respaldo impreso.',
+          titulo: 'QR de respaldo al reverso',
+        },
+        {
+          src: '/images/landings/nfc/equipo-tarjetas.webp',
+          alt: 'Juego de tarjetas NFC de un equipo de ventas con diseño unificado.',
+          titulo: 'Diseño unificado para equipos',
+        },
+        {
+          src: '/images/landings/nfc/panel-estadisticas.webp',
+          alt: 'Panel con las estadísticas de aperturas del perfil digital.',
+          titulo: 'Estadísticas de aperturas',
+        },
+        {
+          src: '/images/landings/nfc/tarjeta-uso.webp',
+          alt: 'Momento en que una tarjeta NFC se acerca a un teléfono en una reunión.',
+          titulo: 'Un toque y listo',
+        },
+      ],
+    },
   },
 ];

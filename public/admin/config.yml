@@ -281,6 +281,94 @@ collections:
           que de verdad convierte.
 
   # -----------------------------------------------------------------
+  # RESEÑAS
+  # -----------------------------------------------------------------
+  - name: testimonios
+    label: Reseñas de clientes
+    label_singular: Reseña
+    folder: content/testimonios
+    create: true
+    slug: '{{author}}'
+    extension: md
+    format: frontmatter
+    summary: '{{author}} — {{company}}'
+    sortable_fields: ['order', 'author']
+    fields:
+      - label: Nombre del cliente
+        name: author
+        widget: string
+
+      - label: Puesto
+        name: role
+        widget: string
+        required: false
+        hint: 'Ej: CEO, Directora de Marketing.'
+
+      - label: Empresa
+        name: company
+        widget: string
+        required: false
+
+      - label: Servicios a los que aplica
+        name: servicios
+        widget: select
+        multiple: true
+        required: false
+        options:
+          - { label: Diseño y desarrollo web, value: diseno-web }
+          - { label: Posicionamiento SEO, value: posicionamiento-seo }
+          - { label: Diseño gráfico y branding, value: diseno-grafico-branding }
+          - { label: Tienda en línea, value: tienda-en-linea }
+          - { label: Tarjetas digitales NFC, value: tarjetas-digitales-nfc }
+          - { label: Desarrollo a la medida, value: desarrollo-de-software }
+          - { label: Producción de video, value: produccion-de-video }
+          - { label: Producción de podcast, value: produccion-de-podcast }
+          - { label: Fotografía profesional, value: fotografia-profesional }
+          - { label: Social media, value: social-media }
+        hint: >-
+          En la página de cada servicio salen primero sus reseñas. Una reseña
+          sobre lo mismo que el visitante está mirando convence bastante más
+          que un elogio genérico. Si lo dejas vacío, se puede usar en todas.
+
+      - label: Proyecto relacionado
+        name: proyecto
+        widget: relation
+        collection: proyectos
+        search_fields: ['name']
+        value_field: '{{slug}}'
+        display_fields: ['name']
+        required: false
+
+      - label: Calificación
+        name: rating
+        widget: number
+        value_type: int
+        default: 5
+        min: 1
+        max: 5
+
+      - label: Orden
+        name: order
+        widget: number
+        value_type: int
+        default: 10
+        hint: Menor número, aparece antes.
+
+      - label: Borrador
+        name: draft
+        widget: boolean
+        default: false
+        required: false
+
+      - label: La reseña
+        name: body
+        widget: text
+        hint: >-
+          Las palabras del cliente, tal cual. No las pulas: una reseña que
+          suena a texto de agencia se nota y resta credibilidad en vez de
+          sumarla.
+
+  # -----------------------------------------------------------------
   # EQUIPO
   # -----------------------------------------------------------------
   - name: equipo

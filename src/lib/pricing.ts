@@ -79,6 +79,23 @@ export const WEB_PLANS: Plan[] = [
 
 export const RETAINER_PLANS: Plan[] = [
   {
+    name: 'Auditoría SEO',
+    audience:
+      'Para saber qué te está frenando antes de invertir en nada más.',
+    priceFrom: 6500,
+    unit: 'proyecto',
+    timeline: '1 a 2 semanas',
+    features: [
+      'Auditoría técnica completa del sitio',
+      'Investigación de palabras clave',
+      'Análisis de tus 3 competidores directos',
+      'Revisión de indexación y errores de rastreo',
+      'Informe con prioridades, no con 200 avisos',
+      'Junta de una hora para explicártelo',
+      'Se te bonifica si contratas plan mensual',
+    ],
+  },
+  {
     name: 'SEO Esencial',
     audience: 'Para negocios locales que quieren aparecer en su ciudad.',
     priceFrom: 8500,
@@ -108,6 +125,122 @@ export const RETAINER_PLANS: Plan[] = [
       'Junta mensual de estrategia',
     ],
     highlighted: true,
+  },
+];
+
+/* ------------------------------------------------------------------ */
+
+export const ECOMMERCE_PLANS: Plan[] = [
+  {
+    name: 'Tienda Esencial',
+    audience: 'Para empezar a vender en línea sin complicarte.',
+    priceFrom: 35000,
+    unit: 'proyecto',
+    timeline: '5 a 6 semanas',
+    features: [
+      'Hasta 50 productos cargados',
+      'Pasarela de pago: tarjeta, SPEI y OXXO',
+      'Cálculo de envíos por zona',
+      'Diseño a la medida, sin plantilla',
+      'SEO en fichas de producto',
+      'Capacitación para que subas productos tú',
+      '30 días de soporte incluidos',
+    ],
+  },
+  {
+    name: 'Tienda Completa',
+    audience:
+      'Para catálogos grandes o que ya venden y quieren vender más.',
+    priceFrom: 58000,
+    unit: 'proyecto',
+    timeline: '7 a 9 semanas',
+    features: [
+      'Hasta 300 productos con variantes',
+      'Meses sin intereses y cupones',
+      'Conexión con paqueterías',
+      'Gestión de inventario',
+      'Carrito optimizado contra abandonos',
+      'Correos automáticos de venta',
+      'Panel de reportes de ventas',
+    ],
+    highlighted: true,
+  },
+  {
+    name: 'Tienda a la Medida',
+    audience:
+      'Para operaciones con integraciones o reglas de negocio propias.',
+    priceFrom: 95000,
+    unit: 'proyecto',
+    timeline: 'Desde 10 semanas',
+    features: [
+      'Catálogo sin límite de productos',
+      'Integración con tu ERP o facturación',
+      'Precios por mayoreo o por cliente',
+      'Múltiples almacenes o sucursales',
+      'Desarrollo de funciones a la medida',
+      'Migración desde tu tienda actual',
+      '90 días de soporte incluidos',
+    ],
+  },
+];
+
+/* ------------------------------------------------------------------ */
+
+/**
+ * Tarjetas NFC.
+ *
+ * El precio baja por volumen porque el diseño se hace una sola vez: a
+ * partir de la segunda tarjeta solo cambia el perfil y la impresión.
+ */
+export const NFC_PLANS: Plan[] = [
+  {
+    name: 'Individual',
+    audience: 'Para una persona que quiere dejar de repartir cartón.',
+    priceFrom: 1200,
+    unit: 'proyecto',
+    timeline: '5 a 7 días',
+    features: [
+      '1 tarjeta física en PVC con chip NFC',
+      'Código QR impreso de respaldo',
+      'Diseño con tu identidad, no plantilla',
+      'Perfil digital editable cuando quieras',
+      'Botón directo a WhatsApp',
+      'Guardar contacto en un toque',
+      'Estadísticas de aperturas',
+    ],
+  },
+  {
+    name: 'Equipo',
+    audience: 'Para equipos de ventas y áreas comerciales.',
+    priceFrom: 8500,
+    unit: 'proyecto',
+    timeline: '7 a 10 días',
+    features: [
+      '10 tarjetas con diseño unificado',
+      'Un perfil por persona',
+      'Panel central para administrarlos todos',
+      'Alta y baja de personal sin reimprimir',
+      'Captura de datos de quien te contacta',
+      'Estadísticas por persona',
+      'Precio por tarjeta más bajo',
+    ],
+    highlighted: true,
+  },
+  {
+    name: 'Empresa',
+    audience: 'Para plantillas grandes o varias sucursales.',
+    priceFrom: 28000,
+    unit: 'proyecto',
+    timeline: '2 a 3 semanas',
+    features: [
+      '40 tarjetas o más, con precio por volumen',
+      'Perfiles por área o sucursal',
+      'Diseño de varias versiones de tarjeta',
+      'Integración con tu CRM',
+      'Dominio propio para los perfiles',
+      'Capacitación al equipo',
+      'Soporte prioritario',
+    ],
   },
 ];
 
@@ -142,6 +275,23 @@ export const BRANDING_PLANS: Plan[] = [
       'Manual de identidad extendido',
     ],
     highlighted: true,
+  },
+  {
+    name: 'Rebranding',
+    audience:
+      'Para marcas que ya existen y se les quedó corta la imagen actual.',
+    priceFrom: 45000,
+    unit: 'proyecto',
+    timeline: '6 a 10 semanas',
+    features: [
+      'Todo lo de Identidad Completa',
+      'Auditoría de la marca actual',
+      'Qué conservar y qué cambiar, con criterio',
+      'Análisis de competencia',
+      'Plan de transición para no perder reconocimiento',
+      'Rediseño de aplicaciones existentes',
+      'Acompañamiento en el lanzamiento',
+    ],
   },
 ];
 

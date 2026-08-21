@@ -154,11 +154,27 @@ Nombres esperados: `cia-escenicas-lurvik`, `cobi-education`, `cqda`, `corporativ
 - `public/images/team/deraz.webp` — 1200 × 900 px
 - `public/images/team/juan-dom.webp` — 1200 × 900 px
 
-### 5. Imagen para redes (Open Graph) — ⬜ pendiente
+### 5. Galerías de las landings — ⬜ pendientes
+
+Cinco servicios tienen landing de conversión con galería de ejemplos: **6 imágenes cada uno, cuadradas, 1200 × 1200 px**, en `public/images/landings/<servicio>/`.
+
+| Carpeta | Archivos |
+| --- | --- |
+| `nfc/` | `tarjeta-frente`, `perfil-movil`, `tarjeta-reverso`, `equipo-tarjetas`, `panel-estadisticas`, `tarjeta-uso` |
+| `web/` | `sitio-corporativo`, `landing-campana`, `responsive`, `blog`, `panel`, `velocidad` |
+| `ecommerce/` | `tienda-inicio`, `ficha-producto`, `carrito`, `movil`, `panel`, `categorias` |
+| `logos/` | `logo-1`, `logo-2`, `manual`, `papeleria`, `aplicaciones`, `paleta` |
+| `seo/` | `posiciones`, `search-console`, `auditoria`, `local-pack`, `core-web-vitals`, `reporte` |
+
+Todos en `.webp`. Los nombres y sus textos alternativos están en `landing.galeria` de cada servicio, en [`src/lib/site.ts`](src/lib/site.ts) y [`src/lib/services.ts`](src/lib/services.ts).
+
+> **Es la sección que más vende de las landings.** Nadie contrata diseño sin ver diseño, y ahora mismo se ven degradados con el título. Lo primero que conviene subir.
+
+### 6. Imagen para redes (Open Graph) — ⬜ pendiente
 
 `public/og/og-default.jpg` — **1200 × 630 px**. Es lo que se ve al compartir el sitio por WhatsApp.
 
-### 6. Revisar antes de publicar
+### 7. Revisar antes de publicar
 
 - **Precios** ([`src/lib/pricing.ts`](src/lib/pricing.ts)): las cifras son una referencia de mercado, no tus costos reales.
 - **Testimonios** ([`src/lib/projects.ts`](src/lib/projects.ts)): los recuperé de tu sitio anterior. Solo el primero decía explícitamente de quién era; los otros tres los asocié por el orden en que aparecían. **Verifica que cada frase sea de la persona correcta.**
