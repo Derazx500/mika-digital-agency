@@ -41,7 +41,7 @@ Quien busca esto ya decidió contratar; solo está eligiendo a quién.
 | cuánto cuesta una página web en México | [/precios/](../src/lib/pricing.ts) y el artículo del blog | Buscar precio es el último paso antes de pedir cotización. |
 | agencia de diseño web CDMX | /servicios/diseno-web/ | Búsqueda local con intención de contratar. |
 | desarrollo de software a la medida México | /servicios/desarrollo-de-software/ | Poco volumen, ticket muy alto y competencia baja. |
-| tarjetas de presentación digitales NFC | /servicios/tarjetas-digitales-nfc/ | Nicho joven, competencia mayormente de tiendas sin diseño propio. |
+| tarjetas de presentación digitales | /servicios/tarjetas-de-presentacion-digitales/ | Nicho joven, competencia mayormente de plataformas sin diseño propio. |
 
 ### Nivel 2 — Intención comercial
 
@@ -85,8 +85,7 @@ Fuentes: [Publicidad y Video](https://publicidadyvideo.com.mx/cuanto-cuesta-prod
 **Podcast.** Mercado poco maduro: estudios por hora (~$550 MXN) y paquetes de lanzamiento. Casi nadie ofrece producción integral con distribución y fragmentos para redes.
 Fuentes: [Sala Podcast](https://salapodcast.com/servicio-podcast-agencias/), [Shore Studio](https://www.shorestudio.mx/), [In House Work](https://inhousework.mx/en/studio/)
 
-**Tarjetas NFC.** Entre $499 y $1,699 MXN por tarjeta. La competencia vende producto con plantilla; ninguno vende diseño de marca. Ahí está la diferencia de Mika.
-Fuentes: [LNKARD](https://lnkard.com/tarjetas-nfc-mexico.html), [Card Tap](https://cardtap.mx/tarjetas-nfc), [Nuxvel](https://nuxvelcard.com.mx/)
+**Tarjetas de presentación digitales.** El mercado ronda los $500 a $1,700 MXN. La competencia vende una plataforma con plantillas a las que solo se les cambia el color; ninguna vende diseño de marca propio. Ahí está la diferencia de Mika.
 
 ---
 

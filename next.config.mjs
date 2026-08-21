@@ -87,6 +87,17 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        /*
+         * El servicio se llamaba "tarjetas digitales NFC" y cambió de nombre
+         * al no ser NFC. La URL vieja se redirige de forma permanente para
+         * no dejar en 404 a quien la tenga enlazada o indexada, y para que
+         * Google transfiera lo poco o mucho que hubiera acumulado.
+         */
+        source: '/servicios/tarjetas-digitales-nfc/',
+        destination: '/servicios/tarjetas-de-presentacion-digitales/',
+        permanent: true,
+      },
+      {
         // Con `trailingSlash: true`, Next ya redirige /admin a /admin/ antes
         // de mirar esta tabla. Por eso el origen lleva la barra final: si se
         // pone sin ella, esta regla nunca llega a aplicarse.

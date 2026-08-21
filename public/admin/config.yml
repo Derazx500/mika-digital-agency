@@ -319,7 +319,10 @@ collections:
           - { label: Posicionamiento SEO, value: posicionamiento-seo }
           - { label: Diseño gráfico y branding, value: diseno-grafico-branding }
           - { label: Tienda en línea, value: tienda-en-linea }
-          - { label: Tarjetas digitales NFC, value: tarjetas-digitales-nfc }
+          - {
+              label: Tarjetas de presentación digitales,
+              value: tarjetas-de-presentacion-digitales,
+            }
           - { label: Desarrollo a la medida, value: desarrollo-de-software }
           - { label: Producción de video, value: produccion-de-video }
           - { label: Producción de podcast, value: produccion-de-podcast }

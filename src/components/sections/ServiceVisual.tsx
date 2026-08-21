@@ -227,34 +227,68 @@ function SocialMedia() {
   );
 }
 
-function TarjetasNfc() {
+function TarjetasDigitales() {
+  /* Módulos del código QR: patrón fijo para que el dibujo sea estable. */
+  const modulos = [
+    [0, 3], [1, 0], [1, 2], [1, 4], [2, 1], [2, 3], [3, 0], [3, 2],
+    [3, 4], [4, 1], [4, 3], [0, 1], [2, 0], [4, 0], [2, 4],
+  ];
+
   return (
     <Lienzo>
-      {/* Tarjeta */}
-      <g transform="rotate(-8 300 230)">
-        <rect x="120" y="140" width="330" height="200" rx="20" fill={TINTA} />
-        <rect x="152" y="176" width="92" height="12" rx="6" fill="#fff" opacity="0.85" />
-        <rect x="152" y="200" width="140" height="9" rx="4.5" fill="#fff" opacity="0.35" />
-        <rect x="152" y="286" width="110" height="9" rx="4.5" fill={AZUL} />
-        {/* Chip */}
-        <rect x="352" y="176" width="58" height="44" rx="8" fill={AZUL} opacity="0.9" />
-        <g stroke="#0a0a0a" strokeWidth="3" opacity="0.5">
-          <path d="M352 190h58M352 206h58M375 176v44M389 176v44" />
-        </g>
+      {/* Código QR */}
+      <g transform="rotate(-6 250 225)">
+        <rect x="120" y="110" width="260" height="260" rx="24" fill="#fff" stroke="#dde6f5" strokeWidth="3" />
+        {/* Esquinas de posicionamiento */}
+        {[
+          [152, 142], [286, 142], [152, 276],
+        ].map(([x, y]) => (
+          <g key={`${x}-${y}`}>
+            <rect x={x} y={y} width="52" height="52" rx="12" fill="none" stroke={TINTA} strokeWidth="10" />
+            <rect x={x + 18} y={y + 18} width="16" height="16" rx="4" fill={TINTA} />
+          </g>
+        ))}
+        {/* Módulos */}
+        {modulos.map(([c, f]) => (
+          <rect
+            key={`${c}-${f}`}
+            x={222 + c * 26}
+            y={214 + f * 26}
+            width="18"
+            height="18"
+            rx="4"
+            fill={AZUL}
+            opacity={0.35 + ((c + f) % 3) * 0.25}
+          />
+        ))}
       </g>
-      {/* Ondas NFC */}
-      <g fill="none" stroke={AZUL} strokeWidth="8" strokeLinecap="round">
-        <path d="M508 190a70 70 0 0 1 0 100" opacity="0.9" />
-        <path d="M546 162a118 118 0 0 1 0 156" opacity="0.55" />
-        <path d="M584 134a166 166 0 0 1 0 212" opacity="0.25" />
+
+      {/* Flecha de "se comparte" */}
+      <g fill="none" stroke={AZUL} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" opacity="0.55">
+        <path d="M424 240h68" />
+        <path d="M474 222l20 18-20 18" />
       </g>
-      {/* Teléfono */}
-      <rect x="628" y="128" width="112" height="200" rx="20" fill="#fff" stroke={TINTA} strokeWidth="6" />
-      <rect x="664" y="140" width="40" height="7" rx="3.5" fill={TINTA} opacity="0.35" />
-      <circle cx="684" cy="196" r="24" fill={AZUL} opacity="0.2" />
-      <rect x="650" y="238" width="68" height="9" rx="4.5" fill="#dde6f5" />
-      <rect x="650" y="258" width="46" height="9" rx="4.5" fill="#e8eef8" />
-      <rect x="650" y="288" width="68" height="24" rx="12" fill={AZUL} />
+
+      {/* Teléfono con el perfil abierto */}
+      <rect x="540" y="86" width="200" height="290" rx="30" fill="#fff" stroke={TINTA} strokeWidth="7" />
+      <rect x="608" y="102" width="64" height="9" rx="4.5" fill={TINTA} opacity="0.3" />
+      {/* Avatar y nombre */}
+      <circle cx="640" cy="164" r="30" fill={AZUL} opacity="0.22" />
+      <circle cx="640" cy="156" r="11" fill={AZUL} opacity="0.7" />
+      <path d="M624 180a16 16 0 0 1 32 0z" fill={AZUL} opacity="0.7" />
+      <rect x="596" y="208" width="88" height="11" rx="5.5" fill="#c8d6ec" />
+      <rect x="612" y="228" width="56" height="8" rx="4" fill="#dde6f5" />
+      {/* Fila de redes */}
+      <g fill={AZUL} opacity="0.35">
+        <circle cx="600" cy="264" r="13" />
+        <circle cx="640" cy="264" r="13" />
+        <circle cx="680" cy="264" r="13" />
+      </g>
+      {/* Botón de WhatsApp */}
+      <rect x="576" y="296" width="128" height="34" rx="17" fill="#25D366" />
+      <rect x="600" y="308" width="80" height="10" rx="5" fill="#fff" opacity="0.9" />
+      {/* Guardar contacto */}
+      <rect x="576" y="340" width="128" height="26" rx="13" fill={AZUL} opacity="0.14" />
     </Lienzo>
   );
 }
@@ -266,7 +300,7 @@ const COMPOSICIONES: Record<string, () => React.JSX.Element> = {
   'produccion-de-podcast': ProduccionPodcast,
   'fotografia-profesional': Fotografia,
   'social-media': SocialMedia,
-  'tarjetas-digitales-nfc': TarjetasNfc,
+  'tarjetas-de-presentacion-digitales': TarjetasDigitales,
 };
 
 /**

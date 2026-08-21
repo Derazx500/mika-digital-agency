@@ -8,7 +8,8 @@ import { readCollection, type RawDoc } from '@/lib/content';
  * más conviene alimentar de forma constante.
  *
  * Cada una puede marcarse con los servicios a los que aplica, para que en la
- * landing de tarjetas NFC salgan reseñas de tarjetas y no de otra cosa. Una
+ * landing de tarjetas digitales salgan reseñas de tarjetas y no de otra
+ * cosa. Una
  * reseña específica del servicio que se está mirando convence mucho más que
  * un elogio genérico.
  */
@@ -72,7 +73,8 @@ export function getTestimonios(): Testimonio[] {
  * etiquetado ninguna todavía.
  *
  * `especificas` indica si todas las devueltas son de ese servicio. Importa
- * para el titular: presentar como "clientes que contrataron tarjetas NFC" a
+ * para el titular: presentar como "clientes que contrataron tarjetas
+ * digitales" a
  * gente que contrató una web sería engañoso, y una reseña que no cuadra con
  * lo que se está mirando resta credibilidad en vez de sumarla.
  */

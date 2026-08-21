@@ -160,7 +160,7 @@ Cinco servicios tienen landing de conversión con galería de ejemplos: **6 imá
 
 | Carpeta | Archivos |
 | --- | --- |
-| `nfc/` | `tarjeta-frente`, `perfil-movil`, `tarjeta-reverso`, `equipo-tarjetas`, `panel-estadisticas`, `tarjeta-uso` |
+| `tarjetas/` | `perfil-movil`, `codigo-qr`, `diseno-marca`, `equipo`, `panel-estadisticas`, `compartir` |
 | `web/` | `sitio-corporativo`, `landing-campana`, `responsive`, `blog`, `panel`, `velocidad` |
 | `ecommerce/` | `tienda-inicio`, `ficha-producto`, `carrito`, `movil`, `panel`, `categorias` |
 | `logos/` | `logo-1`, `logo-2`, `manual`, `papeleria`, `aplicaciones`, `paleta` |

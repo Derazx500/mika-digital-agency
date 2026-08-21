@@ -23,7 +23,8 @@ import type { ItemGaleria } from '@/components/sections/Galeria';
  * la página de servicio estándar.
  *
  * Se hace sobre la MISMA URL y no en una página aparte a propósito: dos
- * páginas atacando la búsqueda "tarjetas digitales NFC" competirían entre
+ * páginas atacando la búsqueda "tarjetas de presentación digitales"
+ * competirían entre
  * sí, Google elegiría una —casi nunca la que quieres— y la otra quedaría
  * muerta.
  */
@@ -39,7 +40,7 @@ export type ConfigLanding = {
   beneficios: Beneficio[];
   galeria: ItemGaleria[];
   /** Qué juego de paquetes mostrar. */
-  planes: 'web' | 'seo' | 'branding' | 'ecommerce' | 'nfc';
+  planes: 'web' | 'seo' | 'branding' | 'ecommerce' | 'tarjetas';
 };
 
 export type Service = {
@@ -568,95 +569,99 @@ export const SERVICIOS_ESPECIALIZADOS: Service[] = [
 
   /* ---------------------------------------------------------------- */
   {
-    slug: 'tarjetas-digitales-nfc',
-    name: 'Tarjetas digitales NFC',
-    h1: 'Tarjetas de presentación digitales con NFC',
-    title: 'Tarjetas de Presentación Digitales NFC en México',
+    slug: 'tarjetas-de-presentacion-digitales',
+    name: 'Tarjetas de presentación digitales',
+    h1: 'Tarjetas de presentación digitales para tu marca',
+    title: 'Tarjetas de Presentación Digitales en México | Mika',
     description:
-      'Tarjetas de presentación digitales con chip NFC: compartes tus datos con un toque, sin apps. Diseño y perfil incluidos. Desde $1,200 MXN por tarjeta.',
+      'Tu tarjeta de presentación digital: un perfil con tus datos, redes y WhatsApp que compartes por enlace o código QR. Diseño propio desde $1,200 MXN.',
     tagline:
-      'Compartes tus datos acercando la tarjeta a un celular. Sin apps, sin reimprimir cada vez que cambia algo.',
-    keyword: 'tarjetas de presentación digitales NFC México',
+      'Un perfil con tus datos, redes y WhatsApp que compartes por enlace o QR. Se actualiza solo y nunca se acaba.',
+    keyword: 'tarjetas de presentación digitales México',
     priceFrom: 1200,
     priceUnit: 'pieza',
     deliverables: [
-      'Tarjeta física con chip NFC y código QR de respaldo',
-      'Diseño de la tarjeta con tu identidad de marca',
-      'Perfil digital con tus datos, redes y botón de WhatsApp',
-      'Actualizable: cambias el teléfono y la tarjeta sigue sirviendo',
-      'Botón para guardar tu contacto en un toque',
+      'Perfil digital diseñado con tu identidad de marca',
+      'Tus datos, redes y botón directo a WhatsApp',
+      'Código QR listo para imprimir o mostrar en pantalla',
+      'Enlace corto para compartir por mensaje o correo',
+      'Botón para guardar tu contacto en la agenda',
+      'Editable cuando quieras, sin volver a repartir nada',
       'Estadísticas de cuántas veces se abrió tu perfil',
-      'Precios por volumen para equipos completos',
     ],
     process: [
       {
         step: '01',
         title: 'Diseño',
-        body: 'Diseñamos la tarjeta y el perfil digital con tu identidad, no con una plantilla genérica.',
+        body: 'Diseñamos tu perfil con tu identidad, no con una plantilla a la que le cambian el color.',
       },
       {
         step: '02',
-        title: 'Perfil y contenido',
-        body: 'Cargamos datos, redes, catálogo o lo que quieras mostrar al abrirse.',
+        title: 'Contenido',
+        body: 'Cargamos tus datos, redes, catálogo o lo que quieras que vea quien la abra.',
       },
       {
         step: '03',
-        title: 'Producción',
-        body: 'Fabricamos las tarjetas en PVC con el chip programado y probado una por una.',
+        title: 'Enlace y código QR',
+        body: 'Generamos tu enlace y el QR en alta resolución, listo para papelería, vitrina o firma de correo.',
       },
       {
         step: '04',
-        title: 'Entrega y ajustes',
-        body: 'Te entregamos las tarjetas y el acceso para que edites tu perfil cuando quieras.',
+        title: 'Entrega y acceso',
+        body: 'Te damos el acceso a tu panel para que edites el perfil cuando quieras.',
       },
     ],
     faqs: [
       {
-        q: '¿Cómo funciona una tarjeta de presentación NFC?',
-        a: 'Lleva un chip dentro. Acercas la tarjeta al celular de la otra persona y se abre tu perfil digital al instante, sin que ninguno de los dos instale nada. Si su teléfono no tiene NFC, escanea el código QR impreso y llega al mismo sitio.',
+        q: '¿Qué es una tarjeta de presentación digital?',
+        a: 'Es un perfil web con tus datos, tus redes y un botón directo a WhatsApp. Lo compartes con un enlace o con un código QR, y quien lo abre puede guardar tu contacto de un toque. Nadie instala nada: funciona en el navegador de cualquier teléfono.',
       },
       {
-        q: '¿Cuánto cuesta una tarjeta digital NFC en México?',
-        a: 'La nuestra arranca en $1,200 MXN e incluye el diseño de la tarjeta y del perfil digital. En el mercado hay tarjetas desde $500, pero suelen venir con una plantilla genérica y sin diseño propio: pagas el plástico, no la marca.',
+        q: '¿Cuánto cuesta una tarjeta de presentación digital?',
+        a: 'La nuestra arranca en $1,200 MXN e incluye el diseño del perfil con tu identidad de marca. Hay opciones más baratas en el mercado, pero suelen ser una plantilla a la que solo le cambian el color y el logotipo: pagas la herramienta, no la marca.',
       },
       {
         q: '¿Qué pasa si cambio de teléfono o de puesto?',
-        a: 'Entras a tu panel y lo actualizas. La tarjeta física sigue siendo la misma y quien la use verá los datos nuevos. Ese es justo el punto: dejas de tirar cajas de tarjetas cada vez que cambia un número.',
+        a: 'Entras a tu panel y lo actualizas. El enlace y el código QR siguen siendo los mismos, así que quien ya los tenga verá los datos nuevos. Ese es justo el punto: dejas de tirar cajas de tarjetas impresas cada vez que cambia un número.',
+      },
+      {
+        q: '¿Cómo la comparto si no tengo nada impreso?',
+        a: 'De varias formas: mandas el enlace por WhatsApp o correo, muestras el código QR en la pantalla de tu celular para que lo escaneen, o lo pones en tu firma de correo y tus redes. Si prefieres algo físico, el QR se puede imprimir en tarjetas, vitrinas o material de tu negocio.',
       },
       {
         q: '¿Sirve para todo un equipo de ventas?',
-        a: 'Es donde más rinde. Cada persona tiene su tarjeta y su perfil, con el diseño unificado de la empresa, y desde un panel central se administra a todos. Hay precio por volumen a partir de 10 tarjetas.',
+        a: 'Es donde más rinde. Cada persona tiene su perfil con el diseño unificado de la empresa, y desde un panel central se administran todos: das de alta a quien entra y de baja a quien sale sin reimprimir nada. Hay precio por volumen a partir de 10 perfiles.',
       },
       {
         q: '¿Funciona en iPhone y Android?',
-        a: 'En ambos. Todos los iPhone desde el 7 leen NFC sin abrir nada, igual que prácticamente cualquier Android de los últimos años. Y para los pocos casos que no, está el código QR impreso al reverso.',
+        a: 'En los dos, y en cualquier modelo. Al ser una página web, solo hace falta un navegador. Los códigos QR se leen con la cámara de serie tanto en iPhone como en Android desde hace años.',
       },
     ],
     related: ['diseno-grafico-branding', 'diseno-web'],
     landing: {
       badge: 'Diseño propio, no plantilla',
       promesa:
-        'Acercas la tarjeta a cualquier celular y se abre tu perfil: datos, redes y botón de WhatsApp. Sin apps, y sin volver a imprimir cada vez que cambia un número.',
+        'Un perfil con tus datos, tus redes y tu WhatsApp, que compartes con un enlace o un código QR. Sin apps, y sin volver a imprimir cada vez que cambia un número.',
       pruebas: [
-        'Funciona en iPhone y Android',
+        'Funciona en cualquier teléfono',
         'Editable desde tu panel',
-        'Entrega en 5 a 7 días',
+        'Lista en 5 a 7 días',
       ],
       mensajeWhatsApp:
-        'Hola Mika, quiero una tarjeta digital NFC. ¿Me pueden dar información?',
-      planes: 'nfc',
+        'Hola Mika, quiero una tarjeta de presentación digital. ¿Me pueden dar información?',
+      planes: 'tarjetas',
       beneficios: [
         {
           icono: 'brillo',
           titulo: 'Se acuerdan de ti',
           texto:
-            'Acercar una tarjeta y que se abra tu perfil genera una reacción que un cartón no provoca. Es la parte de la reunión que se cuenta después.',
+            'Escanear un código y que se abra un perfil bien diseñado genera una reacción que un cartón no provoca. Es la parte de la reunión que se cuenta después.',
         },
         {
           icono: 'llave',
           titulo: 'Cambias los datos, no la tarjeta',
           texto:
-            'Nuevo teléfono, nuevo puesto, nueva promoción. Lo editas en tu panel y la misma tarjeta muestra lo nuevo al instante.',
+            'Nuevo teléfono, nuevo puesto, nueva promoción. Lo editas en tu panel y quien ya tenga tu enlace ve lo nuevo al instante.',
         },
         {
           icono: 'dinero',
@@ -674,7 +679,7 @@ export const SERVICIOS_ESPECIALIZADOS: Service[] = [
           icono: 'verificado',
           titulo: 'Diseñada, no elegida de un catálogo',
           texto:
-            'Casi toda la competencia te vende el plástico con una plantilla. Aquí la tarjeta y el perfil se diseñan con tu identidad.',
+            'Casi toda la competencia vende la misma plantilla cambiándole el color. Aquí el perfil se diseña con tu identidad de marca.',
         },
         {
           icono: 'equipo',
@@ -685,34 +690,34 @@ export const SERVICIOS_ESPECIALIZADOS: Service[] = [
       ],
       galeria: [
         {
-          src: '/images/landings/nfc/tarjeta-frente.webp',
-          alt: 'Tarjeta de presentación digital NFC en PVC negro con logotipo grabado.',
-          titulo: 'Acabado mate con chip NFC',
-        },
-        {
-          src: '/images/landings/nfc/perfil-movil.webp',
-          alt: 'Perfil digital abierto en un teléfono tras acercar la tarjeta NFC.',
+          src: '/images/landings/tarjetas/perfil-movil.webp',
+          alt: 'Tarjeta de presentación digital abierta en un teléfono, con datos de contacto y botón de WhatsApp.',
           titulo: 'El perfil que ve tu contacto',
         },
         {
-          src: '/images/landings/nfc/tarjeta-reverso.webp',
-          alt: 'Reverso de la tarjeta NFC con el código QR de respaldo impreso.',
-          titulo: 'QR de respaldo al reverso',
+          src: '/images/landings/tarjetas/codigo-qr.webp',
+          alt: 'Código QR de una tarjeta de presentación digital listo para escanear.',
+          titulo: 'Tu código QR',
         },
         {
-          src: '/images/landings/nfc/equipo-tarjetas.webp',
-          alt: 'Juego de tarjetas NFC de un equipo de ventas con diseño unificado.',
+          src: '/images/landings/tarjetas/diseno-marca.webp',
+          alt: 'Perfil digital diseñado con los colores y la tipografía de la marca del cliente.',
+          titulo: 'Diseñado con tu marca',
+        },
+        {
+          src: '/images/landings/tarjetas/equipo.webp',
+          alt: 'Perfiles digitales de un equipo de ventas con diseño unificado.',
           titulo: 'Diseño unificado para equipos',
         },
         {
-          src: '/images/landings/nfc/panel-estadisticas.webp',
+          src: '/images/landings/tarjetas/panel-estadisticas.webp',
           alt: 'Panel con las estadísticas de aperturas del perfil digital.',
           titulo: 'Estadísticas de aperturas',
         },
         {
-          src: '/images/landings/nfc/tarjeta-uso.webp',
-          alt: 'Momento en que una tarjeta NFC se acerca a un teléfono en una reunión.',
-          titulo: 'Un toque y listo',
+          src: '/images/landings/tarjetas/compartir.webp',
+          alt: 'Enlace de la tarjeta digital compartiéndose por WhatsApp en un teléfono.',
+          titulo: 'Se comparte en un mensaje',
         },
       ],
     },

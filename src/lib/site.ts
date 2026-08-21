@@ -583,7 +583,8 @@ export function getService(slug: string): Service | undefined {
  * Servicios que se mencionan pero todavía no tienen landing propia.
  *
  * Los que estaban aquí antes —programación, video, podcast, fotografía,
- * social media y NFC— se promovieron a página completa en `services.ts`,
+ * social media y tarjetas digitales— se promovieron a página completa en
+ * `services.ts`,
  * porque cada uno tiene su propia búsqueda y su propio público.
  *
  * Si alguno de estos empieza a pedirse mucho, toca promoverlo igual.

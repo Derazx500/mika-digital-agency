@@ -187,12 +187,12 @@ export const ECOMMERCE_PLANS: Plan[] = [
 /* ------------------------------------------------------------------ */
 
 /**
- * Tarjetas NFC.
+ * Tarjetas de presentación digitales.
  *
- * El precio baja por volumen porque el diseño se hace una sola vez: a
- * partir de la segunda tarjeta solo cambia el perfil y la impresión.
+ * El precio baja por volumen porque el diseño se hace una sola vez: a partir
+ * del segundo perfil solo cambian los datos de cada persona.
  */
-export const NFC_PLANS: Plan[] = [
+export const TARJETAS_PLANS: Plan[] = [
   {
     name: 'Individual',
     audience: 'Para una persona que quiere dejar de repartir cartón.',
@@ -200,12 +200,12 @@ export const NFC_PLANS: Plan[] = [
     unit: 'proyecto',
     timeline: '5 a 7 días',
     features: [
-      '1 tarjeta física en PVC con chip NFC',
-      'Código QR impreso de respaldo',
-      'Diseño con tu identidad, no plantilla',
-      'Perfil digital editable cuando quieras',
+      '1 perfil digital diseñado con tu marca',
+      'Código QR en alta resolución',
+      'Enlace corto para compartir',
       'Botón directo a WhatsApp',
       'Guardar contacto en un toque',
+      'Editable desde tu panel',
       'Estadísticas de aperturas',
     ],
   },
@@ -216,13 +216,13 @@ export const NFC_PLANS: Plan[] = [
     unit: 'proyecto',
     timeline: '7 a 10 días',
     features: [
-      '10 tarjetas con diseño unificado',
-      'Un perfil por persona',
+      '10 perfiles con diseño unificado',
+      'Un enlace y un QR por persona',
       'Panel central para administrarlos todos',
-      'Alta y baja de personal sin reimprimir',
+      'Alta y baja de personal al instante',
       'Captura de datos de quien te contacta',
       'Estadísticas por persona',
-      'Precio por tarjeta más bajo',
+      'Precio por perfil más bajo',
     ],
     highlighted: true,
   },
@@ -233,9 +233,9 @@ export const NFC_PLANS: Plan[] = [
     unit: 'proyecto',
     timeline: '2 a 3 semanas',
     features: [
-      '40 tarjetas o más, con precio por volumen',
+      '40 perfiles o más, con precio por volumen',
       'Perfiles por área o sucursal',
-      'Diseño de varias versiones de tarjeta',
+      'Varias versiones de diseño',
       'Integración con tu CRM',
       'Dominio propio para los perfiles',
       'Capacitación al equipo',

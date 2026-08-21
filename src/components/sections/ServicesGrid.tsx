@@ -32,7 +32,7 @@ const ICONS: Record<string, LucideIcon> = {
   'produccion-de-podcast': Mic,
   'fotografia-profesional': Camera,
   'social-media': Share2,
-  'tarjetas-digitales-nfc': CreditCard,
+  'tarjetas-de-presentacion-digitales': CreditCard,
   Sparkles,
   Boxes,
   Wrench,

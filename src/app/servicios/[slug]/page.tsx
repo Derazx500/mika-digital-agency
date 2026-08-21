@@ -7,7 +7,7 @@ import { getService, SERVICES, waLink } from '@/lib/site';
 import {
   BRANDING_PLANS,
   ECOMMERCE_PLANS,
-  NFC_PLANS,
+  TARJETAS_PLANS,
   RETAINER_PLANS,
   WEB_PLANS,
   type Plan,
@@ -58,7 +58,7 @@ const PLANS_BY_SERVICE: Record<string, Plan[]> = {
   'posicionamiento-seo': RETAINER_PLANS,
   'diseno-grafico-branding': BRANDING_PLANS,
   'tienda-en-linea': ECOMMERCE_PLANS,
-  'tarjetas-digitales-nfc': NFC_PLANS,
+  'tarjetas-de-presentacion-digitales': TARJETAS_PLANS,
 };
 
 /** Juegos de paquetes referenciados desde la configuración de landing. */
@@ -67,7 +67,7 @@ const PLANES_POR_CLAVE: Record<string, Plan[]> = {
   seo: RETAINER_PLANS,
   branding: BRANDING_PLANS,
   ecommerce: ECOMMERCE_PLANS,
-  nfc: NFC_PLANS,
+  tarjetas: TARJETAS_PLANS,
 };
 
 export default async function ServicePage({ params }: Props) {
