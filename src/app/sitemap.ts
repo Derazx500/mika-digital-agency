@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { SERVICES, SITE } from '@/lib/site';
 import { getAllProjects } from '@/lib/projects';
+import { getMiembros } from '@/lib/team';
 import { getAllPosts } from '@/lib/posts';
 
 /**
@@ -41,6 +42,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'monthly' as const,
       priority: 0.9,
+    })),
+
+    // Los perfiles del equipo posicionan por el nombre de cada persona, que
+    // es lo que busca quien los conoce de otro lado y quiere comprobar quién
+    // hay detrás de la agencia.
+    ...getMiembros().map((m) => ({
+      url: `${SITE.url}/equipo/${m.slug}/`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
     })),
 
     ...getAllProjects().map((p) => ({

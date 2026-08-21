@@ -55,13 +55,79 @@ export function WhatsAppIcon({ className }: Props) {
   );
 }
 
-/** Registro por clave, para recorrer las redes configuradas en site.ts. */
+export function DribbbleIcon({ className }: Props) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0Zm7.93 5.53a10.16 10.16 0 0 1 2.3 6.36c-.34-.07-3.7-.75-7.1-.32-.07-.17-.14-.34-.22-.52-.2-.48-.43-.97-.66-1.44 3.75-1.53 5.46-3.73 5.68-4.08ZM12 1.78c2.6 0 4.98.98 6.78 2.58-.18.26-1.72 2.32-5.34 3.68A54.2 54.2 0 0 0 9.6 2.1 10.3 10.3 0 0 1 12 1.78Zm-4.35.99a63.9 63.9 0 0 1 3.8 5.85c-4.8 1.28-9.03 1.25-9.49 1.25a10.3 10.3 0 0 1 5.69-7.1ZM1.78 12v-.31c.44.01 5.42.08 10.54-1.46.3.57.57 1.15.83 1.73l-.4.12c-5.29 1.7-8.1 6.37-8.34 6.76A10.2 10.2 0 0 1 1.78 12ZM12 22.24c-2.35 0-4.5-.8-6.22-2.13.18-.38 2.28-4.4 8.07-6.42l.07-.02c1.44 3.74 2.03 6.87 2.19 7.77A10.2 10.2 0 0 1 12 22.24Zm5.84-1.76c-.1-.63-.65-3.63-1.99-7.31 3.2-.51 6 .32 6.35.43a10.24 10.24 0 0 1-4.36 6.88Z" />
+    </svg>
+  );
+}
+
+export function TiktokIcon({ className }: Props) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .77-5.06V9.7a5.68 5.68 0 0 0-.77-.05A5.68 5.68 0 1 0 15.54 15.4V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.28 4.28 0 0 1-3.24-1.48Z" />
+    </svg>
+  );
+}
+
+/** Reserva para cualquier red que no tenga icono propio. */
+export function SitioWebIcon({ className }: Props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" />
+    </svg>
+  );
+}
+
+/** Registro por clave, para recorrer las redes configuradas. */
 export const SOCIAL_ICONS = {
   instagram: InstagramIcon,
   facebook: FacebookIcon,
   linkedin: LinkedInIcon,
   behance: BehanceIcon,
   whatsapp: WhatsAppIcon,
+  dribbble: DribbbleIcon,
+  tiktok: TiktokIcon,
+  web: SitioWebIcon,
 } as const;
 
 export type SocialKey = keyof typeof SOCIAL_ICONS;
+
+/**
+ * Devuelve el icono de una red por su nombre.
+ *
+ * Tolera lo que se escriba en el panel: mayúsculas, espacios o un nombre que
+ * no tengamos. Si no reconoce la red, devuelve el icono de sitio web en vez
+ * de dejar el hueco vacío.
+ */
+export function iconoDeRed(red: string) {
+  const clave = red.trim().toLowerCase() as SocialKey;
+  return SOCIAL_ICONS[clave] ?? SitioWebIcon;
+}
+
+/** Nombre presentable de una red, para el aria-label. */
+export function nombreDeRed(red: string): string {
+  const clave = red.trim().toLowerCase();
+  const nombres: Record<string, string> = {
+    instagram: 'Instagram',
+    facebook: 'Facebook',
+    linkedin: 'LinkedIn',
+    behance: 'Behance',
+    whatsapp: 'WhatsApp',
+    dribbble: 'Dribbble',
+    tiktok: 'TikTok',
+    web: 'Sitio web',
+  };
+  return nombres[clave] ?? red;
+}

@@ -1,0 +1,173 @@
+/*
+ * Ajustes visuales del panel de contenido.
+ *
+ * Decap CMS genera sus clases con nombres aleatorios (emotion), así que
+ * apuntar a ellas se rompería en la siguiente actualización. Aquí solo se
+ * tocan cosas estables: tipografía, variables de color propias, elementos
+ * de formulario nativos y selectores por atributo.
+ *
+ * El criterio es no pelearse con la interfaz de Decap sino asentarla: misma
+ * tipografía que el sitio, el azul de Mika en los acentos, y más aire donde
+ * el original va apretado.
+ */
+
+:root {
+  --mika-azul: #0167f3;
+  --mika-azul-oscuro: #0053c9;
+  --mika-tinta: #0a0a0a;
+  --mika-borde: #e5e7eb;
+}
+
+/*
+ * La misma tipografía del sitio: el panel deja de sentirse ajeno.
+ *
+ * Lleva !important porque Decap inyecta sus estilos con emotion cuando
+ * arranca, es decir después de esta hoja, y sin esto gana la cascada y el
+ * panel se queda con la tipografía del sistema.
+ */
+body,
+input,
+textarea,
+select,
+button,
+[class*='css-'] {
+  font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto,
+    sans-serif !important;
+}
+
+/* Salvo el editor de Markdown, donde el ancho fijo ayuda a ver la sintaxis. */
+[class*='CodeMirror'],
+pre,
+code {
+  font-family: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas,
+    monospace !important;
+}
+
+/* Fondo del panel, alineado con el gris del sitio. */
+body {
+  background: #f7f9fc;
+}
+
+/* -------------------------------------------------------------- */
+/* Pantalla de inicio de sesión                                     */
+/* -------------------------------------------------------------- */
+
+/*
+ * La página de login es lo primero que se ve y por defecto es un cuadro
+ * gris sobre gris. Se le pone el degradado de marca.
+ */
+[class*='Notification'],
+section[class*='login'],
+main > div:first-child:has(button[type='button']:only-child) {
+  background-image: radial-gradient(
+      120% 90% at 15% 20%,
+      rgba(1, 103, 243, 0.14) 0%,
+      rgba(1, 103, 243, 0) 55%
+    ),
+    linear-gradient(160deg, #ffffff 0%, #eef3fb 55%, #e6ecf6 100%);
+}
+
+/* -------------------------------------------------------------- */
+/* Formularios                                                     */
+/* -------------------------------------------------------------- */
+
+/*
+ * Campos con más aire y foco visible. El foco por defecto de Decap es muy
+ * tenue y en formularios largos se pierde de vista dónde estás escribiendo.
+ */
+input[type='text'],
+input[type='url'],
+input[type='email'],
+input[type='number'],
+textarea {
+  border-radius: 10px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type='text']:focus,
+input[type='url']:focus,
+input[type='email']:focus,
+input[type='number']:focus,
+textarea:focus {
+  border-color: var(--mika-azul) !important;
+  box-shadow: 0 0 0 3px rgba(1, 103, 243, 0.14) !important;
+  outline: none !important;
+}
+
+/*
+ * Las pistas de cada campo son la documentación del panel: si se ven como
+ * texto gris diminuto, nadie las lee. Se les da contraste y un filete azul
+ * para que se distingan de las etiquetas.
+ */
+[class*='FieldLabel'] + p,
+p[class*='hint'],
+[class*='ControlHint'] {
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+  color: #4b5563 !important;
+  border-left: 2px solid rgba(1, 103, 243, 0.35);
+  padding-left: 10px;
+  margin-top: 6px !important;
+}
+
+/* Aviso de validación: que se lea como un error, no como una nota más. */
+[class*='ControlHint'][class*='error'],
+[class*='error'] > [class*='ControlHint'] {
+  color: #dc2626 !important;
+  border-left-color: #dc2626;
+}
+
+/* -------------------------------------------------------------- */
+/* Botones                                                         */
+/* -------------------------------------------------------------- */
+
+/* El botón de publicar, en el azul de la marca. */
+[class*='Toolbar'] button[class*='Primary'],
+button[class*='PublishButton'] {
+  background-color: var(--mika-azul) !important;
+  border-radius: 999px !important;
+}
+
+[class*='Toolbar'] button[class*='Primary']:hover,
+button[class*='PublishButton']:hover {
+  background-color: var(--mika-azul-oscuro) !important;
+}
+
+/* Tarjetas de la lista de entradas: bordes coherentes con el sitio. */
+[class*='CardWrapper'],
+li[class*='Card'] {
+  border-radius: 14px !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+[class*='CardWrapper']:hover,
+li[class*='Card']:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(10, 10, 10, 0.08);
+}
+
+/* -------------------------------------------------------------- */
+/* Listas repetibles (FAQs, certificaciones, redes)                 */
+/* -------------------------------------------------------------- */
+
+/*
+ * Sin esto, una lista de 5 preguntas se ve como un bloque indiferenciado y
+ * cuesta saber dónde acaba una y empieza la siguiente.
+ */
+[class*='ListControl'] > div > div {
+  border-radius: 12px !important;
+}
+
+[class*='SortableList'] > div,
+[class*='ListItem'] {
+  margin-bottom: 8px !important;
+}
+
+/* -------------------------------------------------------------- */
+/* Botón de estadísticas                                            */
+/* -------------------------------------------------------------- */
+
+/* Se deja hueco abajo a la derecha para que no tape el contenido. */
+[class*='EditorContainer'] {
+  padding-bottom: 72px;
+}

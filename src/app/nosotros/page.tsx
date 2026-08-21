@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 
-import { SITE, STATS, TEAM } from '@/lib/site';
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+
+import { SITE, STATS } from '@/lib/site';
+import { getMiembros } from '@/lib/team';
 import { breadcrumbSchema, buildMetadata } from '@/lib/seo';
 
 import { PageHero } from '@/components/sections/PageHero';
@@ -44,6 +48,8 @@ const VALUES = [
 ];
 
 export default function NosotrosPage() {
+  const equipo = getMiembros();
+
   return (
     <>
       <PageHero
@@ -139,24 +145,35 @@ export default function NosotrosPage() {
           </h2>
 
           <ul className="grid gap-6 sm:grid-cols-2 lg:gap-8">
-            {TEAM.map((person, i) => (
-              <Reveal as="li" key={person.name} delay={i * 90}>
-                <div className="overflow-hidden rounded-2xl bg-gray-100">
-                  <div className="aspect-[4/5] sm:aspect-[4/3]">
-                    <Thumb
-                      src={person.image}
-                      alt={`${person.name}, ${person.role} en Mika Digital Agency.`}
-                      label={person.name}
-                    />
+            {equipo.map((persona, i) => (
+              <Reveal as="li" key={persona.slug} delay={i * 90}>
+                <Link href={`/equipo/${persona.slug}/`} className="group block">
+                  <div className="overflow-hidden rounded-2xl bg-gray-100">
+                    <div className="aspect-[4/5] sm:aspect-[4/3]">
+                      <Thumb
+                        src={persona.photo}
+                        alt={`${persona.name}, ${persona.role} en Mika Digital Agency.`}
+                        label={persona.name}
+                        className="transition-transform duration-700 ease-roll group-hover:scale-[1.03]"
+                      />
+                    </div>
                   </div>
-                </div>
-                <h3 className="mt-5 text-[19px] font-semibold tracking-tight text-gray-900 sm:text-[21px]">
-                  {person.name}
-                </h3>
-                <p className="text-[14px] text-brand-500">{person.role}</p>
-                <p className="mt-3 max-w-md text-[15px] leading-[1.6] text-gray-600">
-                  {person.bio}
-                </p>
+                  <h3 className="mt-5 text-[19px] font-semibold tracking-tight text-gray-900 transition-colors duration-300 group-hover:text-brand-500 sm:text-[21px]">
+                    {persona.name}
+                  </h3>
+                  <p className="text-[14px] text-brand-500">{persona.role}</p>
+                  <p className="mt-3 max-w-md text-[15px] leading-[1.6] text-gray-600">
+                    {persona.shortBio}
+                  </p>
+                  <span className="mt-3 flex items-center gap-1.5 text-[14px] font-medium text-brand-500">
+                    Ver su perfil
+                    <ArrowUpRight
+                      size={15}
+                      className="transition-transform duration-500 ease-roll group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </Link>
               </Reveal>
             ))}
           </ul>
@@ -179,10 +196,11 @@ export default function NosotrosPage() {
           about: { '@id': `${SITE.url}/#organization` },
           mainEntity: {
             '@id': `${SITE.url}/#organization`,
-            employee: TEAM.map((t) => ({
+            employee: equipo.map((persona) => ({
               '@type': 'Person',
-              name: t.name,
-              jobTitle: t.role,
+              name: persona.name,
+              jobTitle: persona.role,
+              url: `${SITE.url}/equipo/${persona.slug}/`,
             })),
           },
         }}

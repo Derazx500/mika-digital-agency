@@ -372,17 +372,10 @@ export const STATS = [
 /* Equipo                                                              */
 /* ------------------------------------------------------------------ */
 
-export const TEAM = [
-  {
-    name: 'Deraz',
-    role: 'Director de Diseño',
-    bio: 'Diseño gráfico, identidad de marca y dirección de arte. Convierte estrategia en sistemas visuales que se sostienen en el tiempo.',
-    image: '/images/team/deraz.webp',
-  },
-  {
-    name: 'Juan Dom',
-    role: 'Desarrollador Web',
-    bio: 'Programación front-end y back-end, rendimiento y SEO técnico. Se encarga de que lo diseñado funcione rápido y posicione.',
-    image: '/images/team/juan-dom.webp',
-  },
-] as const;
+/*
+ * Los perfiles del equipo viven en `content/equipo/` y se leen desde
+ * `src/lib/team.ts`. Se movieron ahí para que se puedan editar desde el
+ * panel: la historia de cada persona, sus certificaciones y los proyectos
+ * en los que participó cambian con el tiempo y no deberían requerir tocar
+ * código.
+ */

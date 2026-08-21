@@ -28,6 +28,13 @@ local_backend: true
 # Idioma del panel
 locale: es
 
+# Marca en la pantalla de inicio de sesión.
+logo_url: https://mikadigitalagency.com/logo/mika-logo.png
+
+# Enlace de vuelta al sitio desde la cabecera del panel.
+site_url: https://mikadigitalagency.com
+display_url: mikadigitalagency.com
+
 media_folder: public/images/uploads
 public_folder: /images/uploads
 
@@ -272,3 +279,155 @@ collections:
           Escribe El reto / Lo que hicimos / Resultados. Los números concretos
           (más solicitudes, menos tiempo de carga, posiciones ganadas) son lo
           que de verdad convierte.
+
+  # -----------------------------------------------------------------
+  # EQUIPO
+  # -----------------------------------------------------------------
+  - name: equipo
+    label: Equipo
+    label_singular: Persona
+    folder: content/equipo
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: frontmatter
+    preview_path: 'equipo/{{slug}}'
+    summary: '{{name}} — {{role}}'
+    sortable_fields: ['order', 'name']
+    fields:
+      - label: Nombre
+        name: name
+        widget: string
+
+      - label: Puesto
+        name: role
+        widget: string
+        hint: 'Ej: Director de Diseño, Desarrollador Web.'
+
+      - label: Foto
+        name: photo
+        widget: image
+        hint: >-
+          Vertical, 1200 × 1500 px. Se recorta en 4:5, así que deja aire
+          alrededor de la cara. Una foto con fondo neutro funciona mejor que
+          una recortada de un evento.
+
+      - label: Descripción corta
+        name: shortBio
+        widget: text
+        pattern:
+          ['^.{60,220}$', 'Entre 60 y 220 caracteres. Ahora tiene otro número.']
+        hint: >-
+          Una o dos líneas. Se ve en la tarjeta de /nosotros y arriba del
+          perfil. Di qué haces y qué aportas, no adjetivos.
+
+      - label: Especialidades
+        name: specialties
+        widget: list
+        required: false
+        default: []
+        hint: >-
+          Se muestran como etiquetas. Entre 4 y 6. Concretas: "Identidad de
+          marca" dice más que "Diseño".
+
+      - label: Redes y enlaces
+        name: socials
+        label_singular: Enlace
+        widget: list
+        required: false
+        collapsed: false
+        summary: '{{fields.red}}'
+        fields:
+          - label: Red
+            name: red
+            widget: select
+            options:
+              - { label: Instagram, value: instagram }
+              - { label: Facebook, value: facebook }
+              - { label: LinkedIn, value: linkedin }
+              - { label: Behance, value: behance }
+              - { label: Dribbble, value: dribbble }
+              - { label: TikTok, value: tiktok }
+              - { label: WhatsApp, value: whatsapp }
+              - { label: Sitio web, value: web }
+          - label: Enlace
+            name: url
+            widget: string
+            hint: 'La URL completa, empezando por https://'
+
+      - label: Certificaciones y formación
+        name: certifications
+        label_singular: Certificación
+        widget: list
+        required: false
+        collapsed: false
+        summary: '{{fields.titulo}}'
+        hint: >-
+          Solo lo verificable. Una certificación falsa o inflada es lo primero
+          que un cliente comprueba, y perder la confianza ahí es irreversible.
+        fields:
+          - label: Título
+            name: titulo
+            widget: string
+            hint: 'Ej: Google Analytics Certification, Licenciatura en Diseño Gráfico.'
+          - label: Quién la emite
+            name: emisor
+            widget: string
+            required: false
+            hint: 'Ej: Google, Adobe, la universidad.'
+          - label: Año
+            name: anio
+            widget: string
+            required: false
+            pattern: ['^(\d{4})?$', 'Cuatro dígitos, ej. 2024. O déjalo vacío.']
+          - label: Archivo del certificado
+            name: archivo
+            widget: file
+            required: false
+            media_folder: '/public/documentos'
+            public_folder: '/documentos'
+            hint: >-
+              PDF o imagen del certificado. Opcional, pero poder abrirlo
+              convierte una afirmación en una prueba.
+          - label: Enlace a la credencial
+            name: url
+            widget: string
+            required: false
+            hint: >-
+              Si la certificación se verifica en línea, pega aquí ese enlace.
+              Tiene prioridad sobre el archivo.
+
+      - label: Proyectos en los que participó
+        name: proyectos
+        widget: relation
+        collection: proyectos
+        search_fields: ['name', 'industry']
+        value_field: '{{slug}}'
+        display_fields: ['name']
+        multiple: true
+        required: false
+        hint: >-
+          Busca y selecciona los proyectos del portafolio. Aparecerán en su
+          perfil con sus tarjetas. Es lo que convierte "somos una agencia" en
+          "esto lo hizo esta persona".
+
+      - label: Orden
+        name: order
+        widget: number
+        value_type: int
+        default: 10
+        hint: Menor número, aparece antes en /nosotros.
+
+      - label: Borrador
+        name: draft
+        widget: boolean
+        default: false
+        required: false
+
+      - label: Su historia
+        name: body
+        widget: markdown
+        hint: >-
+          Escribe en primera persona. Cómo llegaste a esto, cómo trabajas y en
+          qué eres fuerte. Quien lee esta página está decidiendo si confiarte
+          su proyecto, y conecta más el motivo que el currículum.
