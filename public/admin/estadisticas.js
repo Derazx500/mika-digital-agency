@@ -11,48 +11,62 @@
  * de Decap, así que una actualización suya no puede romperlo.
  */
 (function () {
-  var DESTINO = '/admin/estadisticas.html';
+  var ENLACES = [
+    { texto: '📊  Estadísticas', href: '/admin/estadisticas.html' },
+    { texto: '🗂️  Páginas', href: '/admin/paginas.html' },
+  ];
 
-  function crearBoton() {
-    if (document.getElementById('enlace-estadisticas')) return;
+  function crearBotones() {
+    if (document.getElementById('accesos-panel')) return;
 
-    var boton = document.createElement('a');
-    boton.id = 'enlace-estadisticas';
-    boton.href = DESTINO;
-    boton.textContent = '📊  Estadísticas';
-    boton.setAttribute('aria-label', 'Ver las estadísticas del sitio');
-
-    boton.style.cssText = [
+    var caja = document.createElement('div');
+    caja.id = 'accesos-panel';
+    caja.style.cssText = [
       'position:fixed',
       'right:20px',
       'bottom:20px',
       'z-index:9999',
-      'display:inline-flex',
-      'align-items:center',
+      'display:flex',
+      'flex-direction:column',
       'gap:8px',
-      'padding:11px 18px',
-      'border-radius:999px',
-      'background:#0167f3',
-      'color:#fff',
-      'font:600 14px/1 system-ui,-apple-system,Segoe UI,sans-serif',
-      'text-decoration:none',
-      'box-shadow:0 6px 20px rgba(1,103,243,.35)',
-      'transition:transform .2s ease',
+      'align-items:flex-end',
     ].join(';');
 
-    boton.addEventListener('mouseenter', function () {
-      boton.style.transform = 'translateY(-2px)';
-    });
-    boton.addEventListener('mouseleave', function () {
-      boton.style.transform = 'none';
+    ENLACES.forEach(function (enlace) {
+      var boton = document.createElement('a');
+      boton.href = enlace.href;
+      boton.textContent = enlace.texto;
+      boton.style.cssText = [
+        'display:inline-flex',
+        'align-items:center',
+        'gap:8px',
+        'padding:11px 18px',
+        'border-radius:999px',
+        'background:#0167f3',
+        'color:#fff',
+        "font:600 14px/1 'DM Sans',system-ui,-apple-system,Segoe UI,sans-serif",
+        'text-decoration:none',
+        'box-shadow:0 6px 20px rgba(1,103,243,.35)',
+        'transition:transform .2s ease',
+        'white-space:nowrap',
+      ].join(';');
+
+      boton.addEventListener('mouseenter', function () {
+        boton.style.transform = 'translateY(-2px)';
+      });
+      boton.addEventListener('mouseleave', function () {
+        boton.style.transform = 'none';
+      });
+
+      caja.appendChild(boton);
     });
 
-    document.body.appendChild(boton);
+    document.body.appendChild(caja);
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', crearBoton);
+    document.addEventListener('DOMContentLoaded', crearBotones);
   } else {
-    crearBoton();
+    crearBotones();
   }
 })();

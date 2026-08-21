@@ -327,7 +327,25 @@ En `/admin` hay un botón flotante **📊 Estadísticas** que lleva a `/admin/es
 
 Mientras no esté configurado, la página muestra esas mismas instrucciones en vez de un hueco vacío.
 
-> **Por qué un botón flotante y no una entrada en el menú lateral:** Decap CMS 3.8 no expone `registerAdditionalLink` —la API que documentan otras versiones— así que no admite páginas propias en su menú. El botón se añade al `body`, sin depender de ninguna clase interna de Decap, de modo que una actualización suya no puede romperlo.
+> **Por qué botones flotantes y no entradas en el menú lateral:** Decap CMS 3.8 no expone `registerAdditionalLink` —la API que documentan otras versiones— así que no admite páginas propias en su menú. Los botones se añaden al `body`, sin depender de ninguna clase interna de Decap, de modo que una actualización suya no puede romperlos.
+
+### Pestaña de páginas
+
+`/admin/paginas.html` lista **todas** las páginas publicadas, con buscador y filtro por sección. Cada fila tiene tres acciones:
+
+| Acción | Qué hace |
+| --- | --- |
+| **Ver** | Abre la página publicada |
+| **Editar** | Salta directo al formulario de esa entrada en el panel |
+| **Google** | Abre esa URL concreta en Search Console: si está indexada, cuándo se rastreó y qué problemas encontró |
+
+Las que dicen *En código* tienen su contenido en `src/lib/` y las cambia quien lleve el desarrollo.
+
+La lista **se genera sola** desde [`src/app/api/paginas/route.ts`](src/app/api/paginas/route.ts), usando las mismas fuentes que el sitemap. Publicas un artículo y aparece ahí sin tocar nada; un listado escrito a mano se desincroniza a la primera.
+
+> Los títulos de las páginas fijas sí están repetidos en ese archivo, porque la metadata de cada página solo existe dentro de su propio módulo y Next no la expone para consultarla desde fuera. Si cambias uno, actualízalo también ahí.
+
+**Visitas por página:** no se muestran aquí porque requieren la API de Google Analytics, que obliga a crear una cuenta de servicio en Google Cloud. Se resuelve mejor desde Looker Studio: añade a tu informe una tabla con la dimensión *Ruta de página* y la métrica *Vistas*.
 
 > Si Google te ofrece *"Use the Google tag found on your website"*, **no la elijas**: esa etiqueta era del sitio anterior en HostGator y ya no existe. Hay que instalarla en el código, que es lo que está hecho aquí.
 

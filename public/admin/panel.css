@@ -1,0 +1,410 @@
+/*
+ * Estilos de las páginas auxiliares del panel (Estadísticas y Páginas).
+ *
+ * Son páginas nuestras, no de Decap, así que aquí se puede diseñar con
+ * libertad. Comparten paleta y tipografía con el sitio para que el panel se
+ * sienta parte de la misma pieza y no una herramienta pegada aparte.
+ */
+
+:root {
+  --brand: #0167f3;
+  --brand-oscuro: #0053c9;
+  --brand-suave: #eaf2ff;
+  --ink: #0a0a0a;
+  --muted: #6b7280;
+  --linea: #e5e7eb;
+  --fondo: #f7f9fc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--ink);
+  font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ---------------------------------------------------------------- */
+/* Barra superior                                                    */
+/* ---------------------------------------------------------------- */
+
+.barra {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 13px 24px;
+  background: #fff;
+  border-bottom: 1px solid var(--linea);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  flex-wrap: wrap;
+}
+
+.barra .marca {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
+.pestanas {
+  display: flex;
+  gap: 4px;
+}
+
+.pestanas a {
+  padding: 8px 15px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.pestanas a:hover {
+  background: #f1f5fb;
+  color: var(--ink);
+}
+
+.pestanas a.activa {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* ---------------------------------------------------------------- */
+/* Estructura                                                        */
+/* ---------------------------------------------------------------- */
+
+.contenido {
+  padding: 28px 24px 56px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  letter-spacing: -0.6px;
+}
+
+.sub {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+/* ---------------------------------------------------------------- */
+/* Controles                                                         */
+/* ---------------------------------------------------------------- */
+
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+#buscador {
+  flex: 1 1 260px;
+  min-width: 220px;
+  padding: 10px 15px;
+  border: 1px solid var(--linea);
+  border-radius: 10px;
+  font-size: 14px;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#buscador:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(1, 103, 243, 0.14);
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filtros button {
+  padding: 8px 13px;
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filtros button:hover {
+  border-color: #cbd5e1;
+  color: var(--ink);
+}
+
+.filtros button.activo {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+
+.filtros button span {
+  opacity: 0.65;
+  margin-left: 3px;
+  font-variant-numeric: tabular-nums;
+}
+
+.resumen {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.resumen.error {
+  color: #dc2626;
+}
+
+/* ---------------------------------------------------------------- */
+/* Tabla                                                             */
+/* ---------------------------------------------------------------- */
+
+/* La tabla desborda en pantallas estrechas: se desplaza dentro de su caja
+   en vez de romper el ancho de la página. */
+.tabla-envoltorio {
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 720px;
+}
+
+thead th {
+  text-align: left;
+  padding: 13px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #9ca3af;
+  border-bottom: 1px solid var(--linea);
+  background: #fcfdff;
+  position: sticky;
+  top: 0;
+}
+
+tbody td {
+  padding: 13px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody tr:hover {
+  background: #fafcff;
+}
+
+.titulo {
+  display: block;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.fecha {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.etiqueta {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--brand-suave);
+  color: var(--brand-oscuro);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 13px;
+  color: var(--muted);
+  background: #f4f7fc;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.acciones-col {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.acciones {
+  display: flex;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.acciones a {
+  padding: 6px 12px;
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.acciones a:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: var(--brand-suave);
+}
+
+.no-editable {
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #b3bcc9;
+  border: 1px dashed var(--linea);
+  border-radius: 8px;
+  cursor: help;
+}
+
+/* ---------------------------------------------------------------- */
+/* Nota al pie                                                       */
+/* ---------------------------------------------------------------- */
+
+.nota-pie {
+  margin-top: 32px;
+  padding: 24px 26px;
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+  max-width: 780px;
+}
+
+.nota-pie h2 {
+  margin: 0 0 10px;
+  font-size: 17px;
+}
+
+.nota-pie p,
+.nota-pie li {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.nota-pie p {
+  margin: 0 0 12px;
+}
+
+.nota-pie ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.nota-pie li {
+  margin-bottom: 8px;
+}
+
+.nota-pie a {
+  color: var(--brand);
+}
+
+/* ---------------------------------------------------------------- */
+/* Informe incrustado (pestaña de Estadísticas)                      */
+/* ---------------------------------------------------------------- */
+
+.informe {
+  width: 100%;
+  height: 1150px;
+  border: 0;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+}
+
+.nota {
+  margin: 12px 2px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.nota a {
+  color: var(--brand);
+}
+
+.enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.enlaces a {
+  flex: 1 1 230px;
+  min-width: 230px;
+  padding: 17px 19px;
+  border: 1px solid var(--linea);
+  border-radius: 13px;
+  background: #fff;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.enlaces a:hover {
+  border-color: var(--brand);
+  transform: translateY(-2px);
+}
+
+.enlaces strong {
+  display: block;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.enlaces span {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+h2.seccion {
+  margin: 34px 0 12px;
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  .contenido {
+    padding: 20px 14px 40px;
+  }
+  .informe {
+    height: 780px;
+  }
+  .barra {
+    gap: 14px;
+  }
+}

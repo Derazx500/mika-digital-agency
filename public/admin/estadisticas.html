@@ -6,98 +6,22 @@
     <meta name="robots" content="noindex, nofollow" />
     <title>Estadísticas — Mika Digital Agency</title>
     <link rel="icon" href="/favicon.ico" />
-    <style>
-      :root {
-        --brand: #0167f3;
-        --ink: #0a0a0a;
-        --muted: #6b7280;
-        --linea: #e5e7eb;
-      }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        background: #f7f9fc;
-        color: var(--ink);
-        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-      }
-      .barra {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 14px 24px;
-        background: #fff;
-        border-bottom: 1px solid var(--linea);
-        position: sticky;
-        top: 0;
-        z-index: 10;
-      }
-      .barra img { height: 24px; width: auto; display: block; }
-      .volver {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 9px 16px;
-        border-radius: 999px;
-        background: var(--ink);
-        color: #fff;
-        font-size: 14px;
-        font-weight: 500;
-        text-decoration: none;
-      }
-      .contenido { padding: 28px 24px 48px; max-width: 1500px; margin: 0 auto; }
-      h1 { margin: 0 0 6px; font-size: 26px; letter-spacing: -0.6px; }
-      .sub { margin: 0 0 24px; color: var(--muted); font-size: 14px; }
-      .informe {
-        width: 100%;
-        height: 1150px;
-        border: 0;
-        border-radius: 14px;
-        background: #fff;
-        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
-      }
-      .aviso {
-        padding: 30px;
-        border: 1px dashed #cbd5e1;
-        border-radius: 14px;
-        background: #fff;
-      }
-      .aviso h2 { margin: 0 0 8px; font-size: 20px; }
-      .aviso p { margin: 0 0 20px; color: var(--muted); font-size: 14.5px; line-height: 1.65; max-width: 680px; }
-      .aviso ol { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.9; max-width: 680px; color: #374151; }
-      .aviso code {
-        background: #eef2f7;
-        padding: 2px 6px;
-        border-radius: 5px;
-        font-size: 13px;
-      }
-      .nota { margin: 12px 2px 0; font-size: 13px; color: var(--muted); }
-      .nota a { color: var(--brand); }
-      h2.seccion { margin: 34px 0 12px; font-size: 16px; }
-      .enlaces { display: flex; flex-wrap: wrap; gap: 12px; }
-      .enlaces a {
-        flex: 1 1 230px;
-        min-width: 230px;
-        padding: 17px 19px;
-        border: 1px solid var(--linea);
-        border-radius: 13px;
-        background: #fff;
-        text-decoration: none;
-        transition: border-color .2s ease, transform .2s ease;
-      }
-      .enlaces a:hover { border-color: var(--brand); transform: translateY(-2px); }
-      .enlaces strong { display: block; font-size: 15px; color: var(--ink); }
-      .enlaces span { display: block; margin-top: 4px; font-size: 13px; color: var(--muted); line-height: 1.5; }
-      @media (max-width: 640px) {
-        .contenido { padding: 20px 14px 40px; }
-        .informe { height: 780px; }
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/admin/panel.css" />
   </head>
   <body>
     <div class="barra">
-      <img src="/logo/mika-logo.png" alt="Mika Digital Agency" />
-      <a class="volver" href="/admin/index.html">← Volver al contenido</a>
+      <img class="marca" src="/logo/mika-logo.png" alt="Mika Digital Agency" />
+      <nav class="pestanas">
+        <a href="/admin/index.html">Contenido</a>
+        <a href="/admin/estadisticas.html" class="activa">Estadísticas</a>
+        <a href="/admin/paginas.html">Páginas</a>
+      </nav>
     </div>
 
     <div class="contenido">
@@ -129,6 +53,22 @@
         <a href="https://lookerstudio.google.com/" target="_blank" rel="noopener noreferrer">Looker Studio</a>
         con la cuenta de Google que tiene acceso, y recarga esta página.
       </p>
+
+      <div class="nota-pie">
+        <h2>Para ver las visitas por página</h2>
+        <p>
+          Añade a tu informe de Looker Studio un gráfico de tabla con la
+          dimensión <strong>Ruta de página</strong> y la métrica
+          <strong>Vistas</strong>. Te da el listado de páginas ordenado por las
+          más visitadas, que es lo que dice qué contenido está funcionando y
+          cuál conviene reescribir.
+        </p>
+        <p>
+          El inventario completo de páginas, con enlaces para revisarlas y
+          editarlas, está en la pestaña
+          <a href="/admin/paginas.html">Páginas</a>.
+        </p>
+      </div>
 
       <h2 class="seccion">Abrir en Google</h2>
       <div class="enlaces">

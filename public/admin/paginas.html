@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Páginas del sitio — Mika Digital Agency</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/admin/panel.css" />
+  </head>
+  <body>
+    <div class="barra">
+      <img class="marca" src="/logo/mika-logo.png" alt="Mika Digital Agency" />
+      <nav class="pestanas">
+        <a href="/admin/index.html">Contenido</a>
+        <a href="/admin/estadisticas.html">Estadísticas</a>
+        <a href="/admin/paginas.html" class="activa">Páginas</a>
+      </nav>
+    </div>
+
+    <div class="contenido">
+      <h1>Páginas del sitio</h1>
+      <p class="sub">
+        Todas las páginas publicadas. La lista se genera sola a partir del
+        contenido, así que siempre está al día.
+      </p>
+
+      <div class="controles">
+        <input
+          id="buscador"
+          type="search"
+          placeholder="Buscar por título o dirección…"
+          aria-label="Buscar páginas"
+        />
+        <div id="filtros" class="filtros"></div>
+      </div>
+
+      <p id="resumen" class="resumen">Cargando…</p>
+
+      <div class="tabla-envoltorio">
+        <table id="tabla">
+          <thead>
+            <tr>
+              <th>Página</th>
+              <th>Sección</th>
+              <th>Dirección</th>
+              <th class="acciones-col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpo"></tbody>
+        </table>
+      </div>
+
+      <div class="nota-pie">
+        <h2>Sobre las estadísticas por página</h2>
+        <p>
+          Los números de visitas por página no se pueden mostrar aquí sin
+          conectar la API de Google Analytics, que requiere crear una cuenta de
+          servicio en Google Cloud. Mientras tanto, tienes dos caminos que dan
+          la misma información:
+        </p>
+        <ul>
+          <li>
+            <strong>Visitas:</strong> en la pestaña
+            <a href="/admin/estadisticas.html">Estadísticas</a>, añade a tu
+            informe de Looker Studio un gráfico con la dimensión
+            <em>Ruta de página</em> y la métrica <em>Vistas</em>. Te da el
+            listado ordenado por más vistas.
+          </li>
+          <li>
+            <strong>Indexación:</strong> el botón <em>Google</em> de cada fila
+            abre esa página concreta en Search Console y te dice si Google la
+            tiene indexada, cuándo la rastreó y si encontró algún problema.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      const DOMINIO = 'https://mikadigitalagency.com';
+      let PAGINAS = [];
+      let filtroSeccion = 'todas';
+
+      const el = (id) => document.getElementById(id);
+
+      /** Enlace a la inspección de esa URL concreta en Search Console. */
+      function urlSearchConsole(ruta) {
+        const recurso = encodeURIComponent('sc-domain:mikadigitalagency.com');
+        const objetivo = encodeURIComponent(DOMINIO + ruta);
+        return `https://search.google.com/search-console/inspect?resource_id=${recurso}&id=${objetivo}`;
+      }
+
+      /** Enlace directo al formulario de esa entrada en el panel. */
+      function urlEdicion(editable) {
+        return `/admin/index.html#/collections/${editable.coleccion}/entries/${editable.slug}`;
+      }
+
+      function pintarFiltros() {
+        const secciones = ['todas', ...new Set(PAGINAS.map((p) => p.seccion))];
+        el('filtros').innerHTML = secciones
+          .map((s) => {
+            const n =
+              s === 'todas'
+                ? PAGINAS.length
+                : PAGINAS.filter((p) => p.seccion === s).length;
+            const activa = s === filtroSeccion ? ' class="activo"' : '';
+            const etiqueta = s === 'todas' ? 'Todas' : s;
+            return `<button type="button" data-seccion="${s}"${activa}>${etiqueta} <span>${n}</span></button>`;
+          })
+          .join('');
+
+        el('filtros')
+          .querySelectorAll('button')
+          .forEach((b) =>
+            b.addEventListener('click', () => {
+              filtroSeccion = b.dataset.seccion;
+              pintarFiltros();
+              pintar();
+            }),
+          );
+      }
+
+      function pintar() {
+        const consulta = el('buscador').value.trim().toLowerCase();
+
+        const visibles = PAGINAS.filter((p) => {
+          const coincideSeccion =
+            filtroSeccion === 'todas' || p.seccion === filtroSeccion;
+          const coincideTexto =
+            !consulta ||
+            p.titulo.toLowerCase().includes(consulta) ||
+            p.ruta.toLowerCase().includes(consulta);
+          return coincideSeccion && coincideTexto;
+        });
+
+        el('resumen').textContent =
+          visibles.length === PAGINAS.length
+            ? `${PAGINAS.length} páginas publicadas`
+            : `${visibles.length} de ${PAGINAS.length} páginas`;
+
+        el('cuerpo').innerHTML = visibles
+          .map(
+            (p) => `
+          <tr>
+            <td>
+              <span class="titulo">${p.titulo}</span>
+              ${p.fecha ? `<span class="fecha">${p.fecha}</span>` : ''}
+            </td>
+            <td><span class="etiqueta">${p.seccion}</span></td>
+            <td><code>${p.ruta}</code></td>
+            <td class="acciones">
+              <a href="${DOMINIO}${p.ruta}" target="_blank" rel="noopener" title="Ver la página publicada">Ver</a>
+              ${
+                p.editable
+                  ? `<a href="${urlEdicion(p.editable)}" title="Editar en el panel">Editar</a>`
+                  : `<span class="no-editable" title="Su contenido vive en el código: pídeselo a quien lleve el desarrollo">En código</span>`
+              }
+              <a href="${urlSearchConsole(p.ruta)}" target="_blank" rel="noopener" title="Ver el estado de indexación en Search Console">Google</a>
+            </td>
+          </tr>`,
+          )
+          .join('');
+      }
+
+      el('buscador').addEventListener('input', pintar);
+
+      fetch('/api/paginas/')
+        .then((r) => {
+          if (!r.ok) throw new Error('respuesta ' + r.status);
+          return r.json();
+        })
+        .then((datos) => {
+          PAGINAS = datos.paginas;
+          pintarFiltros();
+          pintar();
+        })
+        .catch((e) => {
+          el('resumen').textContent =
+            'No se pudo cargar la lista de páginas: ' + e.message;
+          el('resumen').classList.add('error');
+        });
+    </script>
+  </body>
+</html>
