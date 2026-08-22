@@ -1,7 +1,6 @@
 import { AlertTriangle, Info, Lightbulb } from 'lucide-react';
 import { waLink } from '@/lib/site';
 import { clsx } from '@/lib/clsx';
-import { SuperficieOscura } from '@/components/ui/SuperficieOscura';
 
 const TONES = {
   tip: {
@@ -70,14 +69,11 @@ export function InlineCta({
   message?: string;
   cta?: string;
 }) {
+  // Sin red de nodos a propósito: es una caja pequeña en mitad de un artículo,
+  // y meterle el efecto de las secciones grandes la cargaría y le robaría
+  // atención al texto que la rodea.
   return (
-    <SuperficieOscura
-      as="div"
-      // Es una caja pequeña dentro del texto: con nodos se vería cargada y
-      // le robaría atención al artículo.
-      conNodos={false}
-      className="my-10 rounded-2xl bg-ink p-6 sm:p-8"
-    >
+    <div className="my-10 rounded-2xl bg-ink p-6 sm:p-8">
       <p className="text-[19px] font-medium tracking-tight text-white sm:text-[22px]">
         {title}
       </p>
@@ -90,6 +86,6 @@ export function InlineCta({
       >
         {cta}
       </a>
-    </SuperficieOscura>
+    </div>
   );
 }

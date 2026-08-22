@@ -13,20 +13,37 @@ const AJUSTES = {
   maxNodos: 48,
   minNodos: 12,
   /** Distancia a la que dos nodos se unen con una línea. */
-  radioEnlace: 150,
+  radioEnlace: 160,
   /** Distancia a la que el cursor engancha nodos. */
-  radioCursor: 190,
+  radioCursor: 210,
   /** Velocidad de deriva, en píxeles por fotograma. */
   velocidad: 0.13,
-  radioNodo: 1.6,
-  /** Opacidades máximas. Bajas a propósito: el efecto acompaña, no compite. */
-  opacidadLinea: 0.17,
-  opacidadLineaCursor: 0.4,
-  opacidadNodo: 0.42,
-  opacidadNodoCercano: 0.9,
+  radioNodo: 1.8,
+  /** Cuánto crece un nodo pegado al cursor, como fracción de su radio. */
+  crecimientoCerca: 0.8,
+  /** Radio del resplandor que rodea al cursor. */
+  radioResplandor: 70,
+  /** Opacidades máximas. */
+  opacidadLinea: 0.3,
+  opacidadLineaCursor: 0.7,
+  opacidadNodo: 0.5,
+  opacidadNodoCercano: 1,
+  opacidadResplandor: 0.18,
 } as const;
 
-const AZUL = '1, 103, 243';
+/*
+ * Tres tonos del mismo azul, no uno solo.
+ *
+ * El azul de marca es correcto sobre blanco, pero sobre negro una línea de un
+ * píxel en ese tono se apaga: es un color oscuro sobre un fondo oscuro, y por
+ * mucha opacidad que le pongas sigue sin leerse. Por eso las líneas y los
+ * nodos usan versiones más claras del mismo tono —misma familia, más luz— y el
+ * azul de marca se reserva para el resplandor, que sí es una masa grande.
+ */
+const AZUL_MARCA = '1, 103, 243';
+const AZUL_LINEA = '96, 165, 250';
+const AZUL_NODO = '147, 197, 253';
+const AZUL_CURSOR = '219, 234, 254';
 
 type Nodo = { x: number; y: number; vx: number; vy: number };
 
@@ -39,11 +56,12 @@ type Nodo = { x: number; y: number; vx: number; vy: number };
  *
  * Decisiones que importan para que se sienta premium y no cargado:
  * - La densidad es baja y con tope. Una malla saturada parece un salvapantallas
- *   de los noventa; unos pocos nodos con líneas tenues, un sistema vivo.
+ *   de los noventa; pocos nodos con líneas nítidas, un sistema vivo.
  * - Las líneas se desvanecen con la distancia, así la red respira en vez de
  *   parpadear cuando dos nodos cruzan el umbral.
- * - Los nodos cercanos al cursor se iluminan y se enlazan a él, que es lo que
- *   hace que la superficie se sienta viva sin llenarse de movimiento.
+ * - El cursor entra como un nodo más de la red: se dibuja como punto, se enlaza
+ *   a los que tiene cerca y los hace crecer. La luz sale de la propia red y no
+ *   de una mancha flotando encima, que es lo que separa esto de un foco.
  *
  * Se detiene solo cuando la sección sale de pantalla o la pestaña pasa a
  * segundo plano: no tiene sentido gastar batería animando algo que nadie ve.
@@ -128,6 +146,34 @@ export function RedDeNodos() {
         nodo.y = Math.max(0, Math.min(alto, nodo.y));
       }
 
+      /*
+       * El resplandor del cursor va primero, debajo de todo, para que las
+       * líneas y los nodos se dibujen encima y se vean recortados contra él.
+       * Si fuera al revés los taparía y se convertiría en la mancha de siempre.
+       *
+       * Es deliberadamente pequeño: acompaña al punto del cursor como su propia
+       * luz, no ilumina media sección.
+       */
+      if (cursor.activo) {
+        const resplandor = ctx.createRadialGradient(
+          cursor.x,
+          cursor.y,
+          0,
+          cursor.x,
+          cursor.y,
+          AJUSTES.radioResplandor,
+        );
+        resplandor.addColorStop(
+          0,
+          `rgba(${AZUL_MARCA}, ${AJUSTES.opacidadResplandor})`,
+        );
+        resplandor.addColorStop(1, `rgba(${AZUL_MARCA}, 0)`);
+        ctx.fillStyle = resplandor;
+        ctx.beginPath();
+        ctx.arc(cursor.x, cursor.y, AJUSTES.radioResplandor, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       // Enlaces entre nodos. El bucle empieza en i+1 para no comprobar cada
       // par dos veces.
       ctx.lineWidth = 1;
@@ -139,7 +185,7 @@ export function RedDeNodos() {
           if (distancia > AJUSTES.radioEnlace) continue;
 
           const fuerza = 1 - distancia / AJUSTES.radioEnlace;
-          ctx.strokeStyle = `rgba(${AZUL}, ${fuerza * AJUSTES.opacidadLinea})`;
+          ctx.strokeStyle = `rgba(${AZUL_LINEA}, ${fuerza * AJUSTES.opacidadLinea})`;
           ctx.beginPath();
           ctx.moveTo(nodos[i].x, nodos[i].y);
           ctx.lineTo(nodos[j].x, nodos[j].y);
@@ -148,8 +194,10 @@ export function RedDeNodos() {
       }
 
       // Enlaces al cursor y nodos iluminados.
+      ctx.lineWidth = 1.2;
       for (const nodo of nodos) {
         let opacidad = AJUSTES.opacidadNodo;
+        let radio = AJUSTES.radioNodo;
 
         if (cursor.activo) {
           const distancia = Math.hypot(nodo.x - cursor.x, nodo.y - cursor.y);
@@ -158,8 +206,11 @@ export function RedDeNodos() {
             opacidad =
               AJUSTES.opacidadNodo +
               fuerza * (AJUSTES.opacidadNodoCercano - AJUSTES.opacidadNodo);
+            // Crecer, y no solo iluminarse, es lo que hace que el nodo parezca
+            // reaccionar al cursor en vez de limitarse a estar más claro.
+            radio = AJUSTES.radioNodo * (1 + fuerza * AJUSTES.crecimientoCerca);
 
-            ctx.strokeStyle = `rgba(${AZUL}, ${fuerza * AJUSTES.opacidadLineaCursor})`;
+            ctx.strokeStyle = `rgba(${AZUL_LINEA}, ${fuerza * AJUSTES.opacidadLineaCursor})`;
             ctx.beginPath();
             ctx.moveTo(nodo.x, nodo.y);
             ctx.lineTo(cursor.x, cursor.y);
@@ -167,9 +218,17 @@ export function RedDeNodos() {
           }
         }
 
-        ctx.fillStyle = `rgba(${AZUL}, ${opacidad})`;
+        ctx.fillStyle = `rgba(${AZUL_NODO}, ${opacidad})`;
         ctx.beginPath();
-        ctx.arc(nodo.x, nodo.y, AJUSTES.radioNodo, 0, Math.PI * 2);
+        ctx.arc(nodo.x, nodo.y, radio, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // El cursor, dibujado como un nodo más y el más brillante de todos.
+      if (cursor.activo) {
+        ctx.fillStyle = `rgba(${AZUL_CURSOR}, 0.95)`;
+        ctx.beginPath();
+        ctx.arc(cursor.x, cursor.y, AJUSTES.radioNodo * 1.5, 0, Math.PI * 2);
         ctx.fill();
       }
     };

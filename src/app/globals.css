@@ -84,41 +84,24 @@
    *    trabajo da y el que más se nota.
    */
   /*
-   * Superficie oscura que reacciona al cursor.
+   * Superficie oscura con red de nodos.
    *
-   * El halo va en un pseudo-elemento y no en el fondo del propio bloque para
-   * poder desvanecerlo con `opacity`, que el navegador anima en la tarjeta
-   * gráfica. Animar el degradado directamente obligaría a repintar en cada
-   * fotograma y se notaría el tirón.
+   * Aquí solo queda la caja: `position: relative` para que el canvas se ancle
+   * a ella y `overflow: hidden` para que la red se recorte en los bordes
+   * redondeados en vez de desbordarse por las esquinas.
    *
-   * `overflow: hidden` recorta el halo al llegar a los bordes redondeados;
-   * sin eso se desborda por las esquinas y delata el truco.
+   * Hubo un halo azul de CSS siguiendo al cursor y se quitó a conciencia: era
+   * una mancha flotando por encima de la red, sin relación con ella, y leía
+   * como un foco pegado encima. Ahora la reacción al cursor la dibuja la propia
+   * red en el canvas, que es donde tiene sentido.
    */
   .superficie-oscura {
     position: relative;
     overflow: hidden;
-    --foco-x: 50%;
-    --foco-y: 50%;
-    --foco-opacidad: 0;
-  }
-
-  .superficie-oscura::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: var(--foco-opacidad);
-    transition: opacity 0.45s ease;
-    background: radial-gradient(
-      420px circle at var(--foco-x) var(--foco-y),
-      rgba(1, 103, 243, 0.28) 0%,
-      rgba(1, 103, 243, 0.1) 35%,
-      transparent 65%
-    );
   }
 
   /*
-   * El contenido va por encima del halo y de los nodos.
+   * El contenido va por encima de los nodos.
    *
    * Se excluye el canvas: lleva su propio `position: absolute` y esta regla
    * se lo sobrescribiría, sacándolo del fondo y metiéndolo en el flujo.
@@ -126,13 +109,6 @@
   .superficie-oscura > *:not(canvas) {
     position: relative;
     z-index: 1;
-  }
-
-  /* Quien pidió menos movimiento no ve el halo seguir al cursor. */
-  @media (prefers-reduced-motion: reduce) {
-    .superficie-oscura::before {
-      display: none;
-    }
   }
 
   .liquid-glass {
