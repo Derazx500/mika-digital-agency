@@ -117,8 +117,13 @@
     );
   }
 
-  /* El contenido va por encima del halo. */
-  .superficie-oscura > * {
+  /*
+   * El contenido va por encima del halo y de los nodos.
+   *
+   * Se excluye el canvas: lleva su propio `position: absolute` y esta regla
+   * se lo sobrescribiría, sacándolo del fondo y metiéndolo en el flujo.
+   */
+  .superficie-oscura > *:not(canvas) {
     position: relative;
     z-index: 1;
   }

@@ -12,29 +12,34 @@ import { readCollection, type RawDoc } from '@/lib/content';
  */
 
 /**
- * Sectores para filtrar el portafolio.
+ * Categorías para filtrar el portafolio.
  *
- * Son deliberadamente amplios. El campo `industry` describe al cliente con
- * precisión ("Artes escénicas", "Servicios industriales"), pero como filtro
- * no sirve: con un sector distinto por proyecto, cada botón mostraría uno
- * solo y filtrar no aportaría nada.
+ * Se filtra por tipo de trabajo y no por sector del cliente: quien entra al
+ * portafolio busca "¿han hecho branding?", no "¿han trabajado con una
+ * empresa de mi giro?".
+ *
+ * Un proyecto puede estar en varias, porque casi siempre lo está: un mismo
+ * cliente suele llevar identidad y sitio web.
+ *
+ * El orden es el de aparición de los botones: primero lo que más se vende.
  */
-export const SECTORES = [
-  'Comercio y retail',
-  'Educación',
-  'Salud y bienestar',
-  'Servicios profesionales',
-  'Industria',
-  'Arte y cultura',
+export const CATEGORIAS = [
+  'Diseño web',
+  'Branding',
+  'E-commerce',
+  'SEO',
+  'Redes sociales',
+  'Fotografía',
+  'Video',
 ] as const;
 
-export type Sector = (typeof SECTORES)[number];
+export type Categoria = (typeof CATEGORIAS)[number];
 
 type ProjectFrontmatter = {
   name: string;
   industry: string;
-  /** Categoría amplia para el filtro del portafolio. */
-  sector?: string;
+  /** Tipos de trabajo, para el filtro del portafolio. */
+  categorias?: string[];
   year: string;
   summary: string;
   tags: string[];
@@ -61,7 +66,7 @@ export type Project = {
   slug: string;
   name: string;
   industry: string;
-  sector: string;
+  categorias: string[];
   year: string;
   summary: string;
   tags: string[];
@@ -92,8 +97,7 @@ function toProject(doc: RawDoc<ProjectFrontmatter>): Project {
     slug,
     name: data.name,
     industry: data.industry,
-    // Sin sector asignado va a "Otros" en vez de romper el filtro.
-    sector: data.sector?.trim() || 'Otros',
+    categorias: (data.categorias ?? []).filter(Boolean),
     year: data.year,
     resena,
     summary: data.summary,
@@ -124,15 +128,22 @@ export function getProject(slug: string): Project | undefined {
 }
 
 /**
- * Sectores que de verdad tienen proyectos, en el orden del portafolio.
+ * Categorías que de verdad tienen proyectos, en el orden de CATEGORIAS.
  *
- * Se calculan a partir del contenido en vez de listar los seis fijos: un
+ * Se calculan a partir del contenido en vez de listar las siete fijas: un
  * filtro que al pulsarlo no muestra nada frustra más que no tenerlo.
  */
-export function getSectoresConProyectos(): string[] {
-  const vistos = new Set<string>();
-  for (const proyecto of getAllProjects()) vistos.add(proyecto.sector);
-  return [...vistos];
+export function getCategoriasConProyectos(): string[] {
+  const usadas = new Set<string>();
+  for (const proyecto of getAllProjects()) {
+    for (const categoria of proyecto.categorias) usadas.add(categoria);
+  }
+
+  // Se respeta el orden de CATEGORIAS y se añaden al final las que alguien
+  // haya escrito a mano y no estén en la lista.
+  const conocidas = CATEGORIAS.filter((c) => usadas.has(c));
+  const otras = [...usadas].filter((c) => !CATEGORIAS.includes(c as Categoria));
+  return [...conocidas, ...otras];
 }
 
 /*

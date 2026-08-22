@@ -1,7 +1,9 @@
 ---
 name: "Corporativo Fumix"
 industry: "Servicios industriales"
-sector: "Industria"
+categorias:
+  - "Diseño web"
+  - "SEO"
 year: "2023"
 summary: "Sitio orientado a generar solicitudes de cotización desde búsquedas locales."
 tags:

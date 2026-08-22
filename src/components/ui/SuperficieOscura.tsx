@@ -1,34 +1,37 @@
 'use client';
 
 import { useRef, type ReactNode } from 'react';
+
 import { clsx } from '@/lib/clsx';
+import { RedDeNodos } from '@/components/ui/RedDeNodos';
 
 /**
- * Superficie oscura con un foco de luz que sigue al cursor.
+ * Superficie oscura con red de nodos y un halo que sigue al cursor.
  *
- * El efecto es deliberadamente contenido: un halo suave en azul de marca que
- * aparece al entrar el puntero y se apaga al salir. Se nota que la superficie
- * responde, sin convertirse en un truco que distrae de lo que dice el texto.
+ * Van los dos efectos juntos a propósito y cada uno hace una cosa distinta:
+ * los nodos dan movimiento constante —la superficie está viva aunque nadie
+ * la toque— y el halo responde al puntero. Solos, el primero se ignora
+ * pronto y el segundo se siente plano.
  *
- * Cómo está hecho y por qué:
- * - La posición se pasa como dos variables CSS y el degradado vive en el
- *   `::before`. Al mover el ratón solo se reescriben dos números; no se
- *   recalcula el diseño de la página, que es lo que haría que se sintiera
- *   pesado.
- * - Se lee `getBoundingClientRect` en cada movimiento a propósito: guardarlo
- *   en memoria se desincroniza en cuanto la página hace scroll, y el halo
- *   aparecería desplazado del cursor.
- * - En pantallas táctiles no hay puntero que seguir, así que no ocurre nada
- *   y la superficie se ve igual que antes.
+ * El halo se dibuja con CSS y los nodos en un canvas. Al mover el ratón solo
+ * se reescriben dos variables CSS, así que el navegador no recalcula el
+ * diseño de la página en ningún momento.
+ *
+ * Se lee `getBoundingClientRect` en cada movimiento a propósito: guardarlo en
+ * memoria se desincroniza en cuanto la página hace scroll, y el halo
+ * aparecería desplazado del cursor.
  */
 export function SuperficieOscura({
   children,
   className,
   as: Etiqueta = 'div',
+  /** Los bloques pequeños se ven cargados con nodos; ahí basta el halo. */
+  conNodos = true,
 }: {
   children: ReactNode;
   className?: string;
   as?: 'div' | 'section' | 'footer';
+  conNodos?: boolean;
 }) {
   const ref = useRef<HTMLElement>(null);
 
@@ -57,6 +60,7 @@ export function SuperficieOscura({
       onMouseLeave={alSalir}
       className={clsx('superficie-oscura', className)}
     >
+      {conNodos && <RedDeNodos />}
       {children}
     </Etiqueta>
   );

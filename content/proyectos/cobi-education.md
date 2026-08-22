@@ -1,7 +1,9 @@
 ---
 name: "Cobi Education"
 industry: "Educación"
-sector: "Educación"
+categorias:
+  - "Diseño web"
+  - "Branding"
 year: "2024"
 summary: "Plataforma educativa rediseñada para que los padres encuentren e inscriban programas sin fricción."
 tags:

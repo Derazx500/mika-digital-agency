@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { getAllProjects, getSectoresConProyectos } from '@/lib/projects';
+import { getAllProjects, getCategoriasConProyectos } from '@/lib/projects';
 import { breadcrumbSchema, buildMetadata } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
@@ -25,7 +25,7 @@ const CRUMBS = [
 
 export default function PortafolioPage() {
   const projects = getAllProjects();
-  const sectores = getSectoresConProyectos();
+  const categorias = getCategoriasConProyectos();
 
   return (
     <>
@@ -38,7 +38,7 @@ export default function PortafolioPage() {
 
       <section className="bg-[#F5F5F5] py-16 sm:py-20 lg:py-24">
         <div className="container-mika">
-          <PortafolioFiltrado proyectos={projects} sectores={sectores} />
+          <PortafolioFiltrado proyectos={projects} categorias={categorias} />
         </div>
       </section>
 

@@ -214,20 +214,23 @@ collections:
           El giro exacto, como lo diría el cliente. Ej: Artes escénicas,
           Servicios industriales. Se muestra en la ficha del proyecto.
 
-      - label: Sector (para el filtro)
-        name: sector
+      - label: Tipo de proyecto (para el filtro)
+        name: categorias
         widget: select
+        multiple: true
         options:
-          - Comercio y retail
-          - Educación
-          - Salud y bienestar
-          - Servicios profesionales
-          - Industria
-          - Arte y cultura
+          - Diseño web
+          - Branding
+          - E-commerce
+          - SEO
+          - Redes sociales
+          - Fotografía
+          - Video
         hint: >-
-          La categoría amplia con la que se filtra el portafolio. Es a
-          propósito más general que el giro: si cada proyecto tuviera su
-          propio sector, cada filtro mostraría uno solo y no serviría de nada.
+          Con esto se filtra el portafolio. Marca todas las que apliquen: un
+          proyecto puede ser de web y de branding a la vez, y aparecerá en los
+          dos filtros. Quien entra al portafolio busca "¿han hecho branding?",
+          no el giro del cliente.
 
       - label: Año
         name: year

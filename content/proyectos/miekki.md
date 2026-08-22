@@ -1,7 +1,9 @@
 ---
 name: "Miękki"
 industry: "Retail"
-sector: "Comercio y retail"
+categorias:
+  - "Branding"
+  - "Diseño web"
 year: "2021"
 summary: "Identidad y tienda en línea con un lenguaje visual cálido y minimalista."
 tags:

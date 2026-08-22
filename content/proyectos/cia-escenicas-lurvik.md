@@ -1,7 +1,9 @@
 ---
 name: "Cia Escénicas Lurvik"
 industry: "Artes escénicas"
-sector: "Arte y cultura"
+categorias:
+  - "Diseño web"
+  - "SEO"
 year: "2024"
 summary: "Sitio institucional para una compañía escénica, con cartelera, galería y venta de boletos."
 tags:

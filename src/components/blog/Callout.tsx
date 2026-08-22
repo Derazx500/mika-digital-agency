@@ -71,7 +71,13 @@ export function InlineCta({
   cta?: string;
 }) {
   return (
-    <SuperficieOscura as="div" className="my-10 rounded-2xl bg-ink p-6 sm:p-8">
+    <SuperficieOscura
+      as="div"
+      // Es una caja pequeña dentro del texto: con nodos se vería cargada y
+      // le robaría atención al artículo.
+      conNodos={false}
+      className="my-10 rounded-2xl bg-ink p-6 sm:p-8"
+    >
       <p className="text-[19px] font-medium tracking-tight text-white sm:text-[22px]">
         {title}
       </p>

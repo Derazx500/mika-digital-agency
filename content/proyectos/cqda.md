@@ -1,7 +1,9 @@
 ---
 name: "CQDA"
 industry: "Servicios profesionales"
-sector: "Servicios profesionales"
+categorias:
+  - "Diseño web"
+  - "Branding"
 year: "2023"
 summary: "Identidad y sitio corporativo alineados para transmitir el respaldo técnico de la firma."
 tags:
