@@ -1,6 +1,7 @@
 ---
 name: "Cia Escénicas Lurvik"
 industry: "Artes escénicas"
+sector: "Arte y cultura"
 year: "2024"
 summary: "Sitio institucional para una compañía escénica, con cartelera, galería y venta de boletos."
 tags:
@@ -11,6 +12,9 @@ image: "/images/portafolio/cia-escenicas-lurvik.webp"
 aspect: "wide"
 featured: true
 order: 1
+resena: "El equipo de diseño web y programación cumplió mis expectativas con una página profesional, atractiva y fácil de navegar. Su increíble resultado con mi visión fueron impresionantes. ¡Gracias por su gran esfuerzo!"
+resenaAutor: "Luis Lurvik"
+resenaPuesto: "CEO, Cia Escénicas Lurvik"
 ---
 
 ## El reto

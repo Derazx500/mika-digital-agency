@@ -1,6 +1,7 @@
 import { AlertTriangle, Info, Lightbulb } from 'lucide-react';
 import { waLink } from '@/lib/site';
 import { clsx } from '@/lib/clsx';
+import { SuperficieOscura } from '@/components/ui/SuperficieOscura';
 
 const TONES = {
   tip: {
@@ -70,7 +71,7 @@ export function InlineCta({
   cta?: string;
 }) {
   return (
-    <aside className="my-10 rounded-2xl bg-ink p-6 sm:p-8">
+    <SuperficieOscura as="div" className="my-10 rounded-2xl bg-ink p-6 sm:p-8">
       <p className="text-[19px] font-medium tracking-tight text-white sm:text-[22px]">
         {title}
       </p>
@@ -83,6 +84,6 @@ export function InlineCta({
       >
         {cta}
       </a>
-    </aside>
+    </SuperficieOscura>
   );
 }

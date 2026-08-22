@@ -4,6 +4,7 @@ import { NAV_LINKS, SERVICES, SITE, waLink } from '@/lib/site';
 import { Logo } from '@/components/ui/Logo';
 import { TextRollButton } from '@/components/ui/TextRollButton';
 import { SOCIAL_ICONS, type SocialKey } from '@/components/ui/SocialIcons';
+import { SuperficieOscura } from '@/components/ui/SuperficieOscura';
 
 /**
  * Redes del pie de página.
@@ -24,7 +25,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-ink text-white">
+    <SuperficieOscura as="footer" className="bg-ink text-white">
       <div className="container-mika py-16 sm:py-20 lg:py-24">
         {/* Llamada final a la acción */}
         <div className="mb-16 border-b border-white/10 pb-16">
@@ -176,6 +177,6 @@ export function Footer() {
           </p>
         </div>
       </div>
-    </footer>
+    </SuperficieOscura>
   );
 }

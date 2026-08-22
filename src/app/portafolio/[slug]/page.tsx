@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { Star } from 'lucide-react';
 
 import { getAllProjects, getProject } from '@/lib/projects';
 import { MdxContent } from '@/components/mdx/MdxContent';
@@ -110,6 +111,44 @@ export default async function ProyectoPage({ params }: Props) {
           <div className="mt-12 max-w-[46rem] border-t border-gray-200 pt-12">
             <MdxContent source={project.body} />
           </div>
+
+          {/* Reseña del cliente. Solo aparece si este proyecto tiene una:
+              no todos los clientes dejan una, y rellenar con algo genérico
+              se nota y resta credibilidad. */}
+          {project.resena && (
+            <figure className="mt-12 max-w-[46rem] rounded-2xl bg-[#F5F5F5] p-7 sm:p-9">
+              <div className="mb-4 flex gap-0.5" aria-label="5 de 5 estrellas">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    size={16}
+                    className="fill-brand-500 text-brand-500"
+                    aria-hidden="true"
+                  />
+                ))}
+              </div>
+
+              <blockquote className="text-[17px] leading-[1.65] text-gray-800 sm:text-[19px]">
+                “{project.resena.texto}”
+              </blockquote>
+
+              <figcaption className="mt-6 flex items-center gap-3 border-t border-gray-300 pt-5">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-500 text-[14px] font-semibold text-white">
+                  {project.resena.autor.charAt(0)}
+                </span>
+                <span className="text-[14px]">
+                  <span className="block font-semibold text-gray-900">
+                    {project.resena.autor}
+                  </span>
+                  {project.resena.puesto && (
+                    <span className="block text-gray-500">
+                      {project.resena.puesto}
+                    </span>
+                  )}
+                </span>
+              </figcaption>
+            </figure>
+          )}
         </div>
       </section>
 

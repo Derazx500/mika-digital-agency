@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 
-import { getAllProjects } from '@/lib/projects';
+import { getAllProjects, getSectoresConProyectos } from '@/lib/projects';
 import { breadcrumbSchema, buildMetadata } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
 import { PageHero } from '@/components/sections/PageHero';
-import { ProjectCard } from '@/components/sections/ProjectCard';
+import { PortafolioFiltrado } from '@/components/sections/PortafolioFiltrado';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { CtaBand } from '@/components/sections/CtaBand';
 import { Reveal } from '@/components/ui/Reveal';
@@ -25,6 +25,7 @@ const CRUMBS = [
 
 export default function PortafolioPage() {
   const projects = getAllProjects();
+  const sectores = getSectoresConProyectos();
 
   return (
     <>
@@ -37,17 +38,7 @@ export default function PortafolioPage() {
 
       <section className="bg-[#F5F5F5] py-16 sm:py-20 lg:py-24">
         <div className="container-mika">
-          <ul className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:gap-7">
-            {projects.map((project, i) => (
-              <Reveal as="li" key={project.slug} delay={(i % 2) * 90}>
-                <ProjectCard
-                  project={project}
-                  priority={i === 0}
-                  variant={i % 2 === 0 ? 'light' : 'dark'}
-                />
-              </Reveal>
-            ))}
-          </ul>
+          <PortafolioFiltrado proyectos={projects} sectores={sectores} />
         </div>
       </section>
 

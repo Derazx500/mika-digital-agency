@@ -1,6 +1,7 @@
 ---
 name: "CQDA"
 industry: "Servicios profesionales"
+sector: "Servicios profesionales"
 year: "2023"
 summary: "Identidad y sitio corporativo alineados para transmitir el respaldo técnico de la firma."
 tags:
@@ -10,6 +11,9 @@ image: "/images/portafolio/cqda.webp"
 aspect: "wide"
 featured: true
 order: 3
+resena: "El equipo de diseño web hizo un trabajo increíble con mi página. Capturaron la esencia de mi negocio y crearon un sitio visualmente impactante y fácil de usar. ¡Gracias por su profesionalismo y dedicación!"
+resenaAutor: "Irving Espinoza"
+resenaPuesto: "Director, CQDA"
 ---
 
 ## El reto

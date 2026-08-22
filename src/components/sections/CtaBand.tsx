@@ -1,5 +1,6 @@
 import { waLink } from '@/lib/site';
 import { TextRollButton } from '@/components/ui/TextRollButton';
+import { SuperficieOscura } from '@/components/ui/SuperficieOscura';
 
 /** Franja de conversión que cierra las páginas internas. */
 export function CtaBand({
@@ -15,7 +16,7 @@ export function CtaBand({
   return (
     <section className="bg-white pb-16 sm:pb-20 lg:pb-28">
       <div className="container-mika">
-        <div className="rounded-2xl bg-ink px-6 py-12 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
+        <SuperficieOscura className="rounded-2xl bg-ink px-6 py-12 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
           <h2 className="h-section max-w-2xl text-white">{title}</h2>
           <p className="mt-5 max-w-xl text-[15px] leading-[1.6] text-white/60 sm:text-[16px]">
             {body}
@@ -25,7 +26,7 @@ export function CtaBand({
               Escríbenos por WhatsApp
             </TextRollButton>
           </div>
-        </div>
+        </SuperficieOscura>
       </div>
     </section>
   );

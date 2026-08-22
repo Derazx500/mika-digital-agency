@@ -207,10 +207,27 @@ collections:
         name: name
         widget: string
 
-      - label: Sector
+      - label: Giro del cliente
         name: industry
         widget: string
-        hint: 'Ej: Educación, Retail, Servicios industriales.'
+        hint: >-
+          El giro exacto, como lo diría el cliente. Ej: Artes escénicas,
+          Servicios industriales. Se muestra en la ficha del proyecto.
+
+      - label: Sector (para el filtro)
+        name: sector
+        widget: select
+        options:
+          - Comercio y retail
+          - Educación
+          - Salud y bienestar
+          - Servicios profesionales
+          - Industria
+          - Arte y cultura
+        hint: >-
+          La categoría amplia con la que se filtra el portafolio. Es a
+          propósito más general que el giro: si cada proyecto tuviera su
+          propio sector, cada filtro mostraría uno solo y no serviría de nada.
 
       - label: Año
         name: year
@@ -271,6 +288,30 @@ collections:
         widget: boolean
         default: false
         required: false
+
+      - label: Reseña del cliente
+        name: resena
+        widget: text
+        required: false
+        hint: >-
+          Opcional. Si este cliente te dejó una reseña, pégala aquí tal cual
+          y aparecerá al final de la ficha. Si no dejó ninguna, déjalo vacío:
+          la sección simplemente no se muestra. No la inventes ni la pulas —
+          una reseña que suena a texto de agencia se nota y resta.
+
+      - label: Quién la dejó
+        name: resenaAutor
+        widget: string
+        required: false
+        hint: >-
+          Nombre de la persona. Hace falta para que la reseña se muestre: una
+          cita sin nombre no da confianza, la quita.
+
+      - label: Su puesto y empresa
+        name: resenaPuesto
+        widget: string
+        required: false
+        hint: 'Ej: Directora de Marketing, Nombre de la empresa.'
 
       - label: Caso de estudio
         name: body

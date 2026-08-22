@@ -1,6 +1,7 @@
 ---
 name: "Arauz"
 industry: "Corporativo"
+sector: "Servicios profesionales"
 year: "2022"
 summary: "Sitio corporativo y material gráfico con un sistema visual consistente."
 tags:

@@ -1,6 +1,7 @@
 ---
 name: "Maitreya"
 industry: "Bienestar"
+sector: "Salud y bienestar"
 year: "2022"
 summary: "Identidad de marca y presencia digital para un proyecto de bienestar integral."
 tags:

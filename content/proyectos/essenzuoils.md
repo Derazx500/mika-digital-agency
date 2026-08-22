@@ -1,6 +1,7 @@
 ---
 name: "Essenzu Oils"
 industry: "E-commerce"
+sector: "Comercio y retail"
 year: "2023"
 summary: "Tienda en línea de aceites esenciales con catálogo, carrito y pasarela de pago."
 tags:

@@ -1,6 +1,7 @@
 ---
 name: "Cobi Education"
 industry: "Educación"
+sector: "Educación"
 year: "2024"
 summary: "Plataforma educativa rediseñada para que los padres encuentren e inscriban programas sin fricción."
 tags:
@@ -11,6 +12,9 @@ image: "/images/portafolio/cobi-education.webp"
 aspect: "square"
 featured: true
 order: 2
+resena: "¡Mi página web es increíble! El equipo de diseño web capturó exactamente lo que quería. Estoy impresionado por su creatividad y profesionalismo. ¡Gracias por hacer realidad mi visión en línea!"
+resenaAutor: "Oscar Ortega"
+resenaPuesto: "Director, Cobi Education"
 ---
 
 ## El reto
