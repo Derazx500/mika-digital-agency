@@ -130,11 +130,27 @@ El código está terminado. Lo que sigue es material tuyo. Mientras falte, el si
 
 El favicon también es el tuyo, pero pesa 269 KB — vale la pena regenerarlo a 32 × 32 px.
 
-### 2. Imágenes del blog — ✅ instaladas
+### 2. Imágenes del blog — ⚠️ parciales
 
-Los siete gráficos son SVG propios con tu identidad, en `public/images/blog/`. Pesan pocos KB, se ven nítidos a cualquier tamaño y explican el contenido mejor que una foto de stock genérica.
+Los tres artículos originales usan gráficos SVG propios, ya instalados en `public/images/blog/`. Pesan pocos KB, se ven nítidos a cualquier tamaño y explican el contenido mejor que una foto de stock.
 
-Si prefieres fotos, súbelas desde el panel y sustituye la portada: no hay que tocar código.
+**Los nueve artículos publicados en agosto no tienen portada.** Mientras el archivo no exista se muestra un degradado con el título del artículo, así que el sitio no se ve roto — pero la portada es lo que se ve al compartir por WhatsApp, y ahí sí hace falta.
+
+**1600 × 900 px**, en `.webp`, dentro de `public/images/blog/`:
+
+| Archivo | Artículo |
+| --- | --- |
+| `cuanto-cuesta-tienda-en-linea.webp` | Cuánto cuesta una tienda en línea |
+| `shopify-o-woocommerce.webp` | Shopify o WooCommerce |
+| `cuanto-cuesta-el-seo.webp` | Cuánto cuesta el SEO |
+| `pagina-no-aparece-en-google.webp` | Por qué mi página no aparece en Google |
+| `tarjeta-presentacion-digital.webp` | Qué es una tarjeta de presentación digital |
+| `cuanto-cuesta-un-logo.webp` | Cuánto cuesta un logo |
+| `cuanto-cuesta-video-corporativo.webp` | Cuánto cuesta un video corporativo |
+| `fotos-de-producto.webp` | Cómo hacer fotos de producto que venden |
+| `aparecer-en-chatgpt.webp` | Cómo aparecer en ChatGPT |
+
+También puedes subirlas desde el panel al editar cada artículo, con el nombre que quieras: el campo de portada se actualiza solo y no hay que tocar código.
 
 ### 3. Imágenes del portafolio — ⬜ pendientes
 

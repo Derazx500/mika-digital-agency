@@ -1,15 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { clsx } from '@/lib/clsx';
 
 /**
  * Imagen con degradado de respaldo.
  *
- * Mientras no tengamos las capturas reales de cada proyecto, esto evita el
- * icono de imagen rota: si el archivo no existe, se dibuja un degradado con la
- * inicial del proyecto. Cuando subas las imágenes a /public/images/portafolio/
- * empiezan a mostrarse solas, sin tocar código.
+ * Mientras falten las imágenes reales, esto evita el icono de imagen rota: si
+ * el archivo no existe, se dibuja un degradado con el título encima. Cuando
+ * subas la imagen empieza a mostrarse sola, sin tocar código.
  *
  * Se usa <img> nativo en vez de next/image porque el sitio compila a export
  * estático y el optimizador de Next no corre en HostGator.
@@ -30,6 +29,26 @@ export function Thumb({
   priority?: boolean;
 }) {
   const [broken, setBroken] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  /*
+   * El `onError` de abajo no basta.
+   *
+   * El HTML llega ya renderizado desde el servidor, así que el navegador pide
+   * la imagen mucho antes de que React llegue a enganchar sus eventos. Si el
+   * archivo no existe, el fallo ocurre en ese hueco: cuando React se activa,
+   * el error ya pasó y nadie lo escuchó — el respaldo no se mostraba nunca y
+   * quedaba el icono de imagen rota.
+   *
+   * Al montar se comprueba el estado real de la imagen. `complete` con
+   * `naturalWidth` en cero solo puede significar una cosa: la descarga terminó
+   * y no había imagen. Es la forma fiable de detectar el fallo que nos
+   * perdimos.
+   */
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img?.complete && img.naturalWidth === 0) setBroken(true);
+  }, [src]);
 
   if (broken) {
     return (
@@ -50,6 +69,7 @@ export function Thumb({
 
   return (
     <img
+      ref={imgRef}
       src={src}
       alt={alt}
       onError={() => setBroken(true)}

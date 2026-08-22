@@ -60,15 +60,33 @@ Está comparando opciones y todavía no sabe si contrata o lo hace por su cuenta
 
 Todavía no compra, pero si le resuelves la duda te recuerda. Es el trabajo del blog.
 
-| Tema | Estado |
+Cada artículo se escribe para una búsqueda concreta y enlaza a la landing que le corresponde. Esa es la función del blog: atraer a quien todavía no compra y pasarle la autoridad a la página que sí vende.
+
+| Tema | Landing a la que apunta | Estado |
+| --- | --- | --- |
+| cuánto cuesta una página web en México | /servicios/diseno-web/ | ✅ publicado |
+| cómo elegir una agencia de diseño web | /servicios/diseno-web/ | ✅ publicado |
+| SEO local / aparecer en Google Maps | /servicios/posicionamiento-seo/ | ✅ publicado |
+| cuánto cuesta el SEO en México | /servicios/posicionamiento-seo/ | ✅ publicado |
+| por qué mi página no aparece en Google | /servicios/posicionamiento-seo/ | ✅ publicado |
+| cuánto cuesta una tienda en línea | /servicios/tienda-en-linea/ | ✅ publicado |
+| Shopify o WooCommerce, cuál conviene | /servicios/tienda-en-linea/ | ✅ publicado |
+| cuánto cuesta un logo en México | /servicios/diseno-grafico-branding/ | ✅ publicado |
+| qué es una tarjeta de presentación digital | /servicios/tarjetas-de-presentacion-digitales/ | ✅ publicado |
+| cuánto cuesta un video corporativo | /servicios/produccion-de-video/ | ✅ publicado |
+| cómo hacer fotos de producto que vendan | /servicios/fotografia-profesional/ | ✅ publicado |
+| cómo aparecer en ChatGPT y respuestas con IA | /servicios/posicionamiento-seo/ | ✅ publicado |
+
+**Sin cubrir todavía** (por orden de interés):
+
+| Tema | Landing a la que apuntaría |
 | --- | --- |
-| cuánto cuesta una página web en México | ✅ publicado |
-| cómo elegir una agencia de diseño web | ✅ publicado |
-| SEO local / aparecer en Google Maps | ✅ publicado |
-| cuánto cuesta una tienda en línea | ⬜ pendiente |
-| Shopify o WooCommerce, cuál conviene | ⬜ pendiente |
-| cuánto cuesta un video corporativo | ⬜ pendiente |
-| cómo hacer fotos de producto que vendan | ⬜ pendiente |
+| cuánto cuesta manejar redes sociales al mes | /servicios/social-media/ |
+| cuánto cuesta producir un podcast | /servicios/produccion-de-podcast/ |
+| WordPress o desarrollo a la medida | /servicios/desarrollo-de-software/ |
+| por qué mi página web es lenta | /servicios/diseno-web/ |
+
+> **Antes de escribir uno nuevo, comprueba que no compita con los de arriba.** Dos artículos atacando la misma búsqueda se restan entre sí. Si el tema ya está tocado, amplía el que existe y actualiza su campo *Fecha de última revisión*: Google la usa como señal de frescura.
 
 ---
 
@@ -98,7 +116,8 @@ En orden de impacto:
 3. **Escribir los casos de estudio.** Nueve fichas de portafolio siguen con texto de relleno. Google premia el contenido único y los clientes deciden leyendo resultados concretos.
 4. **Subir las imágenes del portafolio.** Es lo que más resta hoy en la página que usas para vender.
 5. **Google Business Profile al 100% y pedir reseñas.** Para las búsquedas locales —*agencia de diseño web CDMX*— pesa más que cualquier cosa del sitio.
-6. **Publicar los 4 artículos pendientes** de la tabla de nivel 3. Cada uno enlaza a su landing y le transfiere autoridad.
+6. **Subir las portadas de los artículos nuevos.** Los nueve publicados en agosto apuntan a un archivo en `/public/images/blog/` que todavía no existe; mientras tanto se muestra un degradado con el título. La lista de nombres exactos está en el README.
+7. **Escalonar la publicación si lo prefieres.** Los nueve artículos nuevos salieron con la misma fecha. Si quieres que el blog parezca —y sea— un calendario constante, cambia la fecha de algunos desde el panel o márcalos como borrador y ve publicando uno por semana.
 
 ---
 
