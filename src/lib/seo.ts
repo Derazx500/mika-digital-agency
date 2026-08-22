@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { SERVICES, SITE } from '@/lib/site';
+import { IMAGENES } from '@/lib/ajustes';
 
 /**
  * Construye la metadata de una página.
@@ -16,7 +17,8 @@ export function buildMetadata({
   title,
   description,
   path,
-  image = '/og/og-default.jpg',
+  // Editable en el panel: Ajustes del sitio → Imágenes.
+  image = IMAGENES.compartir,
   noIndex = false,
   type = 'website',
   publishedTime,
@@ -110,8 +112,10 @@ export function organizationSchema() {
     '@id': `${SITE.url}/#organization`,
     name: SITE.name,
     url: SITE.url,
-    logo: `${SITE.url}/images/logo/mika-logo.png`,
-    image: `${SITE.url}/og/og-default.jpg`,
+    // Apuntaba a /images/logo/, una carpeta que no existe: el logo del schema
+    // era un 404 y Google no podía usarlo en el panel de conocimiento.
+    logo: `${SITE.url}${IMAGENES.logo}`,
+    image: `${SITE.url}${IMAGENES.compartir}`,
     description:
       'Agencia digital en Ciudad de México especializada en diseño web, posicionamiento SEO, diseño gráfico y branding.',
     foundingDate: SITE.founded,

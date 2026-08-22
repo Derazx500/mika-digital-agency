@@ -165,10 +165,12 @@ Nombres esperados: `cia-escenicas-lurvik`, `cobi-education`, `cqda`, `corporativ
 
 ### 4. Fotos del estudio y del equipo — ⬜ pendientes
 
-- `public/images/about/estudio-1.webp` — 1314 × 1038 px
-- `public/images/about/estudio-2.webp` — 1800 × 1200 px
-- `public/images/team/deraz.webp` — 1200 × 900 px
-- `public/images/team/juan-dom.webp` — 1200 × 900 px
+**Desde el panel**, sin nombre obligatorio:
+
+- Las dos fotos del estudio → *Ajustes del sitio → Imágenes del sitio* (1314 × 1038 px y 1800 × 1200 px).
+- Las fotos del equipo → *Equipo*, en el perfil de cada persona (1200 × 900 px).
+
+Si prefieres subirlas por Git, las rutas actuales son `public/images/about/estudio-1.webp`, `estudio-2.webp`, `public/images/team/deraz.webp` y `juan-dom.webp`.
 
 ### 5. Galerías de las landings — ⬜ pendientes
 
@@ -188,7 +190,28 @@ Todos en `.webp`. Los nombres y sus textos alternativos están en `landing.galer
 
 ### 6. Imagen para redes (Open Graph) — ⬜ pendiente
 
-`public/og/og-default.jpg` — **1200 × 630 px**. Es lo que se ve al compartir el sitio por WhatsApp.
+**1200 × 630 px**. Es lo que se ve al compartir el sitio por WhatsApp. Se sube desde el panel, en *Ajustes del sitio → Imágenes del sitio → Imagen al compartir*.
+
+---
+
+## Qué se puede editar desde el panel
+
+En `mikadigitalagency.com/admin`:
+
+| Sección | Qué cubre |
+| --- | --- |
+| Artículos del blog | Los 12 artículos, con sus preguntas frecuentes |
+| Proyectos del portafolio | Fichas, imágenes, filtros y reseña del cliente |
+| Testimonios | Los que salen en la portada y en Nosotros |
+| Equipo | Perfiles, biografías, certificaciones y redes |
+| **Ajustes del sitio** | Logotipo, imagen al compartir, fotos del estudio, teléfono, WhatsApp, correo, redes, textos de la portada, cifras y textos de Nosotros |
+
+**Todavía se editan en código**, en [`src/lib/pricing.ts`](src/lib/pricing.ts) y [`src/lib/services.ts`](src/lib/services.ts):
+
+- Los precios y el contenido de cada paquete.
+- Los textos de las 10 landings de servicio: entregables, proceso, preguntas frecuentes y galerías.
+
+Van juntos a propósito: el precio de un paquete aparece también en la landing de su servicio, así que si uno se pudiera editar sin el otro acabarían diciendo cosas distintas.
 
 ### 7. Revisar antes de publicar
 

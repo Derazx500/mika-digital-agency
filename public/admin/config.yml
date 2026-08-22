@@ -567,3 +567,242 @@ collections:
           Escribe en primera persona. Cómo llegaste a esto, cómo trabajas y en
           qué eres fuerte. Quien lee esta página está decidiendo si confiarte
           su proyecto, y conecta más el motivo que el currículum.
+
+  # -----------------------------------------------------------------
+  # AJUSTES DEL SITIO
+  #
+  # Textos e imágenes sueltos de páginas concretas. No son una colección
+  # —no se crean ni se borran— así que van como archivos fijos: entras,
+  # editas y guardas.
+  #
+  # Cada campo de aquí está conectado a un punto concreto del sitio. Si
+  # añades uno nuevo, hay que enlazarlo también en src/lib/ajustes.ts.
+  # -----------------------------------------------------------------
+  - name: ajustes
+    label: Ajustes del sitio
+    files:
+      # ---------------------------------------------------------------
+      - name: imagenes
+        label: Imágenes del sitio
+        file: content/ajustes/imagenes.json
+        description: >-
+          Las imágenes que no pertenecen a ningún artículo ni proyecto: el
+          logotipo, la miniatura que sale al compartir el enlace y las dos
+          fotos del estudio.
+        fields:
+          - label: Logotipo
+            name: logo
+            widget: image
+            hint: >-
+              Aparece en el menú, en el menú móvil y en el pie. Lo ideal es un
+              SVG o un PNG con fondo transparente. Si lo cambias, ajusta
+              también las dos medidas de abajo.
+
+          - label: Ancho del logotipo (px)
+            name: logoAncho
+            widget: number
+            value_type: int
+            hint: >-
+              Las medidas reales del archivo. Se usan para calcular la
+              proporción: si no coinciden, el logo sale estirado. Las ves al
+              abrir la imagen en cualquier visor.
+
+          - label: Alto del logotipo (px)
+            name: logoAlto
+            widget: number
+            value_type: int
+
+          - label: Imagen al compartir (Open Graph)
+            name: compartir
+            widget: image
+            hint: >-
+              1200 × 630 px. Es la miniatura que aparece cuando mandas un
+              enlace del sitio por WhatsApp, Facebook o LinkedIn. Que se lea
+              bien en pequeño: el logo y una frase corta, no un texto largo.
+
+          - label: Foto del estudio 1
+            name: estudio1
+            widget: image
+            hint: >-
+              La primera foto de la sección "conoce Mika" de la portada. Casi
+              cuadrada, unos 1314 × 1038 px.
+
+          - label: Descripción de la foto 1
+            name: estudio1Alt
+            widget: string
+            hint: >-
+              Describe lo que se ve. Lo leen Google y los lectores de pantalla
+              de personas ciegas.
+
+          - label: Foto del estudio 2
+            name: estudio2
+            widget: image
+            hint: >-
+              La segunda foto de la portada, y también la que ilustra la
+              página Nosotros. Apaisada, unos 1800 × 1200 px.
+
+          - label: Descripción de la foto 2
+            name: estudio2Alt
+            widget: string
+
+      # ---------------------------------------------------------------
+      - name: contacto
+        label: Contacto y redes
+        file: content/ajustes/contacto.json
+        description: >-
+          Tu teléfono, correo y redes sociales. Se usan en el menú, en el pie,
+          en todos los botones de WhatsApp y en los datos que lee Google.
+        fields:
+          - label: Teléfono (como se muestra)
+            name: telefono
+            widget: string
+            hint: 'Con espacios y prefijo, tal cual quieres que se lea. Ej: +52 55 7495 7155'
+
+          - label: WhatsApp (solo números)
+            name: whatsapp
+            widget: string
+            pattern: ['^[0-9]{10,15}$', 'Solo números, sin signos ni espacios.']
+            hint: >-
+              Con clave de país y sin signos ni espacios. Para México, 52 y los
+              diez dígitos. Es el número al que llevan todos los botones de
+              WhatsApp del sitio, así que revísalo dos veces.
+
+          - label: Mensaje que se escribe solo en WhatsApp
+            name: mensajeWhatsApp
+            widget: text
+            hint: >-
+              Lo que aparece ya escrito cuando alguien pulsa un botón de
+              WhatsApp. Que la persona no tenga que pensar qué escribir sube
+              muchísimo las respuestas. Las landings de cada servicio tienen su
+              propio mensaje; este es el general.
+
+          - label: Correo electrónico
+            name: correo
+            widget: string
+
+          - label: Ciudad
+            name: ciudad
+            widget: string
+            hint: Sale en el menú, en la portada y en los datos de negocio local.
+
+          - label: Estado o abreviatura
+            name: estado
+            widget: string
+            hint: 'Ej: CDMX'
+
+          - label: Instagram
+            name: instagram
+            widget: string
+            required: false
+            hint: URL completa. Si lo dejas vacío, el icono no aparece.
+
+          - label: Facebook
+            name: facebook
+            widget: string
+            required: false
+
+          - label: LinkedIn
+            name: linkedin
+            widget: string
+            required: false
+
+          - label: Behance
+            name: behance
+            widget: string
+            required: false
+
+      # ---------------------------------------------------------------
+      - name: inicio
+        label: Página de inicio
+        file: content/ajustes/inicio.json
+        description: >-
+          Los textos de la portada. Los proyectos que se muestran no están
+          aquí: se marcan con la casilla "Mostrar en la portada" de cada
+          proyecto.
+        fields:
+          - label: Titular principal
+            name: heroTitulo
+            widget: text
+            hint: >-
+              El texto grande de la primera pantalla. Es el titular más
+              importante del sitio para Google, así que conviene que lleve
+              "diseño web" o "SEO". Cada salto de línea que pongas se respeta
+              en computadora; en celular el texto fluye solo.
+
+          - label: Texto del botón principal
+            name: heroBoton
+            widget: string
+
+          - label: Título de la sección "conoce Mika"
+            name: nosotrosTitulo
+            widget: text
+            hint: Los saltos de línea funcionan igual que en el titular.
+
+          - label: Texto de la sección "conoce Mika"
+            name: nosotrosTexto
+            widget: text
+
+          - label: Texto del botón de esa sección
+            name: nosotrosBoton
+            widget: string
+
+          - label: Cifras
+            name: estadisticas
+            label_singular: Cifra
+            widget: list
+            collapsed: false
+            summary: '{{fields.valor}} — {{fields.etiqueta}}'
+            hint: >-
+              Salen en la portada y en la página Nosotros. Actualízalas de vez
+              en cuando: son de lo poco del sitio que envejece solo.
+            fields:
+              - { label: Cifra, name: valor, widget: string, hint: 'Ej: 30+' }
+              - { label: Qué mide, name: etiqueta, widget: string }
+
+      # ---------------------------------------------------------------
+      - name: nosotros
+        label: Página Nosotros
+        file: content/ajustes/nosotros.json
+        description: >-
+          Los textos de /nosotros/. Los perfiles del equipo se editan aparte,
+          en la sección "Equipo".
+        fields:
+          - label: Titular de la página
+            name: heroTitulo
+            widget: string
+
+          - label: Texto de entrada
+            name: heroIntro
+            widget: text
+
+          - label: Título de la historia
+            name: historiaTitulo
+            widget: string
+
+          - label: Párrafos de la historia
+            name: historiaParrafos
+            label_singular: Párrafo
+            widget: list
+            field: { label: Párrafo, name: parrafo, widget: text }
+            hint: Cada elemento es un párrafo. Puedes añadir o quitar los que quieras.
+
+          - label: Título de la sección de valores
+            name: valoresTitulo
+            widget: string
+            hint: >-
+              Si cambias el número de valores de abajo, cambia también este
+              título — hoy dice "cuatro".
+
+          - label: Valores
+            name: valores
+            label_singular: Valor
+            widget: list
+            collapsed: false
+            summary: '{{fields.titulo}}'
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Texto, name: texto, widget: text }
+
+          - label: Título de la sección del equipo
+            name: equipoTitulo
+            widget: string

@@ -1,9 +1,13 @@
+import { CONTACTO, INICIO } from '@/lib/ajustes';
+
 /**
  * Fuente única de verdad del sitio.
  *
- * Todo lo que cambia con frecuencia (teléfono, precios, proyectos, textos de
- * servicios) vive aquí para no tener que tocar los componentes. Si mañana
- * cambias el WhatsApp o subes precios, este es el único archivo que editas.
+ * Los datos de contacto y las redes ya no se escriben aquí: se editan en el
+ * panel, en "Ajustes del sitio → Contacto y redes", y entran por [CONTACTO].
+ * Lo que queda en este archivo es lo que no tiene sentido cambiar desde una
+ * interfaz —el dominio canónico, el idioma, el ID de Analytics— porque
+ * tocarlo mal rompe el SEO o la medición.
  */
 
 export const SITE = {
@@ -23,21 +27,22 @@ export const SITE = {
   locale: 'es_MX',
   lang: 'es',
   founded: '2020',
-  email: 'contacto@mikadigitalagency.com',
-  phone: '+52 55 7495 7155',
+  /* Editables en el panel: Ajustes del sitio → Contacto y redes. */
+  email: CONTACTO.correo,
+  phone: CONTACTO.telefono,
   /** Formato E.164 sin signos, para los enlaces wa.me y tel: */
-  phoneRaw: '525574957155',
+  phoneRaw: CONTACTO.whatsapp,
   address: {
-    city: 'Ciudad de México',
-    region: 'CDMX',
+    city: CONTACTO.ciudad,
+    region: CONTACTO.estado,
     country: 'MX',
     countryName: 'México',
   },
   social: {
-    instagram: 'https://www.instagram.com/mika_digitalagency/',
-    facebook: 'https://www.facebook.com/mikadigitalagency',
-    linkedin: 'https://www.linkedin.com/company/mika-digital-agency',
-    behance: 'https://www.behance.net/mikadigitalagency',
+    instagram: CONTACTO.instagram,
+    facebook: CONTACTO.facebook,
+    linkedin: CONTACTO.linkedin,
+    behance: CONTACTO.behance,
   },
   /** Zona horaria del reloj en vivo del navbar. */
   timezone: 'America/Mexico_City',
@@ -62,9 +67,8 @@ export const SITE = {
  * no tiene que pensar qué escribir.
  */
 export function waLink(message?: string): string {
-  const text =
-    message ??
-    'Hola Mika, vengo de su sitio web y me gustaría cotizar un proyecto.';
+  // El mensaje por defecto también se edita en el panel.
+  const text = message ?? CONTACTO.mensajeWhatsApp;
   return `https://wa.me/${SITE.phoneRaw}?text=${encodeURIComponent(text)}`;
 }
 
@@ -614,12 +618,13 @@ export const SECONDARY_SERVICES = [
 /* Métricas                                                            */
 /* ------------------------------------------------------------------ */
 
-export const STATS = [
-  { value: '30+', label: 'Proyectos entregados' },
-  { value: '300+', label: 'Diseños creados' },
-  { value: '20+', label: 'Sitios web en línea' },
-  { value: '15+', label: 'Años de experiencia combinada' },
-] as const;
+/**
+ * Las cifras de la portada. Se editan en el panel, en Ajustes del sitio →
+ * Página de inicio, porque envejecen: los proyectos entregados suben.
+ */
+export const STATS: { value: string; label: string }[] = INICIO.estadisticas.map(
+  (dato) => ({ value: dato.valor, label: dato.etiqueta }),
+);
 
 /* ------------------------------------------------------------------ */
 /* Equipo                                                              */

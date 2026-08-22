@@ -1,4 +1,5 @@
 import { SITE } from '@/lib/site';
+import { IMAGENES, INICIO, lineas } from '@/lib/ajustes';
 import { SectionBadge } from '@/components/ui/SectionBadge';
 import { TextRollButton } from '@/components/ui/TextRollButton';
 import { Thumb } from '@/components/ui/Thumb';
@@ -11,8 +12,7 @@ import { Thumb } from '@/components/ui/Thumb';
  * de diseño. En móvil todo se apila.
  */
 export function About({ number = '1' }: { number?: string }) {
-  const paragraph =
-    'Somos un equipo pequeño de Ciudad de México que trabaja con investigación, criterio y muchas iteraciones. Diseñamos y programamos sitios que se ven bien, cargan rápido y —sobre todo— traen clientes.';
+  const paragraph = INICIO.nosotrosTexto;
 
   return (
     <section className="overflow-hidden bg-white pb-12 pt-16 sm:pb-16 sm:pt-20 lg:pb-24 lg:pt-32">
@@ -24,10 +24,17 @@ export function About({ number = '1' }: { number?: string }) {
         />
 
         <h2 className="h-section mb-12 px-5 text-gray-900 sm:mb-16 sm:px-8 lg:mb-28 lg:px-12">
-          Creatividad con estrategia detrás,
-          <br className="hidden sm:block" />
-          <span className="sm:hidden"> </span>
-          resultados que se pueden medir.
+          {lineas(INICIO.nosotrosTitulo).map((linea, i) => (
+            <span key={linea}>
+              {i > 0 && (
+                <>
+                  <br className="hidden sm:block" />
+                  <span className="sm:hidden"> </span>
+                </>
+              )}
+              {linea}
+            </span>
+          ))}
         </h2>
 
         {/* Móvil y tablet: apilado */}
@@ -37,15 +44,15 @@ export function About({ number = '1' }: { number?: string }) {
           </p>
 
           <TextRollButton href="/nosotros/" variant="brand" className="mt-8">
-            Conoce al equipo
+            {INICIO.nosotrosBoton}
           </TextRollButton>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:gap-5">
             <div className="overflow-hidden rounded-xl bg-gray-100 sm:w-[45%] sm:rounded-2xl">
               <div className="aspect-[438/346]">
                 <Thumb
-                  src="/images/about/estudio-1.webp"
-                  alt="Equipo de Mika Digital Agency trabajando en el diseño de un sitio web."
+                  src={IMAGENES.estudio1}
+                  alt={IMAGENES.estudio1Alt}
                   label="Nuestro estudio"
                 />
               </div>
@@ -53,8 +60,8 @@ export function About({ number = '1' }: { number?: string }) {
             <div className="overflow-hidden rounded-xl bg-gray-100 sm:w-[55%] sm:rounded-2xl">
               <div className="aspect-[900/600]">
                 <Thumb
-                  src="/images/about/estudio-2.webp"
-                  alt="Proceso de diseño y desarrollo web en Mika Digital Agency."
+                  src={IMAGENES.estudio2}
+                  alt={IMAGENES.estudio2Alt}
                   label="Nuestro proceso"
                 />
               </div>
@@ -67,8 +74,8 @@ export function About({ number = '1' }: { number?: string }) {
           <div className="self-end overflow-hidden rounded-2xl bg-gray-100">
             <div className="aspect-[438/346]">
               <Thumb
-                src="/images/about/estudio-1.webp"
-                alt="Equipo de Mika Digital Agency trabajando en el diseño de un sitio web."
+                src={IMAGENES.estudio1}
+                alt={IMAGENES.estudio1Alt}
                 label="Nuestro estudio"
               />
             </div>
@@ -80,7 +87,7 @@ export function About({ number = '1' }: { number?: string }) {
                 {paragraph}
               </p>
               <TextRollButton href="/nosotros/" variant="brand" className="mt-8">
-                Conoce al equipo
+                {INICIO.nosotrosBoton}
               </TextRollButton>
             </div>
           </div>
@@ -88,8 +95,8 @@ export function About({ number = '1' }: { number?: string }) {
           <div className="self-end overflow-hidden rounded-2xl bg-gray-100">
             <div className="aspect-[3/2]">
               <Thumb
-                src="/images/about/estudio-2.webp"
-                alt="Proceso de diseño y desarrollo web en Mika Digital Agency."
+                src={IMAGENES.estudio2}
+                alt={IMAGENES.estudio2Alt}
                 label="Nuestro proceso"
               />
             </div>

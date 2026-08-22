@@ -1,0 +1,25 @@
+{
+  "heroTitulo": "Agencia de diseño web y SEO\npara marcas que quieren\ndejar de pasar desapercibidas.",
+  "heroBoton": "Iniciar un proyecto",
+  "nosotrosTitulo": "Creatividad con estrategia detrás,\nresultados que se pueden medir.",
+  "nosotrosTexto": "Somos un equipo pequeño de Ciudad de México que trabaja con investigación, criterio y muchas iteraciones. Diseñamos y programamos sitios que se ven bien, cargan rápido y —sobre todo— traen clientes.",
+  "nosotrosBoton": "Conoce al equipo",
+  "estadisticas": [
+    {
+      "valor": "30+",
+      "etiqueta": "Proyectos entregados"
+    },
+    {
+      "valor": "300+",
+      "etiqueta": "Diseños creados"
+    },
+    {
+      "valor": "20+",
+      "etiqueta": "Sitios web en línea"
+    },
+    {
+      "valor": "15+",
+      "etiqueta": "Años de experiencia combinada"
+    }
+  ]
+}

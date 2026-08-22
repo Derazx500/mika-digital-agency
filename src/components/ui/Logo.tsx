@@ -1,21 +1,22 @@
 import { clsx } from '@/lib/clsx';
+import { IMAGENES } from '@/lib/ajustes';
 
 /**
  * Logotipo de Mika.
  *
- * Hoy usa `public/logo/mika-logo.png` (356 × 78 px), recuperado del sitio
- * anterior. A 32 px de alto da una densidad de 2.4x, así que se ve nítido
- * incluso en pantallas retina.
+ * Se cambia desde el panel, en Ajustes del sitio → Imágenes, y desde ahí se
+ * actualiza en los tres sitios donde aparece: navbar, menú móvil y pie.
  *
- * PARA MEJORARLO: deja tu logo vectorial en `public/logo/mika-logo.svg` y
- * cambia la constante SRC de abajo. Un SVG es nítido a cualquier tamaño y
- * pesa menos. Es el único cambio necesario: el logo se usa en el navbar, el
- * menú móvil y el pie de página desde este mismo componente.
+ * Junto al archivo se piden sus medidas, y no es un capricho: la altura la
+ * fija el diseño y el ancho se calcula con esa proporción. Si las medidas no
+ * corresponden al archivo, el logo sale estirado o aplastado. Un SVG es la
+ * mejor opción —nítido a cualquier tamaño y más ligero—, y también lleva
+ * medidas propias.
  */
-const SRC = '/logo/mika-logo.png';
+const SRC = IMAGENES.logo;
 
 /** Proporción real del archivo, para reservar el espacio y evitar saltos. */
-const RATIO = 356 / 78;
+const RATIO = IMAGENES.logoAncho / IMAGENES.logoAlto;
 
 export function Logo({
   className,
@@ -33,8 +34,8 @@ export function Logo({
     <img
       src={SRC}
       alt="Mika Digital Agency"
-      width={356}
-      height={78}
+      width={IMAGENES.logoAncho}
+      height={IMAGENES.logoAlto}
       // La altura la fija quien lo usa (className); el ancho se calcula solo.
       className={clsx('w-auto', className)}
       style={{ aspectRatio: RATIO }}

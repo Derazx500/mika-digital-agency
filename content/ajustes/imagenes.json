@@ -1,0 +1,10 @@
+{
+  "logo": "/logo/mika-logo.png",
+  "logoAncho": 356,
+  "logoAlto": 78,
+  "compartir": "/og/og-default.jpg",
+  "estudio1": "/images/about/estudio-1.webp",
+  "estudio1Alt": "Equipo de Mika Digital Agency trabajando en el diseño de un sitio web.",
+  "estudio2": "/images/about/estudio-2.webp",
+  "estudio2Alt": "Proceso de diseño y desarrollo web en Mika Digital Agency."
+}

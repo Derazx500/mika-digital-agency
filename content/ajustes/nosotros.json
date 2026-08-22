@@ -1,0 +1,30 @@
+{
+  "heroTitulo": "Una agencia pequeña, con la que de verdad puedes hablar",
+  "heroIntro": "Mika nació en 2020 en Ciudad de México. Desde entonces hemos entregado más de 30 proyectos para clientes en México, Estados Unidos y Canadá.",
+  "historiaTitulo": "Más que una agencia: tus aliados",
+  "historiaParrafos": [
+    "Empezamos en 2020 siendo dos: un diseñador y un programador que estaban cansados de ver proyectos buenos arruinados por procesos malos. Esa sigue siendo la idea.",
+    "Trabajamos con marcas que están creciendo y necesitan que su presencia digital deje de ser un pendiente. No hacemos sitios bonitos que nadie visita: hacemos sitios que la gente encuentra en Google, entiende en cinco segundos y desde los que te escribe.",
+    "Somos pequeños a propósito. Eso significa que tomamos menos proyectos, pero cada uno lo hace gente con nombre y apellido que conoces desde la primera llamada."
+  ],
+  "valoresTitulo": "Cuatro reglas que no negociamos",
+  "valores": [
+    {
+      "titulo": "Hablas con quien hace el trabajo",
+      "texto": "No hay ejecutivo de cuenta ni teléfono descompuesto. Tratas directo con quien diseña y programa tu proyecto."
+    },
+    {
+      "titulo": "Precio cerrado y por escrito",
+      "texto": "Cotizamos el alcance completo antes de empezar. Si algo cambia, lo hablamos antes; nunca aparece en la factura final."
+    },
+    {
+      "titulo": "Todo queda a tu nombre",
+      "texto": "Dominio, hosting y archivos originales son tuyos. Firmamos cesión de derechos. Nadie se queda con tu marca de rehén."
+    },
+    {
+      "titulo": "Diseño con una razón detrás",
+      "texto": "Cada decisión visual responde a un objetivo de negocio. Si no podemos explicar por qué algo está ahí, lo quitamos."
+    }
+  ],
+  "equipoTitulo": "Quién va a trabajar en tu proyecto"
+}
