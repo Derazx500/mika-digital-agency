@@ -1,25 +1,26 @@
 ---
-name: "Juan Dom"
-role: "Desarrollador Web"
-photo: "/images/team/juan-dom.webp"
-shortBio: "Programación front-end y back-end, rendimiento y SEO técnico. Se encarga de que lo diseñado funcione rápido y posicione."
+name: Juan Dom
+role: Desarrollador Web
+photo: /images/uploads/juan-alberto-dominguez-guerrero-programador.webp
+shortBio: Programación front-end y back-end, rendimiento y SEO técnico. Se
+  encarga de que lo diseñado funcione rápido y posicione.
 specialties:
-  - "Desarrollo web"
-  - "Tiendas en línea"
-  - "SEO técnico"
-  - "Rendimiento y Core Web Vitals"
-  - "Integraciones y APIs"
+  - Desarrollo web
+  - Tiendas en línea
+  - SEO técnico
+  - Rendimiento y Core Web Vitals
+  - Integraciones y APIs
 socials:
-  - red: "linkedin"
-    url: "https://www.linkedin.com/company/mika-digital-agency"
-  - red: "instagram"
-    url: "https://www.instagram.com/mika_digitalagency/"
+  - red: linkedin
+    url: https://www.linkedin.com/company/mika-digital-agency
+  - red: instagram
+    url: https://www.instagram.com/mika_digitalagency/
 certifications: []
 proyectos:
-  - "cia-escenicas-lurvik"
-  - "cobi-education"
-  - "corporativo-fumix"
-  - "essenzuoils"
+  - cia-escenicas-lurvik
+  - cobi-education
+  - corporativo-fumix
+  - essenzuoils
 order: 2
 ---
 
