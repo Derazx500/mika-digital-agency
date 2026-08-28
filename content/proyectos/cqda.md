@@ -11,8 +11,8 @@ tags:
   - "Branding"
 image: "/images/portafolio/cqda.webp"
 aspect: "wide"
-featured: true
-order: 6
+featured: false
+order: 10
 resena: "El equipo de diseño web hizo un trabajo increíble con mi página. Capturaron la esencia de mi negocio y crearon un sitio visualmente impactante y fácil de usar. ¡Gracias por su profesionalismo y dedicación!"
 resenaAutor: "Irving Espinoza"
 resenaPuesto: "Director, CQDA"

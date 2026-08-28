@@ -12,7 +12,7 @@ tags:
 image: "/images/portafolio/miekki.webp"
 aspect: "wide"
 featured: false
-order: 12
+order: 16
 ---
 
 ## El reto

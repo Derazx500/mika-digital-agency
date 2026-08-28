@@ -12,7 +12,7 @@ tags:
 image: "/images/portafolio/arauz.webp"
 aspect: "wide"
 featured: false
-order: 10
+order: 14
 ---
 
 ## El reto

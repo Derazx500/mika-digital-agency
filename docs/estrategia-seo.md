@@ -113,7 +113,7 @@ En orden de impacto:
 
 1. **Enviar las 10 landings a indexar.** Search Console → Inspección de URLs → *Solicitar indexación*, una por una. Acelera semanas el primer rastreo.
 2. **Validar volúmenes** en Keyword Planner y reordenar prioridades con datos reales.
-3. **Escribir los casos de estudio.** Nueve de las doce fichas de portafolio siguen con texto de relleno; las tres de 2026 ya están redactadas. Google premia el contenido único y los clientes deciden leyendo resultados concretos.
+3. **Escribir los casos de estudio.** 8 de las 16 fichas de portafolio ya están redactadas; las otras 8 siguen con texto de relleno. Google premia el contenido único y los clientes deciden leyendo resultados concretos.
 4. **Subir las imágenes del portafolio.** Es lo que más resta hoy en la página que usas para vender.
 5. **Google Business Profile al 100% y pedir reseñas.** Para las búsquedas locales —*agencia de diseño web CDMX*— pesa más que cualquier cosa del sitio.
 6. **Subir las portadas de los artículos nuevos.** Los nueve publicados en agosto apuntan a un archivo en `/public/images/blog/` que todavía no existe; mientras tanto se muestra un degradado con el título. La lista de nombres exactos está en el README.

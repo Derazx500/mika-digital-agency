@@ -12,8 +12,8 @@ tags:
   - "Branding"
 image: "/images/portafolio/cobi-education.webp"
 aspect: "square"
-featured: true
-order: 5
+featured: false
+order: 8
 resena: "¡Mi página web es increíble! El equipo de diseño web capturó exactamente lo que quería. Estoy impresionado por su creatividad y profesionalismo. ¡Gracias por hacer realidad mi visión en línea!"
 resenaAutor: "Oscar Ortega"
 resenaPuesto: "Director, Cobi Education"
