@@ -11,8 +11,8 @@ tags:
   - "SEO local"
 image: "/images/portafolio/corporativo-fumix.webp"
 aspect: "square"
-featured: true
-order: 4
+featured: false
+order: 7
 ---
 
 ## El reto

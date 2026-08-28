@@ -12,7 +12,7 @@ tags:
 image: "/images/portafolio/maitreya.webp"
 aspect: "square"
 featured: false
-order: 6
+order: 9
 ---
 
 ## El reto

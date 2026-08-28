@@ -161,7 +161,12 @@ En `public/images/portafolio/`, o súbelas desde el panel al editar cada proyect
 | Apaisada | 1320 × 990 px |
 | Cuadrada | 1200 × 1200 px |
 
-Nombres esperados: `cia-escenicas-lurvik`, `cobi-education`, `cqda`, `corporativo-fumix`, `essenzuoils`, `maitreya`, `arauz`, `be74`, `miekki` (`.webp`).
+Nombres esperados (`.webp`):
+
+- **En la portada, súbelas primero:** `pop-arte`, `revista-ruido`, `galeria-sol-de-media-noche`, `cia-escenicas-lurvik`, `cobi-education`, `cqda`
+- **Resto:** `corporativo-fumix`, `essenzuoils`, `maitreya`, `arauz`, `be74`, `miekki`
+
+También puedes subirlas desde el panel al editar cada proyecto, con el nombre que quieras.
 
 ### 4. Fotos del estudio y del equipo — ⬜ pendientes
 
@@ -217,7 +222,7 @@ Van juntos a propósito: el precio de un paquete aparece también en la landing 
 
 - **Precios** ([`src/lib/pricing.ts`](src/lib/pricing.ts)): las cifras son una referencia de mercado, no tus costos reales.
 - **Testimonios** ([`src/lib/projects.ts`](src/lib/projects.ts)): los recuperé de tu sitio anterior. Solo el primero decía explícitamente de quién era; los otros tres los asocié por el orden en que aparecían. **Verifica que cada frase sea de la persona correcta.**
-- **Casos de estudio**: los nueve proyectos tienen el texto marcado como `PENDIENTE`. Escribirlos desde el panel es lo que más va a convertir.
+- **Casos de estudio**: los tres proyectos de 2026 (Pop & Arte, Revista Ruido y Galería Sol de Media Noche) ya están escritos. Los otros nueve siguen con el texto marcado como `PENDIENTE`. Escribirlos desde el panel es lo que más va a convertir.
 - **Aviso de privacidad**: revísalo con tu contador y completa el domicilio fiscal.
 - **Redes sociales** ([`src/lib/site.ts`](src/lib/site.ts)): las URLs de LinkedIn y Behance son supuestas. Corrígelas o bórralas.
 
