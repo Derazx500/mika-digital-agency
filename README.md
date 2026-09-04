@@ -199,6 +199,27 @@ Todos en `.webp`. Los nombres y sus textos alternativos están en `landing.galer
 
 ---
 
+## Tarjetas de presentación digitales
+
+Cada persona del equipo tiene la suya en `mikadigitalagency.com/tarjeta/<slug>/`:
+
+- `/tarjeta/deraz/`
+- `/tarjeta/juan-dom/`
+
+Se generan solas desde el perfil del equipo. Si das de alta a alguien en el panel, su tarjeta existe en cuanto se publica el cambio.
+
+**Qué trae cada una:** botón de WhatsApp con mensaje ya escrito, llamar, correo, redes, *Guardar contacto* y *Compartir*. El fondo animado de la portada va detrás de la foto.
+
+**Guardar contacto** entrega un archivo `.vcf` en `/tarjeta/<slug>/vcard/`. Al abrirlo, la agenda del teléfono ofrece guardar la ficha con nombre, puesto, teléfono, correo, redes y ciudad ya rellenos.
+
+**El teléfono y el correo de cada persona** se ponen en *Equipo → WhatsApp propio / Correo propio*. Si se dejan vacíos, la tarjeta usa los de la agencia.
+
+Estas páginas están **fuera del índice de Google** a propósito: el perfil completo en `/equipo/<slug>/` es el que debe posicionar por el nombre de la persona, y dos páginas compitiendo por la misma búsqueda se restan entre sí. A una tarjeta se llega por su QR o por su enlace, nunca buscándola.
+
+> **Para los QR:** genera uno por tarjeta apuntando a su URL y no lo cambies. El enlace es estable — si mañana cambias tu foto, tu bio o tu número, el mismo QR sigue funcionando y muestra los datos nuevos.
+
+---
+
 ## Qué se puede editar desde el panel
 
 En `mikadigitalagency.com/admin`:
@@ -208,7 +229,7 @@ En `mikadigitalagency.com/admin`:
 | Artículos del blog | Los 12 artículos, con sus preguntas frecuentes |
 | Proyectos del portafolio | Fichas, imágenes, filtros y reseña del cliente |
 | Testimonios | Los que salen en la portada y en Nosotros |
-| Equipo | Perfiles, biografías, certificaciones y redes |
+| Equipo | Perfiles, biografías, certificaciones, redes y el contacto de su tarjeta digital |
 | **Ajustes del sitio** | Logotipo, imagen al compartir, fotos del estudio, teléfono, WhatsApp, correo, redes, textos de la portada, cifras y textos de Nosotros |
 
 **Todavía se editan en código**, en [`src/lib/pricing.ts`](src/lib/pricing.ts) y [`src/lib/services.ts`](src/lib/services.ts):

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { Award, ExternalLink, FileText } from 'lucide-react';
+import { Award, ExternalLink, FileText, IdCard } from 'lucide-react';
 
 import { getMiembro, getMiembros } from '@/lib/team';
 import { getAllProjects } from '@/lib/projects';
@@ -112,6 +112,20 @@ export default async function PerfilPage({ params }: Props) {
                   Escribir por WhatsApp
                 </TextRollButton>
               </div>
+
+              {/*
+                La tarjeta digital es el enlace corto que se comparte en una
+                feria o por mensaje. Aquí va discreto: quien está leyendo el
+                perfil completo ya no la necesita — es para cuando la persona
+                quiere copiar su propio enlace y mandarlo.
+              */}
+              <Link
+                href={`/tarjeta/${miembro.slug}/`}
+                className="mt-4 inline-flex items-center gap-1.5 text-[14px] text-gray-500 underline-offset-4 transition-colors duration-300 hover:text-brand-500 hover:underline"
+              >
+                <IdCard size={16} aria-hidden="true" />
+                Ver tarjeta digital
+              </Link>
             </div>
 
             {/* Columna derecha */}

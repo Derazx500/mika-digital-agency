@@ -6,6 +6,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { SoloEnElSitio } from '@/components/layout/SoloEnElSitio';
 import { WhatsAppFab } from '@/components/ui/WhatsAppFab';
 import { WhatsAppTracking } from '@/components/analytics/WhatsAppTracking';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -83,10 +84,17 @@ export default function RootLayout({
           Saltar al contenido
         </a>
 
-        <Navbar />
+        {/* Las tarjetas digitales se presentan solas: ver SoloEnElSitio. */}
+        <SoloEnElSitio>
+          <Navbar />
+        </SoloEnElSitio>
+
         <main id="contenido">{children}</main>
-        <Footer />
-        <WhatsAppFab />
+
+        <SoloEnElSitio>
+          <Footer />
+          <WhatsAppFab />
+        </SoloEnElSitio>
 
         {/* Schema de organización: se declara una vez y vale para todo el sitio. */}
         <JsonLd data={organizationSchema()} />

@@ -1,4 +1,5 @@
 import { readCollection, type RawDoc } from '@/lib/content';
+import { CONTACTO } from '@/lib/ajustes';
 
 /**
  * Perfiles del equipo.
@@ -31,6 +32,13 @@ type MiembroFrontmatter = {
   photo: string;
   /** Frase corta para la tarjeta de /nosotros. */
   shortBio: string;
+  /**
+   * WhatsApp propio, solo números y con clave de país. Si se deja vacío, la
+   * tarjeta digital usa el de la agencia.
+   */
+  whatsapp?: string;
+  /** Correo propio. Vacío = el de la agencia. */
+  email?: string;
   /** Qué hace. Se muestran como etiquetas. */
   specialties?: string[];
   socials?: Enlace[];
@@ -48,6 +56,9 @@ export type Miembro = {
   role: string;
   photo: string;
   shortBio: string;
+  /** Ya resuelto: el propio si lo tiene, el de la agencia si no. */
+  whatsapp: string;
+  email: string;
   specialties: string[];
   socials: Enlace[];
   certifications: Certificacion[];
@@ -65,6 +76,10 @@ function aMiembro(doc: RawDoc<MiembroFrontmatter>): Miembro {
     role: data.role,
     photo: data.photo,
     shortBio: data.shortBio,
+    // El contacto personal es opcional: quien no lo ponga aparece con el de
+    // la agencia, que siempre es mejor que un botón que no lleva a nadie.
+    whatsapp: data.whatsapp?.trim() || CONTACTO.whatsapp,
+    email: data.email?.trim() || CONTACTO.correo,
     specialties: data.specialties ?? [],
     // El panel crea la fila en cuanto pulsas "añadir", así que se descartan
     // las que quedaron a medio llenar.

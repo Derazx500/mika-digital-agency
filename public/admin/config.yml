@@ -457,6 +457,23 @@ collections:
           Una o dos líneas. Se ve en la tarjeta de /nosotros y arriba del
           perfil. Di qué haces y qué aportas, no adjetivos.
 
+      - label: WhatsApp propio (solo números)
+        name: whatsapp
+        widget: string
+        required: false
+        pattern: ['^$|^[0-9]{10,15}$', 'Solo números, sin signos ni espacios.']
+        hint: >-
+          Para la tarjeta digital. Con clave de país y sin signos: para México,
+          52 y los diez dígitos. Si lo dejas vacío, la tarjeta usa el WhatsApp
+          de la agencia.
+
+      - label: Correo propio
+        name: email
+        widget: string
+        required: false
+        hint: >-
+          También para la tarjeta digital. Vacío = el correo de la agencia.
+
       - label: Especialidades
         name: specialties
         widget: list
