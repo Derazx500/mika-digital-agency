@@ -8,6 +8,112 @@
     --brand-dark: #0053c9;
     --ink: #0a0a0a;
     --muted: #6b7280;
+
+    /* Tema claro. Los nombres están explicados en tailwind.config.ts. */
+    --superficie: #ffffff;
+    --superficie-alt: #f5f5f5;
+    --superficie-sutil: #f3f4f6;
+    --superficie-panel: #0a0a0a;
+    --superficie-panel-hover: #171717;
+    --texto: #111827;
+    --texto-suave: #4b5563;
+    --texto-tenue: #6b7280;
+    --borde: #e5e7eb;
+    --borde-fuerte: #d1d5db;
+
+    --acento: #eaf2ff;
+    --acento-borde: #abcaff;
+    --acento-texto: #0053c9;
+    --aviso: #fffbeb;
+    --aviso-borde: #fde68a;
+    --aviso-texto: #d97706;
+
+    /* Fondo del hero y de las tarjetas digitales. */
+    --lienzo: #efefef;
+
+    /* Degradado que sustituye al shader cuando no hay WebGL. */
+    --respaldo-shader: radial-gradient(
+        120% 90% at 15% 20%,
+        rgba(1, 103, 243, 0.16) 0%,
+        rgba(1, 103, 243, 0) 55%
+      ),
+      radial-gradient(
+        100% 80% at 85% 75%,
+        rgba(1, 103, 243, 0.12) 0%,
+        rgba(255, 255, 255, 0) 60%
+      ),
+      linear-gradient(160deg, #ffffff 0%, #eef3fb 55%, #e6ecf6 100%);
+
+    /* Cristal líquido: cambia de blanco translúcido a negro translúcido. */
+    --cristal-a: rgba(255, 255, 255, 0.82);
+    --cristal-b: rgba(255, 255, 255, 0.62);
+    --cristal-c: rgba(255, 255, 255, 0.74);
+    --cristal-solido: rgba(255, 255, 255, 0.94);
+    --cristal-brillo: rgba(255, 255, 255, 0.95);
+    --cristal-brillo-tenue: rgba(255, 255, 255, 0.4);
+    --cristal-sombra: rgba(10, 10, 10, 0.08);
+  }
+
+  /*
+   * Tema oscuro.
+   *
+   * No es el claro con los colores invertidos. Dos decisiones deliberadas:
+   *
+   * 1. El fondo base no es negro puro sino un gris muy oscuro con una pizca
+   *    de azul. El negro absoluto contra texto blanco produce un contraste
+   *    que cansa la vista y hace "vibrar" los bordes del texto.
+   *
+   * 2. Los paneles (`superficie-panel`) son más CLAROS que el fondo, al revés
+   *    que en el tema claro. En claro, un panel oscuro destaca por ser más
+   *    oscuro; en oscuro, esa misma lógica lo volvería invisible. Lo que se
+   *    conserva no es el color, es que el panel se separe del fondo — y de
+   *    paso la red de nodos sigue teniendo dónde verse.
+   */
+  .dark {
+    --superficie: #101319;
+    --superficie-alt: #151922;
+    --superficie-sutil: #1c212b;
+    --superficie-panel: #191f29;
+    --superficie-panel-hover: #222a36;
+    --texto: #f1f3f7;
+    --texto-suave: #b4bcc9;
+    --texto-tenue: #868f9e;
+    --borde: #262d39;
+    --borde-fuerte: #333c4a;
+
+    --acento: rgba(1, 103, 243, 0.14);
+    --acento-borde: rgba(1, 103, 243, 0.32);
+    --acento-texto: #7aabff;
+    --aviso: rgba(245, 158, 11, 0.12);
+    --aviso-borde: rgba(245, 158, 11, 0.3);
+    --aviso-texto: #fbbf24;
+
+    --lienzo: #0b0e13;
+
+    /*
+     * El mismo degradado con la base oscura, y el azul algo más presente: en
+     * oscuro un 16% de azul sobre casi negro apenas se distingue, mientras que
+     * sobre blanco ya se notaba.
+     */
+    --respaldo-shader: radial-gradient(
+        120% 90% at 15% 20%,
+        rgba(1, 103, 243, 0.26) 0%,
+        rgba(1, 103, 243, 0) 55%
+      ),
+      radial-gradient(
+        100% 80% at 85% 75%,
+        rgba(1, 103, 243, 0.18) 0%,
+        rgba(11, 14, 19, 0) 60%
+      ),
+      linear-gradient(160deg, #0b0e13 0%, #111826 55%, #0d1219 100%);
+
+    --cristal-a: rgba(30, 37, 48, 0.82);
+    --cristal-b: rgba(22, 27, 36, 0.66);
+    --cristal-c: rgba(30, 37, 48, 0.74);
+    --cristal-solido: rgba(16, 19, 25, 0.94);
+    --cristal-brillo: rgba(255, 255, 255, 0.14);
+    --cristal-brillo-tenue: rgba(255, 255, 255, 0.05);
+    --cristal-sombra: rgba(0, 0, 0, 0.5);
   }
 
   html {
@@ -17,8 +123,17 @@
   }
 
   body {
-    @apply bg-white text-ink antialiased;
+    @apply bg-superficie text-texto antialiased;
     text-rendering: optimizeLegibility;
+    /*
+     * La transición va en el body y no en `*`. Animar el color de cada
+     * elemento del sitio a la vez pide un repintado completo y el cambio se
+     * siente pesado; con el fondo y el texto del body basta para que la
+     * transición se lea como suave.
+     */
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 
   /* Foco visible y consistente: requisito de accesibilidad y lo revisa Lighthouse. */
@@ -100,6 +215,11 @@
     overflow: hidden;
   }
 
+  /* Respaldo del shader. Se declara aquí para poder cambiarlo por tema. */
+  .bg-respaldo-shader {
+    background: var(--respaldo-shader);
+  }
+
   /*
    * El contenido va por encima de los nodos.
    *
@@ -115,19 +235,25 @@
     position: relative;
     background: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.82) 0%,
-      rgba(255, 255, 255, 0.62) 45%,
-      rgba(255, 255, 255, 0.74) 100%
+      var(--cristal-a) 0%,
+      var(--cristal-b) 45%,
+      var(--cristal-c) 100%
     );
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.95),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.4),
-      0 8px 32px rgba(10, 10, 10, 0.08),
-      0 1px 3px rgba(10, 10, 10, 0.04);
+      inset 0 1px 0 var(--cristal-brillo),
+      inset 0 -1px 0 var(--cristal-brillo-tenue),
+      0 8px 32px var(--cristal-sombra),
+      0 1px 3px var(--cristal-sombra);
   }
 
+  /*
+   * El brillo del canto sigue siendo blanco en oscuro, solo que mucho más
+   * tenue (ver --cristal-brillo). Un cristal oscuro cuyo canto se oscureciera
+   * también dejaría de parecer cristal: lo que define el vidrio es que capta
+   * luz, y la luz es blanca en los dos temas.
+   */
   .liquid-glass::before {
     content: '';
     position: absolute;
@@ -136,10 +262,10 @@
     padding: 1px;
     background: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.95),
-      rgba(255, 255, 255, 0.15) 38%,
-      rgba(255, 255, 255, 0.05) 62%,
-      rgba(255, 255, 255, 0.65)
+      var(--cristal-brillo),
+      var(--cristal-brillo-tenue) 38%,
+      transparent 62%,
+      var(--cristal-brillo)
     );
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
@@ -154,27 +280,28 @@
 
   /*
    * Si el navegador no soporta backdrop-filter, el fondo translúcido dejaría
-   * el texto ilegible sobre el shader. Se cae a blanco casi sólido.
+   * el texto ilegible sobre el shader. Se cae a un color casi sólido, el del
+   * tema que esté activo.
    */
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .liquid-glass {
-      background: rgba(255, 255, 255, 0.94);
+      background: var(--cristal-solido);
     }
   }
 
   /* Variante para superficies grandes, donde conviene desenfocar más. */
   .liquid-glass-strong {
-    background: rgba(255, 255, 255, 0.72);
+    background: var(--cristal-b);
     backdrop-filter: blur(44px) saturate(160%);
     -webkit-backdrop-filter: blur(44px) saturate(160%);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.9),
-      0 12px 40px rgba(10, 10, 10, 0.1);
+      inset 0 1px 0 var(--cristal-brillo),
+      0 12px 40px var(--cristal-sombra);
   }
 
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .liquid-glass-strong {
-      background: rgba(255, 255, 255, 0.96);
+      background: var(--cristal-solido);
     }
   }
 }

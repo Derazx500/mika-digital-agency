@@ -41,10 +41,10 @@ export function ArticleSidebar({
       <div className="sticky top-28 space-y-6">
         {secciones.length > 1 && (
           <nav aria-label="Secciones del artículo">
-            <p className="mb-3 text-[12px] font-semibold uppercase tracking-wider text-gray-400">
+            <p className="mb-3 text-[12px] font-semibold uppercase tracking-wider text-texto-tenue">
               En este artículo
             </p>
-            <ul className="space-y-1 border-l border-gray-200">
+            <ul className="space-y-1 border-l border-borde">
               {secciones.map((seccion) => (
                 <li key={seccion.id}>
                   <a
@@ -52,8 +52,8 @@ export function ArticleSidebar({
                     className={clsx(
                       '-ml-px block border-l-2 py-1.5 pl-4 text-[13px] leading-snug transition-colors duration-200',
                       activa === seccion.id
-                        ? 'border-brand-500 font-medium text-brand-600'
-                        : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900',
+                        ? 'border-brand-500 font-medium text-acento-texto'
+                        : 'border-transparent text-texto-tenue hover:border-borde-fuerte hover:text-texto',
                     )}
                   >
                     {seccion.titulo}
@@ -65,7 +65,7 @@ export function ArticleSidebar({
         )}
 
         {/* Llamado a la acción */}
-        <div className="rounded-2xl bg-ink p-5">
+        <div className="rounded-2xl bg-superficie-panel p-5">
           <p className="text-[16px] font-medium leading-snug tracking-tight text-white">
             ¿Quieres esto para tu marca?
           </p>
@@ -82,7 +82,7 @@ export function ArticleSidebar({
             className="group mt-4 flex items-center justify-between gap-2 rounded-full bg-[#25D366] py-2.5 pl-4 pr-2.5 text-[13px] font-medium text-white transition-transform duration-300 hover:scale-[1.02]"
           >
             Escríbenos por WhatsApp
-            <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/25">
+            <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-superficie/25">
               <MessageCircle size={13} className="fill-white text-white" aria-hidden="true" />
             </span>
           </a>
@@ -90,8 +90,8 @@ export function ArticleSidebar({
 
         {/* Artículos relacionados */}
         {relacionados.length > 0 && (
-          <div className="rounded-2xl border border-gray-200 p-5">
-            <p className="mb-3 text-[12px] font-semibold uppercase tracking-wider text-gray-400">
+          <div className="rounded-2xl border border-borde p-5">
+            <p className="mb-3 text-[12px] font-semibold uppercase tracking-wider text-texto-tenue">
               Sigue leyendo
             </p>
             <ul className="space-y-4">
@@ -101,10 +101,10 @@ export function ArticleSidebar({
                     <span className="text-[12px] text-brand-500">
                       {articulo.category}
                     </span>
-                    <span className="mt-0.5 block text-[14px] font-medium leading-snug text-gray-900 transition-colors duration-200 group-hover:text-brand-500">
+                    <span className="mt-0.5 block text-[14px] font-medium leading-snug text-texto transition-colors duration-200 group-hover:text-brand-500">
                       {articulo.title}
                     </span>
-                    <span className="mt-1 flex items-center gap-1 text-[12px] text-gray-400">
+                    <span className="mt-1 flex items-center gap-1 text-[12px] text-texto-tenue">
                       {articulo.readingTime} min
                       <ArrowRight
                         size={11}

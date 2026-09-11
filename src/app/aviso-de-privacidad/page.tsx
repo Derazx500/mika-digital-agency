@@ -27,21 +27,21 @@ export default function AvisoPage() {
         breadcrumbs={CRUMBS}
       />
 
-      <section className="bg-white pb-16 sm:pb-20 lg:pb-24">
+      <section className="bg-superficie pb-16 sm:pb-20 lg:pb-24">
         <div className="container-mika">
           {/* NOTA: es una base conforme a la LFPDPPP. Antes de publicar,
               revísalo con tu contador o abogado y completa el domicilio
               fiscal completo, que la ley pide de forma explícita. */}
-          <div className="max-w-[46rem] space-y-5 text-[16px] leading-[1.75] text-gray-700">
+          <div className="max-w-[46rem] space-y-5 text-[16px] leading-[1.75] text-texto-suave">
             <p>
-              <strong className="font-semibold text-gray-900">{SITE.name}</strong>,
+              <strong className="font-semibold text-texto">{SITE.name}</strong>,
               con domicilio en {SITE.address.city}, {SITE.address.countryName}, es
               responsable del tratamiento de sus datos personales conforme a la
               Ley Federal de Protección de Datos Personales en Posesión de los
               Particulares.
             </p>
 
-            <h2 className="pt-6 text-[22px] font-medium tracking-tight text-gray-900">
+            <h2 className="pt-6 text-[22px] font-medium tracking-tight text-texto">
               Datos que recabamos
             </h2>
             <p>
@@ -51,7 +51,7 @@ export default function AvisoPage() {
               compartirnos.
             </p>
 
-            <h2 className="pt-6 text-[22px] font-medium tracking-tight text-gray-900">
+            <h2 className="pt-6 text-[22px] font-medium tracking-tight text-texto">
               Para qué los usamos
             </h2>
             <ul className="list-disc space-y-2 pl-5 marker:text-brand-500">
@@ -64,7 +64,7 @@ export default function AvisoPage() {
               </li>
             </ul>
 
-            <h2 className="pt-6 text-[22px] font-medium tracking-tight text-gray-900">
+            <h2 className="pt-6 text-[22px] font-medium tracking-tight text-texto">
               Transferencia de datos
             </h2>
             <p>
@@ -74,7 +74,7 @@ export default function AvisoPage() {
               electrónico), que están obligados a protegerlos.
             </p>
 
-            <h2 className="pt-6 text-[22px] font-medium tracking-tight text-gray-900">
+            <h2 className="pt-6 text-[22px] font-medium tracking-tight text-texto">
               Derechos ARCO
             </h2>
             <p>
@@ -91,7 +91,7 @@ export default function AvisoPage() {
               responderemos en un plazo máximo de 20 días hábiles.
             </p>
 
-            <h2 className="pt-6 text-[22px] font-medium tracking-tight text-gray-900">
+            <h2 className="pt-6 text-[22px] font-medium tracking-tight text-texto">
               Cookies
             </h2>
             <p>
@@ -101,7 +101,7 @@ export default function AvisoPage() {
               afecte el uso del sitio.
             </p>
 
-            <h2 className="pt-6 text-[22px] font-medium tracking-tight text-gray-900">
+            <h2 className="pt-6 text-[22px] font-medium tracking-tight text-texto">
               Cambios a este aviso
             </h2>
             <p>
@@ -109,7 +109,7 @@ export default function AvisoPage() {
               esta misma página. Le recomendamos revisarla periódicamente.
             </p>
 
-            <p className="pt-6 text-[14px] text-gray-500">
+            <p className="pt-6 text-[14px] text-texto-tenue">
               Última actualización: agosto de 2026.
             </p>
           </div>

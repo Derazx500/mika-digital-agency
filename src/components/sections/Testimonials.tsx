@@ -43,7 +43,7 @@ export function Testimonials({
     <section
       className={clsx(
         'py-16 sm:py-20 lg:py-28',
-        tone === 'gray' ? 'bg-[#F5F5F5]' : 'bg-white',
+        tone === 'gray' ? 'bg-superficie-alt' : 'bg-superficie',
       )}
     >
       <div className="container-mika">
@@ -54,7 +54,7 @@ export function Testimonials({
           className="mb-6 sm:mb-8"
         />
 
-        <h2 className="h-section mb-12 max-w-4xl text-gray-900 sm:mb-16">
+        <h2 className="h-section mb-12 max-w-4xl text-texto sm:mb-16">
           {encabezado ?? (
             <>
               No lo decimos nosotros.
@@ -70,8 +70,8 @@ export function Testimonials({
             <Reveal as="li" key={t.slug} delay={i * 80}>
               <figure
                 className={clsx(
-                  'flex h-full flex-col justify-between rounded-2xl border border-gray-200 p-6 sm:p-8',
-                  tone === 'gray' ? 'bg-white' : 'bg-white',
+                  'flex h-full flex-col justify-between rounded-2xl border border-borde p-6 sm:p-8',
+                  tone === 'gray' ? 'bg-superficie' : 'bg-superficie',
                 )}
               >
                 <div>
@@ -86,21 +86,21 @@ export function Testimonials({
                         className={
                           s < t.rating
                             ? 'fill-brand-500 text-brand-500'
-                            : 'text-gray-300'
+                            : 'text-texto-tenue'
                         }
                         aria-hidden="true"
                       />
                     ))}
                   </div>
-                  <blockquote className="text-[15px] leading-[1.6] text-gray-800 sm:text-[16px]">
+                  <blockquote className="text-[15px] leading-[1.6] text-texto sm:text-[16px]">
                     “{t.quote}”
                   </blockquote>
                 </div>
 
-                <figcaption className="mt-6 border-t border-gray-100 pt-5 text-[13px] sm:text-[14px]">
-                  <span className="font-semibold text-gray-900">{t.author}</span>
+                <figcaption className="mt-6 border-t border-borde pt-5 text-[13px] sm:text-[14px]">
+                  <span className="font-semibold text-texto">{t.author}</span>
                   {(t.role || t.company) && (
-                    <span className="block text-gray-500">
+                    <span className="block text-texto-tenue">
                       {[t.role, t.company].filter(Boolean).join(' — ')}
                     </span>
                   )}

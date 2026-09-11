@@ -150,7 +150,7 @@ export default async function ServicePage({ params }: Props) {
             </TextRollButton>
           </PageHero>
 
-          <section className="bg-white pb-12 sm:pb-16">
+          <section className="bg-superficie pb-12 sm:pb-16">
             <div className="container-mika">
               <ServiceVisual slug={service.slug} />
             </div>
@@ -181,17 +181,17 @@ export default async function ServicePage({ params }: Props) {
 
       {/* Paquetes con el precio visible y WhatsApp por paquete. */}
       {landing && planesLanding && (
-        <section id="paquetes" className="scroll-mt-28 bg-white py-16 sm:py-20 lg:py-24">
+        <section id="paquetes" className="scroll-mt-28 bg-superficie py-16 sm:py-20 lg:py-24">
           <div className="container-mika">
             <SectionBadge
               number={num.paquetes}
               label="Paquetes y precios"
               className="mb-6 sm:mb-8"
             />
-            <h2 className="h-section mb-4 max-w-3xl text-gray-900">
+            <h2 className="h-section mb-4 max-w-3xl text-texto">
               Elige el que encaje contigo
             </h2>
-            <p className="mb-10 max-w-2xl text-[15px] leading-[1.65] text-gray-600 sm:mb-14 sm:text-[16px]">
+            <p className="mb-10 max-w-2xl text-[15px] leading-[1.65] text-texto-suave sm:mb-14 sm:text-[16px]">
               Precios de entrada, sin letras chiquitas. La cotización final
               siempre es cerrada y por escrito antes de empezar.
             </p>
@@ -207,7 +207,7 @@ export default async function ServicePage({ params }: Props) {
       )}
 
       {/* Qué incluye */}
-      <section className="bg-[#F5F5F5] py-16 sm:py-20 lg:py-24">
+      <section className="bg-superficie-alt py-16 sm:py-20 lg:py-24">
         <div className="container-mika">
           <SectionBadge
             number={num.incluye}
@@ -216,20 +216,20 @@ export default async function ServicePage({ params }: Props) {
             className="mb-6 sm:mb-8"
           />
 
-          <h2 className="h-section mb-10 max-w-3xl text-gray-900 sm:mb-14">
+          <h2 className="h-section mb-10 max-w-3xl text-texto sm:mb-14">
             Todo lo que recibes al contratar {service.name.toLowerCase()}
           </h2>
 
           <ul className="grid gap-x-8 gap-y-4 sm:grid-cols-2">
             {service.deliverables.map((item, i) => (
               <Reveal as="li" key={item} delay={i * 50}>
-                <div className="flex items-start gap-3 rounded-xl bg-white p-4 sm:p-5">
+                <div className="flex items-start gap-3 rounded-xl bg-superficie p-4 sm:p-5">
                   <Check
                     size={17}
                     className="mt-0.5 shrink-0 text-brand-500"
                     aria-hidden="true"
                   />
-                  <span className="text-[14px] leading-[1.5] text-gray-800 sm:text-[15px]">
+                  <span className="text-[14px] leading-[1.5] text-texto sm:text-[15px]">
                     {item}
                   </span>
                 </div>
@@ -240,7 +240,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* Proceso */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+      <section className="bg-superficie py-16 sm:py-20 lg:py-24">
         <div className="container-mika">
           <SectionBadge
             number={num.proceso}
@@ -248,21 +248,21 @@ export default async function ServicePage({ params }: Props) {
             className="mb-6 sm:mb-8"
           />
 
-          <h2 className="h-section mb-10 max-w-3xl text-gray-900 sm:mb-14">
+          <h2 className="h-section mb-10 max-w-3xl text-texto sm:mb-14">
             Un proceso que ya recorrimos más de 30 veces
           </h2>
 
-          <ol className="border-t border-gray-200">
+          <ol className="border-t border-borde">
             {service.process.map((step, i) => (
               <Reveal as="li" key={step.step} delay={i * 60}>
-                <div className="grid gap-3 border-b border-gray-200 py-6 sm:grid-cols-[64px_minmax(0,20rem)_1fr] sm:gap-8 sm:py-8">
+                <div className="grid gap-3 border-b border-borde py-6 sm:grid-cols-[64px_minmax(0,20rem)_1fr] sm:gap-8 sm:py-8">
                   <span className="text-[13px] font-semibold text-brand-500">
                     {step.step}
                   </span>
-                  <h3 className="text-[18px] font-medium tracking-tight text-gray-900 sm:text-[20px]">
+                  <h3 className="text-[18px] font-medium tracking-tight text-texto sm:text-[20px]">
                     {step.title}
                   </h3>
-                  <p className="max-w-2xl text-[14px] leading-[1.6] text-gray-600 sm:text-[15px]">
+                  <p className="max-w-2xl text-[14px] leading-[1.6] text-texto-suave sm:text-[15px]">
                     {step.body}
                   </p>
                 </div>
@@ -275,7 +275,7 @@ export default async function ServicePage({ params }: Props) {
       {/* Paquetes (solo cuando no hay landing: esa ya trae los suyos arriba,
           con el precio a la vista desde la cabecera). */}
       {!landing && plans.length > 0 && (
-        <section id="paquetes" className="scroll-mt-28 bg-[#F5F5F5] py-16 sm:py-20 lg:py-24">
+        <section id="paquetes" className="scroll-mt-28 bg-superficie-alt py-16 sm:py-20 lg:py-24">
           <div className="container-mika">
             <SectionBadge
               number={num.paquetes}
@@ -284,7 +284,7 @@ export default async function ServicePage({ params }: Props) {
               className="mb-6 sm:mb-8"
             />
 
-            <h2 className="h-section mb-10 max-w-3xl text-gray-900 sm:mb-14">
+            <h2 className="h-section mb-10 max-w-3xl text-texto sm:mb-14">
               Precios de entrada, sin letras chiquitas
             </h2>
 
@@ -321,9 +321,9 @@ export default async function ServicePage({ params }: Props) {
 
       {/* Servicios relacionados: enlazado interno, clave para repartir
           autoridad entre las landings y que Google las encuentre todas. */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="bg-superficie py-16 sm:py-20">
         <div className="container-mika">
-          <h2 className="mb-8 text-[20px] font-medium tracking-tight text-gray-900 sm:text-[24px]">
+          <h2 className="mb-8 text-[20px] font-medium tracking-tight text-texto sm:text-[24px]">
             También te puede servir
           </h2>
           <ul className="grid gap-5 sm:grid-cols-2">
@@ -334,13 +334,13 @@ export default async function ServicePage({ params }: Props) {
                 <li key={related.slug}>
                   <Link
                     href={`/servicios/${related.slug}/`}
-                    className="group flex items-start justify-between gap-4 rounded-2xl border border-gray-200 p-6 transition-colors duration-500 hover:border-brand-500"
+                    className="group flex items-start justify-between gap-4 rounded-2xl border border-borde p-6 transition-colors duration-500 hover:border-brand-500"
                   >
                     <span>
-                      <span className="block text-[17px] font-semibold text-gray-900 sm:text-[19px]">
+                      <span className="block text-[17px] font-semibold text-texto sm:text-[19px]">
                         {related.name}
                       </span>
-                      <span className="mt-2 block text-[14px] leading-[1.55] text-gray-600">
+                      <span className="mt-2 block text-[14px] leading-[1.55] text-texto-suave">
                         {related.tagline}
                       </span>
                     </span>

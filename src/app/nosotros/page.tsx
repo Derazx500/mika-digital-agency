@@ -43,10 +43,10 @@ export default function NosotrosPage() {
       />
 
       {/* Historia */}
-      <section className="bg-white pb-16 sm:pb-20 lg:pb-24">
+      <section className="bg-superficie pb-16 sm:pb-20 lg:pb-24">
         <div className="container-mika">
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
-            <div className="overflow-hidden rounded-2xl bg-gray-100">
+            <div className="overflow-hidden rounded-2xl bg-superficie-sutil">
               <div className="aspect-[4/3]">
                 <Thumb
                   src={IMAGENES.estudio2}
@@ -58,8 +58,8 @@ export default function NosotrosPage() {
             </div>
 
             <div className="max-w-xl">
-              <h2 className="h-section text-gray-900">{NOSOTROS.historiaTitulo}</h2>
-              <div className="mt-6 space-y-4 text-[16px] leading-[1.7] text-gray-600">
+              <h2 className="h-section text-texto">{NOSOTROS.historiaTitulo}</h2>
+              <div className="mt-6 space-y-4 text-[16px] leading-[1.7] text-texto-suave">
                 {NOSOTROS.historiaParrafos.map((parrafo) => (
                   <p key={parrafo}>{parrafo}</p>
                 ))}
@@ -72,7 +72,7 @@ export default function NosotrosPage() {
       <Stats />
 
       {/* Valores */}
-      <section className="bg-[#F5F5F5] py-16 sm:py-20 lg:py-24">
+      <section className="bg-superficie-alt py-16 sm:py-20 lg:py-24">
         <div className="container-mika">
           <SectionBadge
             number="1"
@@ -81,18 +81,18 @@ export default function NosotrosPage() {
             className="mb-6 sm:mb-8"
           />
 
-          <h2 className="h-section mb-10 max-w-3xl text-gray-900 sm:mb-14">
+          <h2 className="h-section mb-10 max-w-3xl text-texto sm:mb-14">
             {NOSOTROS.valoresTitulo}
           </h2>
 
           <ul className="grid gap-5 sm:gap-6 md:grid-cols-2">
             {NOSOTROS.valores.map((value, i) => (
               <Reveal as="li" key={value.titulo} delay={i * 80}>
-                <div className="h-full rounded-2xl bg-white p-6 sm:p-8">
-                  <h3 className="text-[18px] font-semibold tracking-tight text-gray-900 sm:text-[20px]">
+                <div className="h-full rounded-2xl bg-superficie p-6 sm:p-8">
+                  <h3 className="text-[18px] font-semibold tracking-tight text-texto sm:text-[20px]">
                     {value.titulo}
                   </h3>
-                  <p className="mt-3 text-[15px] leading-[1.6] text-gray-600">
+                  <p className="mt-3 text-[15px] leading-[1.6] text-texto-suave">
                     {value.texto}
                   </p>
                 </div>
@@ -103,11 +103,11 @@ export default function NosotrosPage() {
       </section>
 
       {/* Equipo */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+      <section className="bg-superficie py-16 sm:py-20 lg:py-24">
         <div className="container-mika">
           <SectionBadge number="2" label="El equipo" className="mb-6 sm:mb-8" />
 
-          <h2 className="h-section mb-10 max-w-3xl text-gray-900 sm:mb-14">
+          <h2 className="h-section mb-10 max-w-3xl text-texto sm:mb-14">
             {NOSOTROS.equipoTitulo}
           </h2>
 
@@ -115,7 +115,7 @@ export default function NosotrosPage() {
             {equipo.map((persona, i) => (
               <Reveal as="li" key={persona.slug} delay={i * 90}>
                 <Link href={`/equipo/${persona.slug}/`} className="group block">
-                  <div className="overflow-hidden rounded-2xl bg-gray-100">
+                  <div className="overflow-hidden rounded-2xl bg-superficie-sutil">
                     <div className="aspect-[4/5] sm:aspect-[4/3]">
                       <Thumb
                         src={persona.photo}
@@ -125,11 +125,11 @@ export default function NosotrosPage() {
                       />
                     </div>
                   </div>
-                  <h3 className="mt-5 text-[19px] font-semibold tracking-tight text-gray-900 transition-colors duration-300 group-hover:text-brand-500 sm:text-[21px]">
+                  <h3 className="mt-5 text-[19px] font-semibold tracking-tight text-texto transition-colors duration-300 group-hover:text-brand-500 sm:text-[21px]">
                     {persona.name}
                   </h3>
                   <p className="text-[14px] text-brand-500">{persona.role}</p>
-                  <p className="mt-3 max-w-md text-[15px] leading-[1.6] text-gray-600">
+                  <p className="mt-3 max-w-md text-[15px] leading-[1.6] text-texto-suave">
                     {persona.shortBio}
                   </p>
                   <span className="mt-3 flex items-center gap-1.5 text-[14px] font-medium text-brand-500">

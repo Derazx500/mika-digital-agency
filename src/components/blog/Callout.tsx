@@ -5,18 +5,18 @@ import { clsx } from '@/lib/clsx';
 const TONES = {
   tip: {
     icon: Lightbulb,
-    wrap: 'border-brand-200 bg-brand-50',
+    wrap: 'border-acento-borde bg-acento',
     iconColor: 'text-brand-500',
   },
   warning: {
     icon: AlertTriangle,
-    wrap: 'border-amber-200 bg-amber-50',
-    iconColor: 'text-amber-600',
+    wrap: 'border-aviso-borde bg-aviso',
+    iconColor: 'text-aviso-texto',
   },
   note: {
     icon: Info,
-    wrap: 'border-gray-200 bg-gray-50',
-    iconColor: 'text-gray-500',
+    wrap: 'border-borde bg-superficie-alt',
+    iconColor: 'text-texto-tenue',
   },
 } as const;
 
@@ -43,9 +43,9 @@ export function Callout({
         <Icon size={20} className={clsx('mt-0.5 shrink-0', iconColor)} aria-hidden="true" />
         <div className="min-w-0">
           {title && (
-            <p className="text-[16px] font-semibold text-gray-900">{title}</p>
+            <p className="text-[16px] font-semibold text-texto">{title}</p>
           )}
-          <div className="text-[15px] leading-[1.65] text-gray-700 [&>p:first-child]:mt-0 [&>p]:mt-3">
+          <div className="text-[15px] leading-[1.65] text-texto-suave [&>p:first-child]:mt-0 [&>p]:mt-3">
             {children}
           </div>
         </div>
@@ -73,7 +73,7 @@ export function InlineCta({
   // y meterle el efecto de las secciones grandes la cargaría y le robaría
   // atención al texto que la rodea.
   return (
-    <div className="my-10 rounded-2xl bg-ink p-6 sm:p-8">
+    <div className="my-10 rounded-2xl bg-superficie-panel p-6 sm:p-8">
       <p className="text-[19px] font-medium tracking-tight text-white sm:text-[22px]">
         {title}
       </p>

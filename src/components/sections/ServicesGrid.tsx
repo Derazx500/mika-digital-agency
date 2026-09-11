@@ -47,17 +47,17 @@ function sufijoDePrecio(unidad?: 'proyecto' | 'mes' | 'pieza'): string {
 
 export function ServicesGrid({ number = '2' }: { number?: string }) {
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-28">
+    <section className="bg-superficie py-16 sm:py-20 lg:py-28">
       <div className="container-mika">
         <SectionBadge number={number} label="Qué hacemos" className="mb-6 sm:mb-8" />
 
-        <h2 className="h-section mb-4 max-w-4xl text-gray-900">
+        <h2 className="h-section mb-4 max-w-4xl text-texto">
           Tres servicios donde somos muy buenos,
           <br className="hidden sm:block" />
           <span className="sm:hidden"> </span>y todo lo demás que tu marca necesita.
         </h2>
 
-        <p className="mb-12 max-w-2xl text-[15px] leading-[1.65] text-gray-600 sm:mb-16 sm:text-[16px]">
+        <p className="mb-12 max-w-2xl text-[15px] leading-[1.65] text-texto-suave sm:mb-16 sm:text-[16px]">
           Diseño web, posicionamiento SEO y branding son nuestro núcleo. El resto
           lo cubrimos con el mismo equipo, para que no tengas que coordinar tres
           proveedores distintos.
@@ -71,24 +71,24 @@ export function ServicesGrid({ number = '2' }: { number?: string }) {
               <Reveal as="li" key={service.slug} delay={i * 90}>
                 <Link
                   href={`/servicios/${service.slug}/`}
-                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-500 ease-roll hover:border-brand-500 hover:shadow-[0_8px_40px_rgba(1,103,243,0.10)] sm:p-8"
+                  className="group flex h-full flex-col rounded-2xl border border-borde bg-superficie p-6 transition-all duration-500 ease-roll hover:border-brand-500 hover:shadow-[0_8px_40px_rgba(1,103,243,0.10)] sm:p-8"
                 >
-                  <span className="mb-6 grid h-11 w-11 place-items-center rounded-full bg-brand-50 text-brand-500 transition-colors duration-500 group-hover:bg-brand-500 group-hover:text-white">
+                  <span className="mb-6 grid h-11 w-11 place-items-center rounded-full bg-acento text-acento-texto transition-colors duration-500 group-hover:bg-brand-500 group-hover:text-white">
                     <Icon size={19} aria-hidden="true" />
                   </span>
 
-                  <h3 className="text-[19px] font-semibold tracking-tight text-gray-900 sm:text-[21px]">
+                  <h3 className="text-[19px] font-semibold tracking-tight text-texto sm:text-[21px]">
                     {service.name}
                   </h3>
 
-                  <p className="mt-3 flex-1 text-[14px] leading-[1.6] text-gray-600 sm:text-[15px]">
+                  <p className="mt-3 flex-1 text-[14px] leading-[1.6] text-texto-suave sm:text-[15px]">
                     {service.tagline}
                   </p>
 
-                  <span className="mt-6 flex items-center justify-between border-t border-gray-100 pt-5 text-[13px]">
-                    <span className="text-gray-500">
+                  <span className="mt-6 flex items-center justify-between border-t border-borde pt-5 text-[13px]">
+                    <span className="text-texto-tenue">
                       desde{' '}
-                      <span className="font-semibold text-gray-900">
+                      <span className="font-semibold text-texto">
                         {mxn(service.priceFrom)}
                         {sufijoDePrecio(service.priceUnit)}
                       </span>
@@ -109,8 +109,8 @@ export function ServicesGrid({ number = '2' }: { number?: string }) {
         </ul>
 
         {/* Servicios complementarios */}
-        <div className="mt-12 rounded-2xl bg-[#F5F5F5] p-6 sm:mt-16 sm:p-10">
-          <h3 className="text-[17px] font-semibold tracking-tight text-gray-900 sm:text-[19px]">
+        <div className="mt-12 rounded-2xl bg-superficie-alt p-6 sm:mt-16 sm:p-10">
+          <h3 className="text-[17px] font-semibold tracking-tight text-texto sm:text-[19px]">
             También lo resolvemos nosotros
           </h3>
           <ul className="mt-6 grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -124,10 +124,10 @@ export function ServicesGrid({ number = '2' }: { number?: string }) {
                     aria-hidden="true"
                   />
                   <span>
-                    <span className="block text-[15px] font-medium text-gray-900">
+                    <span className="block text-[15px] font-medium text-texto">
                       {s.name}
                     </span>
-                    <span className="mt-0.5 block text-[13px] leading-[1.55] text-gray-600 sm:text-[14px]">
+                    <span className="mt-0.5 block text-[13px] leading-[1.55] text-texto-suave sm:text-[14px]">
                       {s.tagline}
                     </span>
                   </span>

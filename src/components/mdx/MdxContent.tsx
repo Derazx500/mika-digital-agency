@@ -88,7 +88,7 @@ const components = {
   h2: ({ children }: { children?: React.ReactNode }) => (
     <h2
       id={slugify(children)}
-      className="mt-12 scroll-mt-28 text-[24px] font-medium tracking-tight text-gray-900 sm:text-[30px]"
+      className="mt-12 scroll-mt-28 text-[24px] font-medium tracking-tight text-texto sm:text-[30px]"
     >
       {children}
     </h2>
@@ -96,7 +96,7 @@ const components = {
   h3: ({ children }: { children?: React.ReactNode }) => (
     <h3
       id={slugify(children)}
-      className="mt-8 scroll-mt-28 text-[19px] font-semibold tracking-tight text-gray-900 sm:text-[22px]"
+      className="mt-8 scroll-mt-28 text-[19px] font-semibold tracking-tight text-texto sm:text-[22px]"
     >
       {children}
     </h3>
@@ -106,18 +106,18 @@ const components = {
     if (soloContieneImagen(children)) return <>{children}</>;
 
     return (
-      <p className="mt-5 text-[16px] leading-[1.75] text-gray-700 sm:text-[17px]">
+      <p className="mt-5 text-[16px] leading-[1.75] text-texto-suave sm:text-[17px]">
         {children}
       </p>
     );
   },
   ul: ({ children }: { children?: React.ReactNode }) => (
-    <ul className="mt-5 list-disc space-y-2 pl-5 text-[16px] leading-[1.7] text-gray-700 marker:text-brand-500 sm:text-[17px]">
+    <ul className="mt-5 list-disc space-y-2 pl-5 text-[16px] leading-[1.7] text-texto-suave marker:text-brand-500 sm:text-[17px]">
       {children}
     </ul>
   ),
   ol: ({ children }: { children?: React.ReactNode }) => (
-    <ol className="mt-5 list-decimal space-y-2 pl-5 text-[16px] leading-[1.7] text-gray-700 marker:text-brand-500 sm:text-[17px]">
+    <ol className="mt-5 list-decimal space-y-2 pl-5 text-[16px] leading-[1.7] text-texto-suave marker:text-brand-500 sm:text-[17px]">
       {children}
     </ol>
   ),
@@ -125,7 +125,7 @@ const components = {
     <li className="pl-1">{children}</li>
   ),
   strong: ({ children }: { children?: React.ReactNode }) => (
-    <strong className="font-semibold text-gray-900">{children}</strong>
+    <strong className="font-semibold text-texto">{children}</strong>
   ),
 
   /**
@@ -134,8 +134,8 @@ const components = {
    * con un botón y nunca la va a romper.
    */
   blockquote: ({ children }: { children?: React.ReactNode }) => (
-    <aside className="my-8 rounded-2xl border border-brand-200 bg-brand-50 p-5 sm:p-6">
-      <div className="border-l-2 border-brand-500 pl-4 text-[15px] leading-[1.65] text-gray-800 [&>p:first-child]:mt-0 [&>p]:mt-3">
+    <aside className="my-8 rounded-2xl border border-acento-borde bg-acento p-5 sm:p-6">
+      <div className="border-l-2 border-brand-500 pl-4 text-[15px] leading-[1.65] text-texto [&>p:first-child]:mt-0 [&>p]:mt-3">
         {children}
       </div>
     </aside>
@@ -143,7 +143,7 @@ const components = {
 
   a: ({ href, children }: { href?: string; children?: React.ReactNode }) => {
     const className =
-      'font-medium text-brand-500 underline underline-offset-4 hover:text-brand-600';
+      'font-medium text-brand-500 underline underline-offset-4 hover:text-acento-texto';
 
     if (href?.startsWith('/')) {
       return (
@@ -164,7 +164,7 @@ const components = {
     );
   },
 
-  hr: () => <hr className="my-10 border-gray-200" />,
+  hr: () => <hr className="my-10 border-borde" />,
 
   img: ImagenDeArticulo,
 
@@ -174,12 +174,12 @@ const components = {
     </div>
   ),
   th: ({ children }: { children?: React.ReactNode }) => (
-    <th className="border-b border-gray-300 px-3 py-2.5 text-left font-semibold text-gray-900">
+    <th className="border-b border-borde-fuerte px-3 py-2.5 text-left font-semibold text-texto">
       {children}
     </th>
   ),
   td: ({ children }: { children?: React.ReactNode }) => (
-    <td className="border-b border-gray-200 px-3 py-2.5 text-gray-700">
+    <td className="border-b border-borde px-3 py-2.5 text-texto-suave">
       {children}
     </td>
   ),

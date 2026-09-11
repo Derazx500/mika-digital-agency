@@ -25,7 +25,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <SuperficieOscura as="footer" className="bg-ink text-white">
+    <SuperficieOscura as="footer" className="bg-superficie-panel text-white">
       <div className="container-mika py-16 sm:py-20 lg:py-24">
         {/* Llamada final a la acción */}
         <div className="mb-16 border-b border-white/10 pb-16">
@@ -155,7 +155,7 @@ export function Footer() {
                       // "enlace" y ya.
                       aria-label={red.nombre}
                       title={red.nombre}
-                      className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/60 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10 hover:text-white"
+                      className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/60 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-superficie/10 hover:text-white"
                     >
                       <Icono className="h-[18px] w-[18px]" />
                     </a>

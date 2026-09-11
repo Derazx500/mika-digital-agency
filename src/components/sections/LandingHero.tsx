@@ -62,20 +62,20 @@ export function LandingHero({
 
       <div className="container-mika relative">
         <nav aria-label="Ruta de navegación" className="mb-6">
-          <ol className="flex flex-wrap items-center gap-1 text-[13px] text-gray-500">
+          <ol className="flex flex-wrap items-center gap-1 text-[13px] text-texto-tenue">
             {breadcrumbs.map((crumb, i) => {
               const ultimo = i === breadcrumbs.length - 1;
               return (
                 <li key={crumb.path} className="flex items-center gap-1">
                   {ultimo ? (
-                    <span className="text-gray-900" aria-current="page">
+                    <span className="text-texto" aria-current="page">
                       {crumb.name}
                     </span>
                   ) : (
                     <>
                       <Link
                         href={crumb.path}
-                        className="transition-colors hover:text-gray-900"
+                        className="transition-colors hover:text-texto"
                       >
                         {crumb.name}
                       </Link>
@@ -91,7 +91,7 @@ export function LandingHero({
         <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
           <div>
             {/* Etiqueta con reseñas: prueba social antes del titular. */}
-            <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-brand-200 bg-white/80 py-1.5 pl-2 pr-4 backdrop-blur">
+            <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-acento-borde bg-superficie/80 py-1.5 pl-2 pr-4 backdrop-blur">
               <span className="flex gap-0.5" aria-label="5 de 5 estrellas">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
@@ -102,24 +102,24 @@ export function LandingHero({
                   />
                 ))}
               </span>
-              <span className="text-[13px] font-medium text-gray-700">
+              <span className="text-[13px] font-medium text-texto-suave">
                 {badge}
               </span>
             </div>
 
-            <h1 className="h-display max-w-[18ch] text-gray-900">{h1}</h1>
+            <h1 className="h-display max-w-[18ch] text-texto">{h1}</h1>
 
-            <p className="mt-6 max-w-xl text-[16px] leading-[1.65] text-gray-600 sm:text-[18px]">
+            <p className="mt-6 max-w-xl text-[16px] leading-[1.65] text-texto-suave sm:text-[18px]">
               {promesa}
             </p>
 
             {/* Precio visible desde el principio. */}
             <p className="mt-7 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-              <span className="text-[14px] text-gray-500">desde</span>
-              <span className="text-[34px] font-medium tracking-[-0.03em] text-gray-900 sm:text-[40px]">
+              <span className="text-[14px] text-texto-tenue">desde</span>
+              <span className="text-[34px] font-medium tracking-[-0.03em] text-texto sm:text-[40px]">
                 {mxn(precioDesde)}
               </span>
-              <span className="text-[14px] text-gray-500">{sufijo}</span>
+              <span className="text-[14px] text-texto-tenue">{sufijo}</span>
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
@@ -132,18 +132,18 @@ export function LandingHero({
               </TextRollButton>
               <a
                 href="#paquetes"
-                className="text-[14px] font-medium text-gray-600 underline-offset-4 transition-colors hover:text-brand-500 hover:underline"
+                className="text-[14px] font-medium text-texto-suave underline-offset-4 transition-colors hover:text-brand-500 hover:underline"
               >
                 Ver los paquetes
               </a>
             </div>
 
             {/* Tres pruebas rápidas */}
-            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-t border-gray-200 pt-6">
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-t border-borde pt-6">
               {pruebas.map((prueba) => (
                 <li
                   key={prueba}
-                  className="flex items-center gap-2 text-[13px] text-gray-600 sm:text-[14px]"
+                  className="flex items-center gap-2 text-[13px] text-texto-suave sm:text-[14px]"
                 >
                   <span
                     className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"

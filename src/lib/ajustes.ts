@@ -50,6 +50,9 @@ export const IMAGENES: {
   logo: string;
   logoAncho: number;
   logoAlto: number;
+  logoBlanco: string;
+  logoBlancoAncho: number;
+  logoBlancoAlto: number;
   compartir: string;
   estudio1: string;
   estudio1Alt: string;

@@ -18,14 +18,14 @@ const ShaderBackground = dynamic(
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[#EFEFEF]">
+    <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-lienzo">
       <ShaderBackground />
 
       {/* Espaciador: empuja el contenido al fondo del viewport */}
       <div className="flex-1" />
 
       <div className="container-mika relative z-20 pb-14 sm:pb-16 lg:pb-20">
-        <p className="mb-5 text-[13px] tracking-wide text-gray-900 sm:mb-8 sm:text-[14px]">
+        <p className="mb-5 text-[13px] tracking-wide text-texto sm:mb-8 sm:text-[14px]">
           {SITE.name} — {SITE.address.city}
         </p>
 
@@ -35,7 +35,7 @@ export function Hero() {
           convierte en un corte real de tablet hacia arriba, y en móvil el
           texto fluye solo.
         */}
-        <h1 className="h-display max-w-[19ch] text-gray-900 sm:max-w-none">
+        <h1 className="h-display max-w-[19ch] text-texto sm:max-w-none">
           {lineas(INICIO.heroTitulo).map((linea, i) => (
             <span key={linea}>
               {i > 0 && (
@@ -65,7 +65,7 @@ export function Hero() {
                 </span>
               </span>
             </span>
-            <span className="grid h-7 w-7 place-items-center rounded-full bg-white transition-transform duration-500 ease-roll group-hover:-rotate-45 sm:h-8 sm:w-8">
+            <span className="grid h-7 w-7 place-items-center rounded-full bg-superficie transition-transform duration-500 ease-roll group-hover:-rotate-45 sm:h-8 sm:w-8">
               <ArrowRight className="text-brand-500" size={15} aria-hidden="true" />
             </span>
           </a>
@@ -85,7 +85,7 @@ function TrustBadge() {
   const primeraCifra = INICIO.estadisticas[0];
 
   return (
-    <div className="inline-flex w-fit items-center gap-2.5 rounded-[4px] bg-white px-3 py-2 shadow-[0_2px_8px_rgba(0,0,0,0.08)] transition-shadow duration-300 hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] sm:gap-3 sm:px-4">
+    <div className="inline-flex w-fit items-center gap-2.5 rounded-[4px] bg-superficie px-3 py-2 shadow-[0_2px_8px_rgba(0,0,0,0.08)] transition-shadow duration-300 hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] sm:gap-3 sm:px-4">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
@@ -102,12 +102,12 @@ function TrustBadge() {
         cifras dos pantallas más abajo.
       */}
       {primeraCifra && (
-        <span className="text-[13px] font-medium text-gray-900 sm:text-[14px]">
+        <span className="text-[13px] font-medium text-texto sm:text-[14px]">
           {primeraCifra.valor} {primeraCifra.etiqueta.toLowerCase()}
         </span>
       )}
 
-      <span className="rounded bg-ink px-1.5 py-0.5 text-[10px] text-white sm:px-2 sm:text-[11px]">
+      <span className="rounded bg-superficie-panel px-1.5 py-0.5 text-[10px] text-white sm:px-2 sm:text-[11px]">
         Desde {SITE.founded}
       </span>
     </div>

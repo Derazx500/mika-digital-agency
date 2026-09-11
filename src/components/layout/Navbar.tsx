@@ -7,6 +7,7 @@ import { ArrowRight, Clock, Menu, X } from 'lucide-react';
 import { NAV_LINKS, SITE, waLink } from '@/lib/site';
 import { clsx } from '@/lib/clsx';
 import { Logo } from '@/components/ui/Logo';
+import { BotonTema } from '@/components/ui/BotonTema';
 
 /** Reloj en vivo de CDMX. Refuerza que la agencia está operando ahora mismo. */
 function useLocalTime() {
@@ -91,8 +92,8 @@ export function Navbar() {
                       <Link
                         href={link.href}
                         className={clsx(
-                          'text-[14px] transition-colors duration-300 hover:text-gray-500',
-                          active ? 'text-brand-500' : 'text-gray-900',
+                          'text-[14px] transition-colors duration-300 hover:text-texto-tenue',
+                          active ? 'text-brand-500' : 'text-texto',
                         )}
                         aria-current={active ? 'page' : undefined}
                       >
@@ -106,11 +107,17 @@ export function Navbar() {
 
             {/* Derecha: disponibilidad, reloj y CTA */}
             <div className="hidden items-center gap-5 md:flex">
-              <span className="hidden text-[13px] text-gray-600 lg:inline">
+              <span className="hidden text-[13px] text-texto-suave lg:inline">
                 Agenda abierta para nuevos proyectos
               </span>
 
-              <span className="flex items-center gap-1.5 text-[13px] text-gray-600">
+              {/*
+                El reloj se esconde por debajo de lg, igual que el texto de
+                disponibilidad. Entre los enlaces, la hora, el botón de tema y
+                el CTA no cabe todo a 768 px, y lo primero que sobra es el
+                adorno: la hora acompaña, el botón de cotizar convierte.
+              */}
+              <span className="hidden items-center gap-1.5 text-[13px] text-texto-suave lg:flex">
                 <Clock size={14} aria-hidden="true" />
                 {/* suppressHydrationWarning: la hora solo existe en el cliente. */}
                 <span suppressHydrationWarning>
@@ -118,11 +125,13 @@ export function Navbar() {
                 </span>
               </span>
 
+              <BotonTema />
+
               <a
                 href={waLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 rounded-full bg-ink py-2 pl-5 pr-2 text-[13px] font-medium text-white transition-colors duration-300 hover:bg-ink-soft"
+                className="group inline-flex items-center gap-3 rounded-full bg-superficie-panel py-2 pl-5 pr-2 text-[13px] font-medium text-white transition-colors duration-300 hover:bg-superficie-panel-hover"
               >
                 <span className="flex h-[20px] flex-col overflow-hidden">
                   <span className="transition-transform duration-500 ease-roll group-hover:-translate-y-1/2">
@@ -132,19 +141,22 @@ export function Navbar() {
                     </span>
                   </span>
                 </span>
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-white transition-transform duration-500 ease-roll group-hover:-rotate-45">
-                  <ArrowRight className="text-ink" size={13} aria-hidden="true" />
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-superficie transition-transform duration-500 ease-roll group-hover:-rotate-45">
+                  <ArrowRight className="text-texto" size={13} aria-hidden="true" />
                 </span>
               </a>
             </div>
 
-            {/* Móvil: toggle */}
-            <button
+            {/* Móvil: cambio de tema y menú */}
+            <div className="flex items-center gap-1 md:hidden">
+              <BotonTema />
+
+              <button
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="menu-movil"
-              className="flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-[13px] font-medium text-white md:hidden"
+              className="flex items-center gap-2 rounded-full bg-superficie-panel px-4 py-2 text-[13px] font-medium text-white"
             >
               {open ? (
                 <X size={15} aria-hidden="true" />
@@ -152,7 +164,8 @@ export function Navbar() {
                 <Menu size={15} aria-hidden="true" />
               )}
               {open ? 'Cerrar' : 'Menú'}
-            </button>
+              </button>
+            </div>
           </nav>
         </div>
       </header>
@@ -195,11 +208,11 @@ function MobileMenu({
       {/* Hoja inferior */}
       <div
         className={clsx(
-          'absolute inset-x-0 bottom-0 mx-3 mb-3 rounded-2xl bg-white p-5 transition-transform duration-500 ease-sheet',
+          'absolute inset-x-0 bottom-0 mx-3 mb-3 rounded-2xl bg-superficie p-5 transition-transform duration-500 ease-sheet',
           open ? 'translate-y-0' : 'translate-y-full',
         )}
       >
-        <div className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-gray-200 px-3 py-1.5 text-[12px] text-gray-600">
+        <div className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-borde px-3 py-1.5 text-[12px] text-texto-suave">
           <Clock size={13} aria-hidden="true" />
           <span suppressHydrationWarning>
             {time ? `${time} en ${SITE.timezoneLabel}` : SITE.timezoneLabel}
@@ -213,7 +226,7 @@ function MobileMenu({
                 href={link.href}
                 tabIndex={open ? 0 : -1}
                 onClick={onClose}
-                className="block py-1 text-[28px] font-medium leading-tight tracking-[-0.02em] text-gray-900"
+                className="block py-1 text-[28px] font-medium leading-tight tracking-[-0.02em] text-texto"
               >
                 {link.label}
               </Link>
@@ -224,7 +237,7 @@ function MobileMenu({
               href="/contacto/"
               tabIndex={open ? 0 : -1}
               onClick={onClose}
-              className="block py-1 text-[28px] font-medium leading-tight tracking-[-0.02em] text-gray-900"
+              className="block py-1 text-[28px] font-medium leading-tight tracking-[-0.02em] text-texto"
             >
               Contacto
             </Link>
@@ -239,7 +252,7 @@ function MobileMenu({
           className="flex items-center justify-between rounded-full bg-brand-500 py-2 pl-6 pr-2 text-[14px] font-medium text-white"
         >
           Iniciar un proyecto
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-white">
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-superficie">
             <ArrowRight className="text-brand-500" size={15} aria-hidden="true" />
           </span>
         </a>

@@ -29,15 +29,15 @@ export default function ContactoPage() {
         breadcrumbs={CRUMBS}
       />
 
-      <section className="bg-white pb-16 sm:pb-20 lg:pb-24">
+      <section className="bg-superficie pb-16 sm:pb-20 lg:pb-24">
         <div className="container-mika">
           <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
             {/* Atajos de WhatsApp por tema */}
             <div>
-              <h2 className="text-[20px] font-medium tracking-tight text-gray-900 sm:text-[24px]">
+              <h2 className="text-[20px] font-medium tracking-tight text-texto sm:text-[24px]">
                 ¿Sobre qué quieres platicar?
               </h2>
-              <p className="mt-3 text-[15px] leading-[1.6] text-gray-600">
+              <p className="mt-3 text-[15px] leading-[1.6] text-texto-suave">
                 Cada botón abre WhatsApp con el mensaje ya escrito. Solo dale
                 enviar y añade lo que quieras.
               </p>
@@ -51,13 +51,13 @@ export default function ContactoPage() {
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center justify-between gap-4 rounded-2xl border border-gray-200 p-5 transition-colors duration-500 hover:border-brand-500 sm:p-6"
+                      className="group flex items-center justify-between gap-4 rounded-2xl border border-borde p-5 transition-colors duration-500 hover:border-brand-500 sm:p-6"
                     >
                       <span>
-                        <span className="block text-[16px] font-medium text-gray-900 sm:text-[17px]">
+                        <span className="block text-[16px] font-medium text-texto sm:text-[17px]">
                           {service.name}
                         </span>
-                        <span className="mt-1 block text-[13px] text-gray-500 sm:text-[14px]">
+                        <span className="mt-1 block text-[13px] text-texto-tenue sm:text-[14px]">
                           {service.tagline}
                         </span>
                       </span>
@@ -77,13 +77,13 @@ export default function ContactoPage() {
                     href={waLink('Hola Mika, tengo un proyecto distinto y quisiera platicarlo con ustedes.')}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between gap-4 rounded-2xl border border-gray-200 p-5 transition-colors duration-500 hover:border-brand-500 sm:p-6"
+                    className="group flex items-center justify-between gap-4 rounded-2xl border border-borde p-5 transition-colors duration-500 hover:border-brand-500 sm:p-6"
                   >
                     <span>
-                      <span className="block text-[16px] font-medium text-gray-900 sm:text-[17px]">
+                      <span className="block text-[16px] font-medium text-texto sm:text-[17px]">
                         Otra cosa
                       </span>
-                      <span className="mt-1 block text-[13px] text-gray-500 sm:text-[14px]">
+                      <span className="mt-1 block text-[13px] text-texto-tenue sm:text-[14px]">
                         Video, podcast, fotografía, sistemas a la medida o algo
                         que no está en la lista.
                       </span>
@@ -101,8 +101,8 @@ export default function ContactoPage() {
             </div>
 
             {/* Datos de contacto */}
-            <aside className="rounded-2xl bg-[#F5F5F5] p-6 sm:p-8 lg:sticky lg:top-28 lg:self-start">
-              <h2 className="text-[20px] font-medium tracking-tight text-gray-900">
+            <aside className="rounded-2xl bg-superficie-alt p-6 sm:p-8 lg:sticky lg:top-28 lg:self-start">
+              <h2 className="text-[20px] font-medium tracking-tight text-texto">
                 Datos de contacto
               </h2>
 
@@ -120,10 +120,10 @@ export default function ContactoPage() {
                       aria-hidden="true"
                     />
                     <span>
-                      <span className="block text-[13px] text-gray-500">
+                      <span className="block text-[13px] text-texto-tenue">
                         WhatsApp
                       </span>
-                      <span className="text-[16px] font-medium text-gray-900">
+                      <span className="text-[16px] font-medium text-texto">
                         {SITE.phone}
                       </span>
                     </span>
@@ -141,10 +141,10 @@ export default function ContactoPage() {
                       aria-hidden="true"
                     />
                     <span>
-                      <span className="block text-[13px] text-gray-500">
+                      <span className="block text-[13px] text-texto-tenue">
                         Teléfono
                       </span>
-                      <span className="text-[16px] font-medium text-gray-900">
+                      <span className="text-[16px] font-medium text-texto">
                         {SITE.phone}
                       </span>
                     </span>
@@ -162,10 +162,10 @@ export default function ContactoPage() {
                       aria-hidden="true"
                     />
                     <span>
-                      <span className="block text-[13px] text-gray-500">
+                      <span className="block text-[13px] text-texto-tenue">
                         Correo
                       </span>
-                      <span className="break-all text-[16px] font-medium text-gray-900">
+                      <span className="break-all text-[16px] font-medium text-texto">
                         {SITE.email}
                       </span>
                     </span>
@@ -179,13 +179,13 @@ export default function ContactoPage() {
                     aria-hidden="true"
                   />
                   <span>
-                    <span className="block text-[13px] text-gray-500">
+                    <span className="block text-[13px] text-texto-tenue">
                       Ubicación
                     </span>
-                    <span className="text-[16px] font-medium text-gray-900">
+                    <span className="text-[16px] font-medium text-texto">
                       {SITE.address.city}, {SITE.address.countryName}
                     </span>
-                    <span className="mt-1 block text-[13px] text-gray-500">
+                    <span className="mt-1 block text-[13px] text-texto-tenue">
                       Trabajamos de forma remota con clientes en toda la
                       República, Estados Unidos y Canadá.
                     </span>
@@ -199,27 +199,27 @@ export default function ContactoPage() {
                     aria-hidden="true"
                   />
                   <span>
-                    <span className="block text-[13px] text-gray-500">
+                    <span className="block text-[13px] text-texto-tenue">
                       Horario
                     </span>
-                    <span className="text-[16px] font-medium text-gray-900">
+                    <span className="text-[16px] font-medium text-texto">
                       Lunes a viernes, 9:00 – 18:00
                     </span>
-                    <span className="mt-1 block text-[13px] text-gray-500">
+                    <span className="mt-1 block text-[13px] text-texto-tenue">
                       Hora de Ciudad de México (GMT-6)
                     </span>
                   </span>
                 </li>
               </ul>
 
-              <div className="mt-8 border-t border-gray-300 pt-6">
-                <p className="text-[13px] text-gray-500">Síguenos</p>
+              <div className="mt-8 border-t border-borde-fuerte pt-6">
+                <p className="text-[13px] text-texto-tenue">Síguenos</p>
                 <div className="mt-2 flex gap-4 text-[14px]">
                   <a
                     href={SITE.social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-gray-900 underline-offset-4 hover:text-brand-500 hover:underline"
+                    className="font-medium text-texto underline-offset-4 hover:text-brand-500 hover:underline"
                   >
                     Instagram
                   </a>
@@ -227,7 +227,7 @@ export default function ContactoPage() {
                     href={SITE.social.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-gray-900 underline-offset-4 hover:text-brand-500 hover:underline"
+                    className="font-medium text-texto underline-offset-4 hover:text-brand-500 hover:underline"
                   >
                     Facebook
                   </a>

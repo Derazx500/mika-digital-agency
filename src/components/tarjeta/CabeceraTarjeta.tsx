@@ -44,7 +44,7 @@ export function CabeceraTarjeta({
         pero aplicado arriba se comía la mitad inferior de la foto, que
         justamente tiene que sobresalir.
       */}
-      <div className="absolute inset-0 overflow-hidden rounded-t-[26px] bg-[#EFEFEF]">
+      <div className="absolute inset-0 overflow-hidden rounded-t-[26px] bg-lienzo">
         <ShaderBackground />
 
         {/*
@@ -53,13 +53,13 @@ export function CabeceraTarjeta({
         */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[15] h-16 bg-gradient-to-b from-transparent to-white"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[15] h-16 bg-gradient-to-b from-transparent to-superficie"
         />
       </div>
 
       <div className="absolute inset-x-0 -bottom-14 z-20 flex justify-center">
-        <div className="rounded-full bg-white p-1.5 shadow-[0_8px_28px_rgba(10,10,10,0.14)]">
-          <div className="h-[104px] w-[104px] overflow-hidden rounded-full bg-gray-100 sm:h-28 sm:w-28">
+        <div className="rounded-full bg-superficie p-1.5 shadow-[0_8px_28px_rgba(10,10,10,0.14)]">
+          <div className="h-[104px] w-[104px] overflow-hidden rounded-full bg-superficie-sutil sm:h-28 sm:w-28">
             <Thumb src={foto} alt={nombre} label={nombre} priority />
           </div>
         </div>

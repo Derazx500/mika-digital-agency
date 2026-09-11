@@ -62,7 +62,7 @@ export default function PreciosPage() {
       />
 
       {/* Web */}
-      <section className="bg-[#F5F5F5] py-16 sm:py-20 lg:py-24">
+      <section className="bg-superficie-alt py-16 sm:py-20 lg:py-24">
         <div className="container-mika">
           <SectionBadge
             number="1"
@@ -70,7 +70,7 @@ export default function PreciosPage() {
             tone="gray"
             className="mb-6 sm:mb-8"
           />
-          <h2 className="h-section mb-10 max-w-3xl text-gray-900 sm:mb-14">
+          <h2 className="h-section mb-10 max-w-3xl text-texto sm:mb-14">
             Sitios web
           </h2>
           <ul className="grid gap-5 sm:gap-6 lg:grid-cols-3">
@@ -84,17 +84,17 @@ export default function PreciosPage() {
       </section>
 
       {/* SEO */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+      <section className="bg-superficie py-16 sm:py-20 lg:py-24">
         <div className="container-mika">
           <SectionBadge
             number="2"
             label="Posicionamiento SEO"
             className="mb-6 sm:mb-8"
           />
-          <h2 className="h-section mb-4 max-w-3xl text-gray-900">
+          <h2 className="h-section mb-4 max-w-3xl text-texto">
             SEO mensual
           </h2>
-          <p className="mb-10 max-w-2xl text-[15px] leading-[1.65] text-gray-600 sm:mb-14 sm:text-[16px]">
+          <p className="mb-10 max-w-2xl text-[15px] leading-[1.65] text-texto-suave sm:mb-14 sm:text-[16px]">
             El SEO se cobra por mes porque es un trabajo continuo. Pedimos un
             compromiso mínimo porque antes de ese plazo los resultados
             simplemente no existen todavía.
@@ -110,7 +110,7 @@ export default function PreciosPage() {
       </section>
 
       {/* Branding */}
-      <section className="bg-[#F5F5F5] py-16 sm:py-20 lg:py-24">
+      <section className="bg-superficie-alt py-16 sm:py-20 lg:py-24">
         <div className="container-mika">
           <SectionBadge
             number="3"
@@ -118,7 +118,7 @@ export default function PreciosPage() {
             tone="gray"
             className="mb-6 sm:mb-8"
           />
-          <h2 className="h-section mb-10 max-w-3xl text-gray-900 sm:mb-14">
+          <h2 className="h-section mb-10 max-w-3xl text-texto sm:mb-14">
             Identidad de marca
           </h2>
           <ul className="grid gap-5 sm:gap-6 lg:grid-cols-2">

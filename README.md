@@ -124,9 +124,14 @@ El código está terminado. Lo que sigue es material tuyo. Mientras falte, el si
 
 ### 1. Logotipo — ✅ instalado
 
-`public/logo/mika-logo.png` (356 × 78 px). Se ve nítido en retina.
+Dos versiones, las dos en `public/logo/`:
 
-**Mejora opcional:** deja el vectorial en `public/logo/mika-logo.svg` y cambia la constante `SRC` en [`src/components/ui/Logo.tsx`](src/components/ui/Logo.tsx).
+- `mika-logo.png` (356 × 78 px) — a color, para el tema claro.
+- `mika-logo-blanco.png` (186 × 59 px) — todo en blanco, para el pie, las franjas oscuras y el tema oscuro.
+
+Se cambian desde el panel, en *Ajustes del sitio → Imágenes*. Junto a cada archivo van sus medidas: se usan para calcular la proporción, así que si no coinciden el logo sale estirado.
+
+**Mejora opcional:** súbelos en SVG. Es nítido a cualquier tamaño y pesa menos.
 
 El favicon también es el tuyo, pero pesa 269 KB — vale la pena regenerarlo a 32 × 32 px.
 
@@ -196,6 +201,32 @@ Todos en `.webp`. Los nombres y sus textos alternativos están en `landing.galer
 ### 6. Imagen para redes (Open Graph) — ⬜ pendiente
 
 **1200 × 630 px**. Es lo que se ve al compartir el sitio por WhatsApp. Se sube desde el panel, en *Ajustes del sitio → Imágenes del sitio → Imagen al compartir*.
+
+---
+
+## Tema claro y oscuro
+
+El botón del menú (sol / luna) cambia el tema y lo recuerda en ese navegador. La primera visita usa la preferencia del sistema operativo; a partir de que alguien pulsa el botón, manda su elección.
+
+**Todos los efectos funcionan en los dos temas:** el shader del hero cambia su base de blanco a azul casi negro —el azul de marca se queda igual, que sobre oscuro incluso gana—, el cristal líquido pasa de blanco translúcido a oscuro translúcido, y la red de nodos sigue igual.
+
+### Si tocas colores en el código
+
+No uses `bg-white`, `text-gray-900` ni `border-gray-200`: esos colores no cambian con el tema y se quedarían fijos. Usa los semánticos, que están definidos en [`tailwind.config.ts`](tailwind.config.ts) con sus valores en [`globals.css`](src/app/globals.css):
+
+| En vez de | Usa | Para |
+| --- | --- | --- |
+| `bg-white` | `bg-superficie` | Fondo de páginas y tarjetas |
+| `bg-[#F5F5F5]` | `bg-superficie-alt` | Secciones que alternan |
+| `bg-gray-100` | `bg-superficie-sutil` | Etiquetas, huecos de imagen |
+| `bg-ink` | `bg-superficie-panel` | Pie y franjas oscuras |
+| `text-gray-900` | `text-texto` | Titulares |
+| `text-gray-600` | `text-texto-suave` | Cuerpo de texto |
+| `text-gray-500` | `text-texto-tenue` | Metadatos |
+| `border-gray-200` | `border-borde` | Separadores |
+| `bg-brand-50` | `bg-acento` | Fondos teñidos de azul |
+
+El azul de marca (`bg-brand-500`) y el blanco sobre botones (`text-white`) **sí** se quedan literales: un botón azul con texto blanco es igual en los dos temas.
 
 ---
 

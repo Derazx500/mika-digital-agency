@@ -61,12 +61,12 @@ export default async function PerfilPage({ params }: Props) {
       <PageHero badge={miembro.role} title={miembro.name} breadcrumbs={crumbs} />
 
       {/* Ficha: foto, especialidades, redes y certificaciones */}
-      <section className="bg-white pb-16 sm:pb-20">
+      <section className="bg-superficie pb-16 sm:pb-20">
         <div className="container-mika">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_1fr] lg:gap-14">
             {/* Columna izquierda */}
             <div className="lg:sticky lg:top-28 lg:self-start">
-              <div className="overflow-hidden rounded-2xl bg-gray-100">
+              <div className="overflow-hidden rounded-2xl bg-superficie-sutil">
                 <div className="aspect-[4/5]">
                   <Thumb
                     src={miembro.photo}
@@ -90,7 +90,7 @@ export default async function PerfilPage({ params }: Props) {
                           rel="noopener noreferrer"
                           aria-label={`${miembro.name} en ${nombre}`}
                           title={nombre}
-                          className="grid h-11 w-11 place-items-center rounded-full border border-gray-200 text-gray-500 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-500 hover:text-brand-500"
+                          className="grid h-11 w-11 place-items-center rounded-full border border-borde text-texto-tenue transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-500 hover:text-brand-500"
                         >
                           <Icono className="h-[18px] w-[18px]" />
                         </a>
@@ -121,7 +121,7 @@ export default async function PerfilPage({ params }: Props) {
               */}
               <Link
                 href={`/tarjeta/${miembro.slug}/`}
-                className="mt-4 inline-flex items-center gap-1.5 text-[14px] text-gray-500 underline-offset-4 transition-colors duration-300 hover:text-brand-500 hover:underline"
+                className="mt-4 inline-flex items-center gap-1.5 text-[14px] text-texto-tenue underline-offset-4 transition-colors duration-300 hover:text-brand-500 hover:underline"
               >
                 <IdCard size={16} aria-hidden="true" />
                 Ver tarjeta digital
@@ -130,7 +130,7 @@ export default async function PerfilPage({ params }: Props) {
 
             {/* Columna derecha */}
             <div className="min-w-0">
-              <p className="text-[17px] font-medium leading-[1.6] text-gray-900 sm:text-[19px]">
+              <p className="text-[17px] font-medium leading-[1.6] text-texto sm:text-[19px]">
                 {miembro.shortBio}
               </p>
 
@@ -139,7 +139,7 @@ export default async function PerfilPage({ params }: Props) {
                   {miembro.specialties.map((especialidad) => (
                     <li
                       key={especialidad}
-                      className="rounded-full border border-gray-200 px-3.5 py-1.5 text-[13px] text-gray-700"
+                      className="rounded-full border border-borde px-3.5 py-1.5 text-[13px] text-texto-suave"
                     >
                       {especialidad}
                     </li>
@@ -148,14 +148,14 @@ export default async function PerfilPage({ params }: Props) {
               )}
 
               {/* La historia */}
-              <div className="mt-10 max-w-[46rem] border-t border-gray-200 pt-10">
+              <div className="mt-10 max-w-[46rem] border-t border-borde pt-10">
                 <MdxContent source={miembro.body} />
               </div>
 
               {/* Certificaciones */}
               {miembro.certifications.length > 0 && (
-                <div className="mt-12 border-t border-gray-200 pt-10">
-                  <h2 className="text-[22px] font-medium tracking-tight text-gray-900 sm:text-[26px]">
+                <div className="mt-12 border-t border-borde pt-10">
+                  <h2 className="text-[22px] font-medium tracking-tight text-texto sm:text-[26px]">
                     Certificaciones y formación
                   </h2>
                   <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -163,7 +163,7 @@ export default async function PerfilPage({ params }: Props) {
                       const enlace = cert.url ?? cert.archivo;
                       const Contenido = (
                         <>
-                          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-500">
+                          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-acento text-brand-500">
                             {cert.archivo && !cert.url ? (
                               <FileText size={17} aria-hidden="true" />
                             ) : (
@@ -171,11 +171,11 @@ export default async function PerfilPage({ params }: Props) {
                             )}
                           </span>
                           <span className="min-w-0">
-                            <span className="block text-[15px] font-medium leading-snug text-gray-900">
+                            <span className="block text-[15px] font-medium leading-snug text-texto">
                               {cert.titulo}
                             </span>
                             {(cert.emisor || cert.anio) && (
-                              <span className="mt-0.5 block text-[13px] text-gray-500">
+                              <span className="mt-0.5 block text-[13px] text-texto-tenue">
                                 {[cert.emisor, cert.anio].filter(Boolean).join(' · ')}
                               </span>
                             )}
@@ -183,7 +183,7 @@ export default async function PerfilPage({ params }: Props) {
                           {enlace && (
                             <ExternalLink
                               size={15}
-                              className="ml-auto mt-1 shrink-0 text-gray-400"
+                              className="ml-auto mt-1 shrink-0 text-texto-tenue"
                               aria-hidden="true"
                             />
                           )}
@@ -197,12 +197,12 @@ export default async function PerfilPage({ params }: Props) {
                               href={enlace}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-start gap-3.5 rounded-2xl border border-gray-200 p-4 transition-colors duration-300 hover:border-brand-500"
+                              className="flex items-start gap-3.5 rounded-2xl border border-borde p-4 transition-colors duration-300 hover:border-brand-500"
                             >
                               {Contenido}
                             </a>
                           ) : (
-                            <div className="flex items-start gap-3.5 rounded-2xl border border-gray-200 p-4">
+                            <div className="flex items-start gap-3.5 rounded-2xl border border-borde p-4">
                               {Contenido}
                             </div>
                           )}
@@ -219,12 +219,12 @@ export default async function PerfilPage({ params }: Props) {
 
       {/* Proyectos en los que participó */}
       {proyectos.length > 0 && (
-        <section className="bg-[#F5F5F5] py-16 sm:py-20 lg:py-24">
+        <section className="bg-superficie-alt py-16 sm:py-20 lg:py-24">
           <div className="container-mika">
-            <h2 className="h-section mb-3 max-w-3xl text-gray-900">
+            <h2 className="h-section mb-3 max-w-3xl text-texto">
               Proyectos de {miembro.name.split(' ')[0]}
             </h2>
-            <p className="mb-10 max-w-2xl text-[15px] leading-[1.65] text-gray-600 sm:mb-14 sm:text-[16px]">
+            <p className="mb-10 max-w-2xl text-[15px] leading-[1.65] text-texto-suave sm:mb-14 sm:text-[16px]">
               Trabajo en el que participó directamente.
             </p>
 
@@ -244,9 +244,9 @@ export default async function PerfilPage({ params }: Props) {
 
       {/* El resto del equipo */}
       {otros.length > 0 && (
-        <section className="bg-white py-16 sm:py-20">
+        <section className="bg-superficie py-16 sm:py-20">
           <div className="container-mika">
-            <h2 className="mb-8 text-[20px] font-medium tracking-tight text-gray-900 sm:text-[24px]">
+            <h2 className="mb-8 text-[20px] font-medium tracking-tight text-texto sm:text-[24px]">
               El resto del equipo
             </h2>
             <ul className="grid gap-5 sm:grid-cols-2 sm:gap-6">
@@ -254,9 +254,9 @@ export default async function PerfilPage({ params }: Props) {
                 <li key={otro.slug}>
                   <Link
                     href={`/equipo/${otro.slug}/`}
-                    className="group flex items-center gap-4 rounded-2xl border border-gray-200 p-4 transition-colors duration-300 hover:border-brand-500 sm:p-5"
+                    className="group flex items-center gap-4 rounded-2xl border border-borde p-4 transition-colors duration-300 hover:border-brand-500 sm:p-5"
                   >
-                    <span className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
+                    <span className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-superficie-sutil">
                       <Thumb
                         src={otro.photo}
                         alt={`${otro.name}, ${otro.role}.`}
@@ -264,10 +264,10 @@ export default async function PerfilPage({ params }: Props) {
                       />
                     </span>
                     <span className="min-w-0">
-                      <span className="block text-[16px] font-semibold text-gray-900 transition-colors duration-300 group-hover:text-brand-500">
+                      <span className="block text-[16px] font-semibold text-texto transition-colors duration-300 group-hover:text-brand-500">
                         {otro.name}
                       </span>
-                      <span className="block text-[14px] text-gray-500">
+                      <span className="block text-[14px] text-texto-tenue">
                         {otro.role}
                       </span>
                     </span>

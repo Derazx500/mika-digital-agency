@@ -38,7 +38,7 @@ export default function BlogPage() {
         breadcrumbs={CRUMBS}
       />
 
-      <section className="bg-white pb-16 sm:pb-20 lg:pb-24">
+      <section className="bg-superficie pb-16 sm:pb-20 lg:pb-24">
         <div className="container-mika">
           {/* Artículo destacado: el más reciente, a lo ancho */}
           {featured && (
@@ -47,7 +47,7 @@ export default function BlogPage() {
                 href={`/blog/${featured.slug}/`}
                 className="group grid gap-6 lg:grid-cols-2 lg:items-center lg:gap-12"
               >
-                <div className="overflow-hidden rounded-2xl bg-gray-100">
+                <div className="overflow-hidden rounded-2xl bg-superficie-sutil">
                   <div className="aspect-[16/10]">
                     <Thumb
                       src={featured.cover}
@@ -61,19 +61,19 @@ export default function BlogPage() {
 
                 <div>
                   <span className="inline-flex items-center gap-2 text-[13px]">
-                    <span className="rounded-full bg-brand-50 px-3 py-1 font-medium text-brand-600">
+                    <span className="rounded-full bg-acento px-3 py-1 font-medium text-acento-texto">
                       {featured.category}
                     </span>
-                    <time dateTime={featured.date} className="text-gray-500">
+                    <time dateTime={featured.date} className="text-texto-tenue">
                       {formatDate(featured.date)}
                     </time>
                   </span>
 
-                  <h2 className="mt-4 text-[26px] font-medium leading-[1.15] tracking-tight text-gray-900 transition-colors duration-300 group-hover:text-brand-500 sm:text-[34px]">
+                  <h2 className="mt-4 text-[26px] font-medium leading-[1.15] tracking-tight text-texto transition-colors duration-300 group-hover:text-brand-500 sm:text-[34px]">
                     {featured.title}
                   </h2>
 
-                  <p className="mt-4 text-[15px] leading-[1.65] text-gray-600 sm:text-[16px]">
+                  <p className="mt-4 text-[15px] leading-[1.65] text-texto-suave sm:text-[16px]">
                     {featured.description}
                   </p>
 
@@ -84,7 +84,7 @@ export default function BlogPage() {
                       className="transition-transform duration-500 ease-roll group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                       aria-hidden="true"
                     />
-                    <span className="font-normal text-gray-400">
+                    <span className="font-normal text-texto-tenue">
                       · {featured.readingTime} min
                     </span>
                   </span>
@@ -95,11 +95,11 @@ export default function BlogPage() {
 
           {/* Resto de artículos en retícula */}
           {rest.length > 0 && (
-            <ul className="mt-14 grid gap-6 border-t border-gray-200 pt-14 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+            <ul className="mt-14 grid gap-6 border-t border-borde pt-14 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
               {rest.map((post, i) => (
                 <Reveal as="li" key={post.slug} delay={i * 80}>
                   <Link href={`/blog/${post.slug}/`} className="group block">
-                    <div className="overflow-hidden rounded-2xl bg-gray-100">
+                    <div className="overflow-hidden rounded-2xl bg-superficie-sutil">
                       <div className="aspect-[16/10]">
                         <Thumb
                           src={post.cover}
@@ -111,23 +111,23 @@ export default function BlogPage() {
                     </div>
 
                     <span className="mt-4 inline-flex items-center gap-2 text-[13px]">
-                      <span className="rounded-full bg-brand-50 px-3 py-1 font-medium text-brand-600">
+                      <span className="rounded-full bg-acento px-3 py-1 font-medium text-acento-texto">
                         {post.category}
                       </span>
-                      <time dateTime={post.date} className="text-gray-500">
+                      <time dateTime={post.date} className="text-texto-tenue">
                         {formatDate(post.date)}
                       </time>
                     </span>
 
-                    <h2 className="mt-3 text-[19px] font-medium leading-[1.25] tracking-tight text-gray-900 transition-colors duration-300 group-hover:text-brand-500 sm:text-[21px]">
+                    <h2 className="mt-3 text-[19px] font-medium leading-[1.25] tracking-tight text-texto transition-colors duration-300 group-hover:text-brand-500 sm:text-[21px]">
                       {post.title}
                     </h2>
 
-                    <p className="mt-2 text-[14px] leading-[1.6] text-gray-600">
+                    <p className="mt-2 text-[14px] leading-[1.6] text-texto-suave">
                       {post.description}
                     </p>
 
-                    <span className="mt-3 block text-[13px] text-gray-400">
+                    <span className="mt-3 block text-[13px] text-texto-tenue">
                       {post.readingTime} min de lectura
                     </span>
                   </Link>

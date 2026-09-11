@@ -36,7 +36,7 @@ export default function PortafolioPage() {
         breadcrumbs={CRUMBS}
       />
 
-      <section className="bg-[#F5F5F5] py-16 sm:py-20 lg:py-24">
+      <section className="bg-superficie-alt py-16 sm:py-20 lg:py-24">
         <div className="container-mika">
           <PortafolioFiltrado proyectos={projects} categorias={categorias} />
         </div>

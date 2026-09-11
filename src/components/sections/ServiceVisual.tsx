@@ -313,7 +313,7 @@ export function ServiceVisual({ slug }: { slug: string }) {
   if (!Composicion) return null;
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-gray-200">
+    <div className="overflow-hidden rounded-2xl border border-borde">
       <div className="aspect-[16/9]">
         <Composicion />
       </div>

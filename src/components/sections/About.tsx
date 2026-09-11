@@ -15,7 +15,7 @@ export function About({ number = '1' }: { number?: string }) {
   const paragraph = INICIO.nosotrosTexto;
 
   return (
-    <section className="overflow-hidden bg-white pb-12 pt-16 sm:pb-16 sm:pt-20 lg:pb-24 lg:pt-32">
+    <section className="overflow-hidden bg-superficie pb-12 pt-16 sm:pb-16 sm:pt-20 lg:pb-24 lg:pt-32">
       <div className="mx-auto w-full max-w-[1440px]">
         <SectionBadge
           number={number}
@@ -23,7 +23,7 @@ export function About({ number = '1' }: { number?: string }) {
           className="mb-6 px-5 sm:mb-8 sm:px-8 lg:px-12"
         />
 
-        <h2 className="h-section mb-12 px-5 text-gray-900 sm:mb-16 sm:px-8 lg:mb-28 lg:px-12">
+        <h2 className="h-section mb-12 px-5 text-texto sm:mb-16 sm:px-8 lg:mb-28 lg:px-12">
           {lineas(INICIO.nosotrosTitulo).map((linea, i) => (
             <span key={linea}>
               {i > 0 && (
@@ -39,7 +39,7 @@ export function About({ number = '1' }: { number?: string }) {
 
         {/* Móvil y tablet: apilado */}
         <div className="px-5 sm:px-8 lg:hidden">
-          <p className="text-[15px] font-medium leading-[1.6] text-gray-900 sm:text-[17px]">
+          <p className="text-[15px] font-medium leading-[1.6] text-texto sm:text-[17px]">
             {paragraph}
           </p>
 
@@ -48,7 +48,7 @@ export function About({ number = '1' }: { number?: string }) {
           </TextRollButton>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:gap-5">
-            <div className="overflow-hidden rounded-xl bg-gray-100 sm:w-[45%] sm:rounded-2xl">
+            <div className="overflow-hidden rounded-xl bg-superficie-sutil sm:w-[45%] sm:rounded-2xl">
               <div className="aspect-[438/346]">
                 <Thumb
                   src={IMAGENES.estudio1}
@@ -57,7 +57,7 @@ export function About({ number = '1' }: { number?: string }) {
                 />
               </div>
             </div>
-            <div className="overflow-hidden rounded-xl bg-gray-100 sm:w-[55%] sm:rounded-2xl">
+            <div className="overflow-hidden rounded-xl bg-superficie-sutil sm:w-[55%] sm:rounded-2xl">
               <div className="aspect-[900/600]">
                 <Thumb
                   src={IMAGENES.estudio2}
@@ -71,7 +71,7 @@ export function About({ number = '1' }: { number?: string }) {
 
         {/* Escritorio: retícula de tres columnas alineadas por la base */}
         <div className="hidden grid-cols-[26%_1fr_48%] items-end gap-6 px-12 lg:grid xl:gap-8">
-          <div className="self-end overflow-hidden rounded-2xl bg-gray-100">
+          <div className="self-end overflow-hidden rounded-2xl bg-superficie-sutil">
             <div className="aspect-[438/346]">
               <Thumb
                 src={IMAGENES.estudio1}
@@ -83,7 +83,7 @@ export function About({ number = '1' }: { number?: string }) {
 
           <div className="flex justify-end self-start">
             <div className="max-w-[30rem]">
-              <p className="text-[16px] font-medium leading-[1.65] text-gray-900 xl:text-[18px]">
+              <p className="text-[16px] font-medium leading-[1.65] text-texto xl:text-[18px]">
                 {paragraph}
               </p>
               <TextRollButton href="/nosotros/" variant="brand" className="mt-8">
@@ -92,7 +92,7 @@ export function About({ number = '1' }: { number?: string }) {
             </div>
           </div>
 
-          <div className="self-end overflow-hidden rounded-2xl bg-gray-100">
+          <div className="self-end overflow-hidden rounded-2xl bg-superficie-sutil">
             <div className="aspect-[3/2]">
               <Thumb
                 src={IMAGENES.estudio2}

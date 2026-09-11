@@ -25,13 +25,13 @@ export function Figure({
 }) {
   return (
     <figure className={clsx('my-10', wide && 'lg:-mx-20 xl:-mx-28')}>
-      <div className="overflow-hidden rounded-2xl bg-gray-100">
+      <div className="overflow-hidden rounded-2xl bg-superficie-sutil">
         <div style={{ aspectRatio: ratio.replace('/', ' / ') }}>
           <Thumb src={src} alt={alt} label={caption ?? alt} />
         </div>
       </div>
       {caption && (
-        <figcaption className="mt-3 text-[13px] leading-[1.5] text-gray-500 sm:text-[14px]">
+        <figcaption className="mt-3 text-[13px] leading-[1.5] text-texto-tenue sm:text-[14px]">
           {caption}
         </figcaption>
       )}

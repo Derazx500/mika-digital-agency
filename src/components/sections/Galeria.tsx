@@ -46,7 +46,7 @@ export function Galeria({
     <section
       className={clsx(
         'py-16 sm:py-20 lg:py-24',
-        tone === 'gray' ? 'bg-[#F5F5F5]' : 'bg-white',
+        tone === 'gray' ? 'bg-superficie-alt' : 'bg-superficie',
       )}
     >
       <div className="container-mika">
@@ -57,10 +57,10 @@ export function Galeria({
           className="mb-6 sm:mb-8"
         />
 
-        <h2 className="h-section mb-4 max-w-3xl text-gray-900">{titulo}</h2>
+        <h2 className="h-section mb-4 max-w-3xl text-texto">{titulo}</h2>
 
         {intro && (
-          <p className="mb-10 max-w-2xl text-[15px] leading-[1.65] text-gray-600 sm:mb-14 sm:text-[16px]">
+          <p className="mb-10 max-w-2xl text-[15px] leading-[1.65] text-texto-suave sm:mb-14 sm:text-[16px]">
             {intro}
           </p>
         )}
@@ -77,7 +77,7 @@ export function Galeria({
                 delay={(i % 4) * 70}
                 className={clsx(grande && 'col-span-2 row-span-2')}
               >
-                <figure className="group relative h-full overflow-hidden rounded-xl bg-gray-100 sm:rounded-2xl">
+                <figure className="group relative h-full overflow-hidden rounded-xl bg-superficie-sutil sm:rounded-2xl">
                   <div className={grande ? 'aspect-square' : 'aspect-square'}>
                     <Thumb
                       src={item.src}

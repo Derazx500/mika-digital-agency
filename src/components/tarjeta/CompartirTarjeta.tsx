@@ -50,7 +50,7 @@ export function CompartirTarjeta({
     <button
       type="button"
       onClick={compartir}
-      className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-gray-200 bg-white px-5 py-3 text-[14px] font-medium text-gray-900 transition-colors duration-300 hover:border-gray-300 hover:bg-gray-50"
+      className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-borde bg-superficie px-5 py-3 text-[14px] font-medium text-texto transition-colors duration-300 hover:border-borde-fuerte hover:bg-superficie-alt"
     >
       {copiado ? (
         <>

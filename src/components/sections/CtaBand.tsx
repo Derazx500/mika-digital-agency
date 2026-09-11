@@ -14,9 +14,9 @@ export function CtaBand({
   message?: string;
 }) {
   return (
-    <section className="bg-white pb-16 sm:pb-20 lg:pb-28">
+    <section className="bg-superficie pb-16 sm:pb-20 lg:pb-28">
       <div className="container-mika">
-        <SuperficieOscura className="rounded-2xl bg-ink px-6 py-12 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
+        <SuperficieOscura className="rounded-2xl bg-superficie-panel px-6 py-12 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
           <h2 className="h-section max-w-2xl text-white">{title}</h2>
           <p className="mt-5 max-w-xl text-[15px] leading-[1.6] text-white/60 sm:text-[16px]">
             {body}

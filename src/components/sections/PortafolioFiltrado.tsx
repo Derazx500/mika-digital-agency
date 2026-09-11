@@ -55,14 +55,14 @@ export function PortafolioFiltrado({
                 'flex items-center gap-2 rounded-full border px-4 py-2 text-[13px] font-medium transition-all duration-300 sm:text-[14px]',
                 esActivo
                   ? 'border-brand-500 bg-brand-500 text-white'
-                  : 'border-gray-300 bg-white text-gray-600 hover:border-gray-400 hover:text-gray-900',
+                  : 'border-borde-fuerte bg-superficie text-texto-suave hover:border-borde-fuerte hover:text-texto',
               )}
             >
               {opcion === 'todos' ? 'Todos los proyectos' : opcion}
               <span
                 className={clsx(
                   'text-[12px] tabular-nums',
-                  esActivo ? 'text-white/70' : 'text-gray-400',
+                  esActivo ? 'text-white/70' : 'text-texto-tenue',
                 )}
               >
                 {cantidad}

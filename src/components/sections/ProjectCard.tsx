@@ -22,7 +22,7 @@ export function ProjectCard({
     <article>
       <Link
         href={`/portafolio/${project.slug}/`}
-        className="group relative block overflow-hidden rounded-2xl bg-gray-200"
+        className="group relative block overflow-hidden rounded-2xl bg-superficie-sutil"
         aria-label={`Ver el caso de estudio de ${project.name}`}
       >
         <div
@@ -43,13 +43,13 @@ export function ProjectCard({
         <span
           className={clsx(
             'absolute bottom-4 left-4 flex h-9 w-9 items-center gap-2 overflow-hidden rounded-full px-[10px] transition-all duration-300 ease-in-out group-hover:w-[168px]',
-            isDark ? 'bg-ink text-white' : 'bg-white text-gray-900',
+            isDark ? 'bg-superficie-panel text-white' : 'bg-superficie text-texto',
           )}
         >
           <LinkGlyph
             className={clsx(
               'h-[14px] w-[14px] shrink-0 -rotate-45 transition-transform duration-300 ease-in-out group-hover:rotate-0',
-              isDark ? 'text-white' : 'text-gray-900',
+              isDark ? 'text-white' : 'text-texto',
             )}
           />
           <span className="whitespace-nowrap text-[13px] font-medium opacity-0 transition-opacity duration-300 delay-100 group-hover:opacity-100">
@@ -58,12 +58,12 @@ export function ProjectCard({
         </span>
       </Link>
 
-      <p className="mt-4 text-[13px] leading-relaxed text-gray-600 sm:text-[14px]">
+      <p className="mt-4 text-[13px] leading-relaxed text-texto-suave sm:text-[14px]">
         {project.summary}
       </p>
-      <h3 className="mt-1 text-[14px] font-semibold text-gray-900 sm:text-[15px]">
+      <h3 className="mt-1 text-[14px] font-semibold text-texto sm:text-[15px]">
         {project.name}
-        <span className="ml-2 font-normal text-gray-400">{project.year}</span>
+        <span className="ml-2 font-normal text-texto-tenue">{project.year}</span>
       </h3>
     </article>
   );

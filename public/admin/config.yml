@@ -629,6 +629,27 @@ collections:
             widget: number
             value_type: int
 
+          - label: Logotipo en blanco
+            name: logoBlanco
+            widget: image
+            hint: >-
+              La misma marca, toda en blanco y con fondo transparente. Se usa
+              en el pie, en las franjas oscuras y en todo el sitio cuando el
+              visitante activa el tema oscuro.
+
+          - label: Ancho del logotipo blanco (px)
+            name: logoBlancoAncho
+            widget: number
+            value_type: int
+            hint: >-
+              Las medidas reales de este archivo, que no tienen por qué
+              coincidir con las del logotipo a color.
+
+          - label: Alto del logotipo blanco (px)
+            name: logoBlancoAlto
+            widget: number
+            value_type: int
+
           - label: Imagen al compartir (Open Graph)
             name: compartir
             widget: image

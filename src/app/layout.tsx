@@ -12,6 +12,7 @@ import { WhatsAppTracking } from '@/components/analytics/WhatsAppTracking';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { organizationSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
+import { CLAVE_TEMA } from '@/lib/tema-clave';
 
 // DM Sans es la tipografía que ya usaba la marca. next/font la descarga en
 // build y la auto-hospeda, así que no hay petición a Google en producción
@@ -63,10 +64,37 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0167f3',
+  // El color de la barra del navegador en móvil, uno por tema: en oscuro, el
+  // azul de marca sobre una interfaz oscura canta demasiado.
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#101319' },
+  ],
   width: 'device-width',
   initialScale: 1,
 };
+
+/*
+ * Aplica el tema antes de que se pinte nada.
+ *
+ * Este script corre de forma síncrona en el <head>, así que se ejecuta antes
+ * del primer píxel. Sin él, quien tiene el tema oscuro vería un fogonazo
+ * blanco en cada carga: el HTML llega en claro y React no lo corregiría hasta
+ * después de hidratar.
+ *
+ * El orden importa: primero lo que el visitante eligió, y solo si nunca ha
+ * elegido, la preferencia de su sistema. Quien pulsa el botón manda sobre su
+ * sistema operativo, que es lo que se espera de un interruptor.
+ *
+ * Va todo dentro de un try: si el almacenamiento está bloqueado, el sitio se
+ * ve en claro, que es un desenlace perfectamente aceptable.
+ */
+const SCRIPT_TEMA = `(function(){try{
+var t=localStorage.getItem('${CLAVE_TEMA}');
+if(t!=='claro'&&t!=='oscuro'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'oscuro':'claro';}
+if(t==='oscuro'){document.documentElement.classList.add('dark');}
+document.documentElement.style.colorScheme=t==='oscuro'?'dark':'light';
+}catch(e){}})();`;
 
 export default function RootLayout({
   children,
@@ -74,12 +102,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang={SITE.lang} className={dmSans.variable}>
+    <html
+      lang={SITE.lang}
+      className={dmSans.variable}
+      /*
+       * El script de arriba añade la clase `dark` y el `color-scheme` antes
+       * de que React hidrate, así que el HTML del servidor y el del navegador
+       * no coinciden en este elemento — a propósito.
+       *
+       * Es el caso para el que existe esta propiedad. Sin ella React avisa de
+       * un desajuste en cada carga, y ese ruido acaba tapando los desajustes
+       * que sí son errores. Solo silencia este elemento, no sus hijos.
+       */
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: SCRIPT_TEMA }} />
+      </head>
       <body className="font-sans">
         {/* Salto directo al contenido: accesibilidad para teclado y lectores. */}
         <a
           href="#contenido"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-5 focus:py-3 focus:text-[14px] focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-superficie-panel focus:px-5 focus:py-3 focus:text-[14px] focus:text-white"
         >
           Saltar al contenido
         </a>

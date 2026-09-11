@@ -59,9 +59,9 @@ export default async function ProyectoPage({ params }: Props) {
         breadcrumbs={crumbs}
       />
 
-      <section className="bg-white pb-16 sm:pb-20 lg:pb-24">
+      <section className="bg-superficie pb-16 sm:pb-20 lg:pb-24">
         <div className="container-mika">
-          <div className="overflow-hidden rounded-2xl bg-gray-100">
+          <div className="overflow-hidden rounded-2xl bg-superficie-sutil">
             <div className="aspect-[16/9]">
               <Thumb
                 src={project.image}
@@ -72,32 +72,32 @@ export default async function ProyectoPage({ params }: Props) {
             </div>
           </div>
 
-          <dl className="mt-10 grid gap-8 border-t border-gray-200 pt-10 sm:grid-cols-3">
+          <dl className="mt-10 grid gap-8 border-t border-borde pt-10 sm:grid-cols-3">
             <div>
-              <dt className="text-[13px] uppercase tracking-wider text-gray-400">
+              <dt className="text-[13px] uppercase tracking-wider text-texto-tenue">
                 Cliente
               </dt>
-              <dd className="mt-2 text-[16px] font-medium text-gray-900">
+              <dd className="mt-2 text-[16px] font-medium text-texto">
                 {project.name}
               </dd>
             </div>
             <div>
-              <dt className="text-[13px] uppercase tracking-wider text-gray-400">
+              <dt className="text-[13px] uppercase tracking-wider text-texto-tenue">
                 Sector
               </dt>
-              <dd className="mt-2 text-[16px] font-medium text-gray-900">
+              <dd className="mt-2 text-[16px] font-medium text-texto">
                 {project.industry}
               </dd>
             </div>
             <div>
-              <dt className="text-[13px] uppercase tracking-wider text-gray-400">
+              <dt className="text-[13px] uppercase tracking-wider text-texto-tenue">
                 Servicios
               </dt>
               <dd className="mt-2 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-gray-200 px-3 py-1 text-[13px] text-gray-700"
+                    className="rounded-full border border-borde px-3 py-1 text-[13px] text-texto-suave"
                   >
                     {tag}
                   </span>
@@ -108,7 +108,7 @@ export default async function ProyectoPage({ params }: Props) {
 
           {/* El caso de estudio se escribe desde el panel en /admin, en el
               cuerpo del archivo de cada proyecto. */}
-          <div className="mt-12 max-w-[46rem] border-t border-gray-200 pt-12">
+          <div className="mt-12 max-w-[46rem] border-t border-borde pt-12">
             <MdxContent source={project.body} />
           </div>
 
@@ -116,7 +116,7 @@ export default async function ProyectoPage({ params }: Props) {
               no todos los clientes dejan una, y rellenar con algo genérico
               se nota y resta credibilidad. */}
           {project.resena && (
-            <figure className="mt-12 max-w-[46rem] rounded-2xl bg-[#F5F5F5] p-7 sm:p-9">
+            <figure className="mt-12 max-w-[46rem] rounded-2xl bg-superficie-alt p-7 sm:p-9">
               <div className="mb-4 flex gap-0.5" aria-label="5 de 5 estrellas">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
@@ -128,20 +128,20 @@ export default async function ProyectoPage({ params }: Props) {
                 ))}
               </div>
 
-              <blockquote className="text-[17px] leading-[1.65] text-gray-800 sm:text-[19px]">
+              <blockquote className="text-[17px] leading-[1.65] text-texto sm:text-[19px]">
                 “{project.resena.texto}”
               </blockquote>
 
-              <figcaption className="mt-6 flex items-center gap-3 border-t border-gray-300 pt-5">
+              <figcaption className="mt-6 flex items-center gap-3 border-t border-borde-fuerte pt-5">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-500 text-[14px] font-semibold text-white">
                   {project.resena.autor.charAt(0)}
                 </span>
                 <span className="text-[14px]">
-                  <span className="block font-semibold text-gray-900">
+                  <span className="block font-semibold text-texto">
                     {project.resena.autor}
                   </span>
                   {project.resena.puesto && (
-                    <span className="block text-gray-500">
+                    <span className="block text-texto-tenue">
                       {project.resena.puesto}
                     </span>
                   )}
@@ -153,10 +153,10 @@ export default async function ProyectoPage({ params }: Props) {
       </section>
 
       {/* Otros proyectos */}
-      <section className="bg-[#F5F5F5] py-16 sm:py-20">
+      <section className="bg-superficie-alt py-16 sm:py-20">
         <div className="container-mika">
           <div className="mb-8 flex items-baseline justify-between gap-4">
-            <h2 className="text-[20px] font-medium tracking-tight text-gray-900 sm:text-[24px]">
+            <h2 className="text-[20px] font-medium tracking-tight text-texto sm:text-[24px]">
               Otros proyectos
             </h2>
             <Link

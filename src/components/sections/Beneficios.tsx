@@ -63,11 +63,11 @@ export function Beneficios({
   if (beneficios.length === 0) return null;
 
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24">
+    <section className="bg-superficie py-16 sm:py-20 lg:py-24">
       <div className="container-mika">
         <SectionBadge number={number} label={label} className="mb-6 sm:mb-8" />
 
-        <h2 className="h-section mb-10 max-w-3xl text-gray-900 sm:mb-14">
+        <h2 className="h-section mb-10 max-w-3xl text-texto sm:mb-14">
           {titulo}
         </h2>
 
@@ -76,14 +76,14 @@ export function Beneficios({
             const Icono = ICONOS[beneficio.icono] ?? Sparkles;
             return (
               <Reveal as="li" key={beneficio.titulo} delay={(i % 3) * 80}>
-                <div className="group h-full rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-500 ease-roll hover:-translate-y-1 hover:border-brand-500 hover:shadow-[0_12px_40px_rgba(1,103,243,0.10)] sm:p-7">
-                  <span className="mb-5 grid h-11 w-11 place-items-center rounded-full bg-brand-50 text-brand-500 transition-colors duration-500 group-hover:bg-brand-500 group-hover:text-white">
+                <div className="group h-full rounded-2xl border border-borde bg-superficie p-6 transition-all duration-500 ease-roll hover:-translate-y-1 hover:border-brand-500 hover:shadow-[0_12px_40px_rgba(1,103,243,0.10)] sm:p-7">
+                  <span className="mb-5 grid h-11 w-11 place-items-center rounded-full bg-acento text-acento-texto transition-colors duration-500 group-hover:bg-brand-500 group-hover:text-white">
                     <Icono size={19} aria-hidden="true" />
                   </span>
-                  <h3 className="text-[17px] font-semibold tracking-tight text-gray-900 sm:text-[19px]">
+                  <h3 className="text-[17px] font-semibold tracking-tight text-texto sm:text-[19px]">
                     {beneficio.titulo}
                   </h3>
-                  <p className="mt-2.5 text-[14px] leading-[1.6] text-gray-600 sm:text-[15px]">
+                  <p className="mt-2.5 text-[14px] leading-[1.6] text-texto-suave sm:text-[15px]">
                     {beneficio.texto}
                   </p>
                 </div>

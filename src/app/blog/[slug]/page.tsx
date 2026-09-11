@@ -57,7 +57,7 @@ export default async function ArticuloPage({ params }: Props) {
   return (
     <>
       <PageHero badge={post.category} title={post.title} breadcrumbs={crumbs}>
-        <p className="text-[14px] text-gray-500">
+        <p className="text-[14px] text-texto-tenue">
           <time dateTime={post.date}>{formatDate(post.date)}</time>
           {' · '}
           {post.readingTime} min de lectura
@@ -66,11 +66,11 @@ export default async function ArticuloPage({ params }: Props) {
         </p>
       </PageHero>
 
-      <article className="bg-white pb-16 sm:pb-20 lg:pb-24">
+      <article className="bg-superficie pb-16 sm:pb-20 lg:pb-24">
         <div className="container-mika">
           {/* Portada: da respiro visual antes del muro de texto y es la
               imagen que aparece al compartir el artículo. */}
-          <div className="mb-10 overflow-hidden rounded-2xl bg-gray-100 sm:mb-14">
+          <div className="mb-10 overflow-hidden rounded-2xl bg-superficie-sutil sm:mb-14">
             <div className="aspect-[16/9]">
               <Thumb
                 src={post.cover}
@@ -127,9 +127,9 @@ export default async function ArticuloPage({ params }: Props) {
           Oculto en escritorio: ahí ya están en la barra lateral y salían dos
           veces en la misma pantalla. */}
       {others.length > 0 && (
-        <section className="bg-[#F5F5F5] py-16 sm:py-20 lg:hidden">
+        <section className="bg-superficie-alt py-16 sm:py-20 lg:hidden">
           <div className="container-mika">
-            <h2 className="mb-8 text-[20px] font-medium tracking-tight text-gray-900 sm:text-[24px]">
+            <h2 className="mb-8 text-[20px] font-medium tracking-tight text-texto sm:text-[24px]">
               Sigue leyendo
             </h2>
             <ul className="grid gap-5 sm:grid-cols-2 sm:gap-6">
@@ -137,9 +137,9 @@ export default async function ArticuloPage({ params }: Props) {
                 <li key={other.slug}>
                   <Link
                     href={`/blog/${other.slug}/`}
-                    className="group block h-full overflow-hidden rounded-2xl bg-white transition-shadow duration-500 hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)]"
+                    className="group block h-full overflow-hidden rounded-2xl bg-superficie transition-shadow duration-500 hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)]"
                   >
-                    <div className="aspect-[16/9] bg-gray-100">
+                    <div className="aspect-[16/9] bg-superficie-sutil">
                       <Thumb
                         src={other.cover}
                         alt={other.coverAlt}
@@ -151,10 +151,10 @@ export default async function ArticuloPage({ params }: Props) {
                       <span className="text-[13px] text-brand-500">
                         {other.category}
                       </span>
-                      <h3 className="mt-2 text-[18px] font-medium leading-snug tracking-tight text-gray-900 sm:text-[20px]">
+                      <h3 className="mt-2 text-[18px] font-medium leading-snug tracking-tight text-texto sm:text-[20px]">
                         {other.title}
                       </h3>
-                      <p className="mt-3 text-[14px] leading-[1.6] text-gray-600">
+                      <p className="mt-3 text-[14px] leading-[1.6] text-texto-suave">
                         {other.description}
                       </p>
                     </div>

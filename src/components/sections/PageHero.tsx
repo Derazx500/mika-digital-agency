@@ -23,23 +23,23 @@ export function PageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="bg-white pb-12 pt-28 sm:pb-16 sm:pt-32 lg:pb-20 lg:pt-36">
+    <section className="bg-superficie pb-12 pt-28 sm:pb-16 sm:pt-32 lg:pb-20 lg:pt-36">
       <div className="container-mika">
         <nav aria-label="Ruta de navegación" className="mb-6 sm:mb-8">
-          <ol className="flex flex-wrap items-center gap-1 text-[13px] text-gray-500">
+          <ol className="flex flex-wrap items-center gap-1 text-[13px] text-texto-tenue">
             {breadcrumbs.map((crumb, i) => {
               const last = i === breadcrumbs.length - 1;
               return (
                 <li key={crumb.path} className="flex items-center gap-1">
                   {last ? (
-                    <span className="text-gray-900" aria-current="page">
+                    <span className="text-texto" aria-current="page">
                       {crumb.name}
                     </span>
                   ) : (
                     <>
                       <Link
                         href={crumb.path}
-                        className="transition-colors hover:text-gray-900"
+                        className="transition-colors hover:text-texto"
                       >
                         {crumb.name}
                       </Link>
@@ -54,10 +54,10 @@ export function PageHero({
 
         <SectionBadge number="—" label={badge} className="mb-6 sm:mb-8" />
 
-        <h1 className="h-display max-w-[22ch] text-gray-900">{title}</h1>
+        <h1 className="h-display max-w-[22ch] text-texto">{title}</h1>
 
         {intro && (
-          <p className="mt-6 max-w-2xl text-[16px] leading-[1.65] text-gray-600 sm:mt-8 sm:text-[18px]">
+          <p className="mt-6 max-w-2xl text-[16px] leading-[1.65] text-texto-suave sm:mt-8 sm:text-[18px]">
             {intro}
           </p>
         )}

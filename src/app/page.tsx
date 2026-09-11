@@ -37,7 +37,7 @@ export default function HomePage() {
       <ServicesGrid number="2" />
 
       {/* Proyectos destacados */}
-      <section className="bg-[#F5F5F5] pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pb-28 lg:pt-28">
+      <section className="bg-superficie-alt pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pb-28 lg:pt-28">
         <div className="container-mika">
           <SectionBadge
             number="3"
@@ -46,7 +46,7 @@ export default function HomePage() {
             className="mb-6 sm:mb-8"
           />
 
-          <h2 className="h-display mb-10 text-gray-900 sm:mb-14 lg:mb-16">
+          <h2 className="h-display mb-10 text-texto sm:mb-14 lg:mb-16">
             Nuestros proyectos
           </h2>
 
@@ -73,7 +73,7 @@ export default function HomePage() {
       <Testimonials number="4" />
 
       {/* Resumen de precios */}
-      <section className="bg-[#F5F5F5] py-16 sm:py-20 lg:py-28">
+      <section className="bg-superficie-alt py-16 sm:py-20 lg:py-28">
         <div className="container-mika">
           <SectionBadge
             number="5"
@@ -82,11 +82,11 @@ export default function HomePage() {
             className="mb-6 sm:mb-8"
           />
 
-          <h2 className="h-section mb-4 max-w-3xl text-gray-900">
+          <h2 className="h-section mb-4 max-w-3xl text-texto">
             Sabes cuánto cuesta antes de escribirnos.
           </h2>
 
-          <p className="mb-12 max-w-2xl text-[15px] leading-[1.65] text-gray-600 sm:mb-16 sm:text-[16px]">
+          <p className="mb-12 max-w-2xl text-[15px] leading-[1.65] text-texto-suave sm:mb-16 sm:text-[16px]">
             Publicamos nuestros precios de entrada porque creemos que perder el
             tiempo de nadie es parte del buen servicio. La cotización final
             siempre es cerrada y por escrito.
@@ -100,7 +100,7 @@ export default function HomePage() {
             ))}
           </ul>
 
-          <p className="mt-8 text-[14px] text-gray-600">
+          <p className="mt-8 text-[14px] text-texto-suave">
             ¿Buscas SEO mensual o identidad de marca?{' '}
             <Link
               href="/precios/"

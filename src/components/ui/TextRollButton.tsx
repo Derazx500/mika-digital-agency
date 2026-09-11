@@ -18,17 +18,17 @@ type Props = {
 const VARIANTS: Record<Variant, { shell: string; circle: string; arrow: string }> = {
   brand: {
     shell: 'bg-brand-500 text-white hover:bg-brand-600',
-    circle: 'bg-white',
+    circle: 'bg-superficie',
     arrow: 'text-brand-500',
   },
   dark: {
-    shell: 'bg-ink text-white hover:bg-ink-soft',
-    circle: 'bg-white',
-    arrow: 'text-ink',
+    shell: 'bg-superficie-panel text-white hover:bg-superficie-panel-hover',
+    circle: 'bg-superficie',
+    arrow: 'text-texto',
   },
   light: {
-    shell: 'bg-white text-ink border border-gray-200 hover:border-gray-300',
-    circle: 'bg-ink',
+    shell: 'bg-superficie text-texto border border-borde hover:border-borde-fuerte',
+    circle: 'bg-superficie-panel',
     arrow: 'text-white',
   },
 };

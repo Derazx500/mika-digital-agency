@@ -60,21 +60,21 @@ export default async function TarjetaPage({ params }: Props) {
   const whatsapp = `https://wa.me/${miembro.whatsapp}?text=${encodeURIComponent(mensaje)}`;
 
   return (
-    <div className="flex min-h-[100svh] flex-col items-center justify-center bg-[#EFEFEF] px-4 py-8 sm:px-6 sm:py-12">
-      <article className="w-full max-w-[26rem] overflow-hidden rounded-[26px] bg-white shadow-[0_18px_60px_rgba(10,10,10,0.12)]">
+    <div className="flex min-h-[100svh] flex-col items-center justify-center bg-lienzo px-4 py-8 sm:px-6 sm:py-12">
+      <article className="w-full max-w-[26rem] overflow-hidden rounded-[26px] bg-superficie shadow-[0_18px_60px_rgba(10,10,10,0.12)]">
         <CabeceraTarjeta foto={miembro.photo} nombre={miembro.name} />
 
         {/* El padding superior deja sitio a la foto, que se sale de la cabecera. */}
         <div className="px-6 pb-8 pt-[68px] text-center sm:px-8">
-          <h1 className="text-[26px] font-medium leading-[1.15] tracking-tight text-gray-900 sm:text-[30px]">
+          <h1 className="text-[26px] font-medium leading-[1.15] tracking-tight text-texto sm:text-[30px]">
             {miembro.name}
           </h1>
           <p className="mt-1.5 text-[15px] text-brand-500">{miembro.role}</p>
-          <p className="mt-0.5 text-[13px] text-gray-500">
+          <p className="mt-0.5 text-[13px] text-texto-tenue">
             {SITE.name} · {SITE.address.city}
           </p>
 
-          <p className="mt-5 text-[15px] leading-[1.6] text-gray-600">
+          <p className="mt-5 text-[15px] leading-[1.6] text-texto-suave">
             {miembro.shortBio}
           </p>
 
@@ -83,7 +83,7 @@ export default async function TarjetaPage({ params }: Props) {
               {miembro.specialties.slice(0, 4).map((especialidad) => (
                 <li
                   key={especialidad}
-                  className="rounded-full bg-gray-100 px-3 py-1 text-[12px] text-gray-600"
+                  className="rounded-full bg-superficie-sutil px-3 py-1 text-[12px] text-texto-suave"
                 >
                   {especialidad}
                 </li>
@@ -105,14 +105,14 @@ export default async function TarjetaPage({ params }: Props) {
           <div className="mt-3 grid grid-cols-2 gap-3">
             <a
               href={`tel:+${miembro.whatsapp}`}
-              className="flex items-center justify-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-3 text-[14px] font-medium text-gray-900 transition-colors duration-300 hover:border-gray-300 hover:bg-gray-50"
+              className="flex items-center justify-center gap-2 rounded-full border border-borde bg-superficie px-4 py-3 text-[14px] font-medium text-texto transition-colors duration-300 hover:border-borde-fuerte hover:bg-superficie-alt"
             >
               <Phone size={16} aria-hidden="true" />
               Llamar
             </a>
             <a
               href={`mailto:${miembro.email}`}
-              className="flex items-center justify-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-3 text-[14px] font-medium text-gray-900 transition-colors duration-300 hover:border-gray-300 hover:bg-gray-50"
+              className="flex items-center justify-center gap-2 rounded-full border border-borde bg-superficie px-4 py-3 text-[14px] font-medium text-texto transition-colors duration-300 hover:border-borde-fuerte hover:bg-superficie-alt"
             >
               <Mail size={16} aria-hidden="true" />
               Correo
@@ -128,7 +128,7 @@ export default async function TarjetaPage({ params }: Props) {
             // Con la barra final: el sitio usa `trailingSlash`, y sin ella
             // la descarga pasaría antes por una redirección 308.
             href={`/tarjeta/${miembro.slug}/vcard/`}
-            className="mt-3 flex w-full items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-3.5 text-[15px] font-medium text-white transition-colors duration-300 hover:bg-gray-800"
+            className="mt-3 flex w-full items-center justify-center gap-2.5 rounded-full bg-superficie-panel px-6 py-3.5 text-[15px] font-medium text-white transition-colors duration-300 hover:bg-superficie-panel-hover"
           >
             <UserPlus size={17} aria-hidden="true" />
             Guardar contacto
@@ -139,7 +139,7 @@ export default async function TarjetaPage({ params }: Props) {
           </div>
 
           {miembro.socials.length > 0 && (
-            <div className="mt-7 border-t border-gray-100 pt-6">
+            <div className="mt-7 border-t border-borde pt-6">
               <ul className="flex flex-wrap justify-center gap-2.5">
                 {miembro.socials.map((red) => {
                   const Icono = iconoDeRed(red.red);
@@ -150,7 +150,7 @@ export default async function TarjetaPage({ params }: Props) {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={nombreDeRed(red.red)}
-                        className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors duration-300 hover:border-brand-500 hover:bg-brand-50 hover:text-brand-500"
+                        className="flex h-11 w-11 items-center justify-center rounded-full border border-borde text-texto-tenue transition-colors duration-300 hover:border-brand-500 hover:bg-acento hover:text-brand-500"
                       >
                         <Icono className="h-[18px] w-[18px]" aria-hidden="true" />
                       </a>
@@ -170,7 +170,7 @@ export default async function TarjetaPage({ params }: Props) {
           </Link>
         </div>
 
-        <div className="border-t border-gray-100 bg-gray-50/60 px-6 py-4">
+        <div className="border-t border-borde bg-superficie-alt/60 px-6 py-4">
           <Link
             href="/"
             className="flex items-center justify-center opacity-60 transition-opacity duration-300 hover:opacity-100"
@@ -181,11 +181,11 @@ export default async function TarjetaPage({ params }: Props) {
         </div>
       </article>
 
-      <p className="mt-6 text-center text-[12px] text-gray-400">
+      <p className="mt-6 text-center text-[12px] text-texto-tenue">
         ¿Quieres una tarjeta digital como esta?{' '}
         <Link
           href="/servicios/tarjetas-de-presentacion-digitales/"
-          className="text-gray-500 underline underline-offset-4 hover:text-brand-500"
+          className="text-texto-tenue underline underline-offset-4 hover:text-brand-500"
         >
           Te la hacemos
         </Link>
