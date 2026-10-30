@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { Star } from 'lucide-react';
+import { Check, ExternalLink, Star, TrendingUp } from 'lucide-react';
 
 import { getAllProjects, getProject } from '@/lib/projects';
 import { MdxContent } from '@/components/mdx/MdxContent';
@@ -26,13 +26,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return {};
 
   return buildMetadata({
-    title: `${project.name} — Caso de estudio`,
+    // Si el caso trae título propio para Google se respeta; si no, se arma
+    // uno. Los casos escritos con cuidado suelen tener un titular mejor
+    // pensado para el buscador que el nombre del cliente a secas.
+    title: project.seoTitle ?? `${project.name} — Caso de estudio`,
     // Se recorta porque el resumen lo escribe quien edita desde el panel y
     // no tiene por qué saber cuánto muestra Google.
     description: recortarDescripcion(
-      `${project.summary} Proyecto de ${project.tags.join(', ').toLowerCase()} realizado por Mika Digital Agency en ${project.year}.`,
+      project.seoDescription ??
+        `${project.summary} Proyecto de ${project.tags.join(', ').toLowerCase()} realizado por Mika Digital Agency en ${project.year}.`,
     ),
     path: `/portafolio/${project.slug}/`,
+    image: project.image,
   });
 }
 
@@ -55,7 +60,9 @@ export default async function ProyectoPage({ params }: Props) {
       <PageHero
         badge={`${project.industry} · ${project.year}`}
         title={project.name}
-        intro={project.summary}
+        // El subtítulo, cuando existe, dice de qué va el caso mejor que el
+        // resumen: el resumen está escrito para la tarjeta del listado.
+        intro={project.subtitulo ?? project.summary}
         breadcrumbs={crumbs}
       />
 
@@ -72,7 +79,7 @@ export default async function ProyectoPage({ params }: Props) {
             </div>
           </div>
 
-          <dl className="mt-10 grid gap-8 border-t border-borde pt-10 sm:grid-cols-3">
+          <dl className="mt-10 grid gap-8 border-t border-borde pt-10 sm:grid-cols-3 lg:grid-cols-4">
             <div>
               <dt className="text-[13px] uppercase tracking-wider text-texto-tenue">
                 Cliente
@@ -89,6 +96,29 @@ export default async function ProyectoPage({ params }: Props) {
                 {project.industry}
               </dd>
             </div>
+
+            {project.ubicacion && (
+              <div>
+                <dt className="text-[13px] uppercase tracking-wider text-texto-tenue">
+                  Ubicación
+                </dt>
+                <dd className="mt-2 text-[16px] font-medium text-texto">
+                  {project.ubicacion}
+                </dd>
+              </div>
+            )}
+
+            {project.estado && (
+              <div>
+                <dt className="text-[13px] uppercase tracking-wider text-texto-tenue">
+                  Estado
+                </dt>
+                <dd className="mt-2 text-[16px] font-medium text-texto">
+                  {project.estado}
+                </dd>
+              </div>
+            )}
+
             <div>
               <dt className="text-[13px] uppercase tracking-wider text-texto-tenue">
                 Servicios
@@ -106,10 +136,103 @@ export default async function ProyectoPage({ params }: Props) {
             </div>
           </dl>
 
-          {/* El caso de estudio se escribe desde el panel en /admin, en el
-              cuerpo del archivo de cada proyecto. */}
-          <div className="mt-12 max-w-[46rem] border-t border-borde pt-12">
-            <MdxContent source={project.body} />
+          {/*
+            El caso de estudio se escribe desde el panel en /admin, en el
+            cuerpo del archivo de cada proyecto.
+
+            Los entregables van en una columna lateral y no dentro del texto:
+            es una lista de comprobación, no narrativa. Quien evalúa contratar
+            la recorre con la vista buscando lo suyo, y en mitad del relato
+            obligaría a leerlo todo para encontrarlo.
+          */}
+          <div className="mt-12 grid gap-10 border-t border-borde pt-12 lg:grid-cols-[minmax(0,46rem)_minmax(16rem,1fr)] lg:gap-14">
+            <div className="min-w-0">
+              <MdxContent source={project.body} />
+
+              {/*
+                Los resultados solo se dibujan si los hay. Un caso sin números
+                pero con buen proceso es creíble; uno con resultados vagos
+                para rellenar el hueco, no.
+              */}
+              {project.resultados.length > 0 && (
+                <div className="mt-12 rounded-2xl bg-superficie-alt p-7 sm:p-9">
+                  <h2 className="text-[20px] font-medium tracking-tight text-texto sm:text-[24px]">
+                    Resultados
+                  </h2>
+                  <ul className="mt-5 space-y-3">
+                    {project.resultados.map((resultado) => (
+                      <li
+                        key={resultado}
+                        className="flex gap-3 text-[15px] leading-[1.6] text-texto-suave sm:text-[16px]"
+                      >
+                        <TrendingUp
+                          size={17}
+                          className="mt-0.5 shrink-0 text-brand-500"
+                          aria-hidden="true"
+                        />
+                        {resultado}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            {(project.entregables.length > 0 ||
+              project.url ||
+              project.urlBehance) && (
+              <aside className="lg:sticky lg:top-28 lg:self-start">
+                {project.entregables.length > 0 && (
+                  <div className="rounded-2xl border border-borde p-6 sm:p-7">
+                    <h2 className="text-[13px] uppercase tracking-wider text-texto-tenue">
+                      Qué entregamos
+                    </h2>
+                    <ul className="mt-4 space-y-2.5">
+                      {project.entregables.map((entregable) => (
+                        <li
+                          key={entregable}
+                          className="flex gap-2.5 text-[14px] leading-[1.55] text-texto-suave"
+                        >
+                          <Check
+                            size={15}
+                            className="mt-[3px] shrink-0 text-brand-500"
+                            aria-hidden="true"
+                          />
+                          {entregable}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {(project.url || project.urlBehance) && (
+                  <div className="mt-4 flex flex-col gap-2.5">
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 rounded-full border border-borde px-5 py-3 text-[14px] font-medium text-texto transition-colors duration-300 hover:border-borde-fuerte hover:bg-superficie-alt"
+                      >
+                        Ver el sitio en vivo
+                        <ExternalLink size={15} aria-hidden="true" />
+                      </a>
+                    )}
+                    {project.urlBehance && (
+                      <a
+                        href={project.urlBehance}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 rounded-full border border-borde px-5 py-3 text-[14px] font-medium text-texto transition-colors duration-300 hover:border-borde-fuerte hover:bg-superficie-alt"
+                      >
+                        Ver el caso en Behance
+                        <ExternalLink size={15} aria-hidden="true" />
+                      </a>
+                    )}
+                  </div>
+                )}
+              </aside>
+            )}
           </div>
 
           {/* Reseña del cliente. Solo aparece si este proyecto tiene una:
@@ -176,7 +299,16 @@ export default async function ProyectoPage({ params }: Props) {
         </div>
       </section>
 
-      <CtaBand message={`Hola Mika, vi el proyecto de ${project.name} y quiero algo así para mi marca.`} />
+      {/*
+        El cierre sale del propio caso cuando lo trae: cada proyecto remata
+        con la frase que le corresponde —arquitectura de tienda, SEO local,
+        cambio de marca— y eso convierte mejor que un "¿Empezamos?" igual
+        para todos. Si no lo trae, se usa el genérico.
+      */}
+      <CtaBand
+        title={project.cta ?? undefined}
+        message={`Hola Mika, vi el proyecto de ${project.name} y quiero algo así para mi marca.`}
+      />
 
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <JsonLd

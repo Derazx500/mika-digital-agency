@@ -28,6 +28,7 @@ export const CATEGORIAS = [
   'Branding',
   'E-commerce',
   'SEO',
+  'Sistemas web',
   'Redes sociales',
   'Fotografía',
   'Video',
@@ -44,6 +45,28 @@ type ProjectFrontmatter = {
   summary: string;
   tags: string[];
   image: string;
+  /** Línea de apoyo bajo el titular de la ficha. */
+  subtitulo?: string;
+  /** Título y descripción para Google. Si faltan, se construyen solos. */
+  seoTitle?: string;
+  seoDescription?: string;
+  /** Ficha de datos del proyecto. */
+  ubicacion?: string;
+  /** Ej: Activo, En operación, Fase concluida. */
+  estado?: string;
+  /** Qué se entregó. Se muestra como lista en la columna lateral. */
+  entregables?: string[];
+  /**
+   * Métricas o logros.
+   *
+   * Si está vacío, el bloque entero no se dibuja. Un caso sin números pero
+   * con buen proceso es creíble; uno con resultados vagos, no.
+   */
+  resultados?: string[];
+  /** Enlace al caso en Behance, cuando existe. */
+  urlBehance?: string;
+  /** Cierre del caso. Si falta, se usa el genérico de la franja de CTA. */
+  cta?: string;
   /**
    * Reseña que dejó el cliente de ESTE proyecto. Opcional: no todos la
    * tienen, y una reseña inventada para rellenar se nota y resta.
@@ -71,6 +94,15 @@ export type Project = {
   summary: string;
   tags: string[];
   image: string;
+  subtitulo?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  ubicacion?: string;
+  estado?: string;
+  entregables: string[];
+  resultados: string[];
+  urlBehance?: string;
+  cta?: string;
   /** Reseña del cliente, si la dejó. */
   resena?: { texto: string; autor: string; puesto: string };
   aspect: 'wide' | 'square';
@@ -103,6 +135,17 @@ function toProject(doc: RawDoc<ProjectFrontmatter>): Project {
     summary: data.summary,
     tags: data.tags ?? [],
     image: data.image,
+    subtitulo: data.subtitulo?.trim() || undefined,
+    seoTitle: data.seoTitle?.trim() || undefined,
+    seoDescription: data.seoDescription?.trim() || undefined,
+    ubicacion: data.ubicacion?.trim() || undefined,
+    estado: data.estado?.trim() || undefined,
+    // Se filtran las filas vacías: el panel crea una en cuanto pulsas
+    // "añadir", y una viñeta en blanco en mitad de la lista canta mucho.
+    entregables: (data.entregables ?? []).map((e) => e?.trim()).filter(Boolean) as string[],
+    resultados: (data.resultados ?? []).map((r) => r?.trim()).filter(Boolean) as string[],
+    urlBehance: data.urlBehance?.trim() || undefined,
+    cta: data.cta?.trim() || undefined,
     aspect: data.aspect ?? 'wide',
     featured: data.featured ?? false,
     // Sin orden explícito van al final, pero antes de romper nada.

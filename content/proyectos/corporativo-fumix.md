@@ -12,7 +12,7 @@ tags:
 image: "/images/portafolio/corporativo-fumix.webp"
 aspect: "square"
 featured: false
-order: 11
+order: 24
 ---
 
 ## El reto

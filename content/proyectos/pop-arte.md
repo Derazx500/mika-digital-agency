@@ -12,7 +12,7 @@ tags:
 image: "/images/portafolio/pop-arte.webp"
 aspect: "wide"
 featured: true
-order: 1
+order: 14
 ---
 
 ## El reto

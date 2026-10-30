@@ -14,7 +14,7 @@ tags:
 image: "/images/portafolio/cia-escenicas-lurvik.webp"
 aspect: "wide"
 featured: false
-order: 7
+order: 20
 resena: "El equipo de diseño web y programación cumplió mis expectativas con una página profesional, atractiva y fácil de navegar. Su increíble resultado con mi visión fueron impresionantes. ¡Gracias por su gran esfuerzo!"
 resenaAutor: "Luis Lurvik"
 resenaPuesto: "CEO, Cia Escénicas Lurvik"

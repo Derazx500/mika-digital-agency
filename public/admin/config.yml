@@ -224,6 +224,7 @@ collections:
           - Branding
           - E-commerce
           - SEO
+          - Sistemas web
           - Redes sociales
           - Fotografía
           - Video
@@ -245,6 +246,79 @@ collections:
           Una o dos líneas que se ven en la tarjeta del portafolio. Di el
           resultado, no adjetivos: "Sitio que triplicó las solicitudes de
           cotización" convence más que "sitio moderno y atractivo".
+
+      - label: Subtítulo del caso
+        name: subtitulo
+        widget: string
+        required: false
+        hint: >-
+          Línea de apoyo bajo el nombre del cliente en la ficha. Resume el
+          proyecto en una frase. Si lo dejas vacío se usa el resumen.
+
+      - label: Título para Google (SEO)
+        name: seoTitle
+        widget: string
+        required: false
+        pattern: ['^.{0,60}$', 'Máximo 60 caracteres: Google corta lo que sobra.']
+        hint: >-
+          Opcional. Si lo dejas vacío se arma solo con el nombre del cliente.
+
+      - label: Meta descripción
+        name: seoDescription
+        widget: text
+        required: false
+        pattern:
+          ['^$|^.{50,165}$', 'Entre 50 y 165 caracteres, o vacío.']
+        hint: >-
+          El texto gris bajo el título en Google. Si lo dejas vacío se arma
+          con el resumen.
+
+      - label: Ubicación
+        name: ubicacion
+        widget: string
+        required: false
+        hint: 'Ej: Milwaukee, Wisconsin, EE. UU. Sale en la ficha de datos.'
+
+      - label: Estado del proyecto
+        name: estado
+        widget: string
+        required: false
+        hint: 'Ej: Activo, En operación, Fase concluida.'
+
+      - label: Qué entregamos
+        name: entregables
+        label_singular: Entregable
+        widget: list
+        required: false
+        field: { label: Entregable, name: item, widget: string }
+        hint: >-
+          Lista de lo que se entregó. Sale en la columna lateral de la ficha.
+          Quien evalúa contratarte la recorre buscando lo suyo, así que
+          conviene que cada línea sea concreta.
+
+      - label: Resultados
+        name: resultados
+        label_singular: Resultado
+        widget: list
+        required: false
+        field: { label: Resultado, name: item, widget: string }
+        hint: >-
+          Métricas o logros. Si no tienes números, déjalo vacío y el bloque no
+          se dibuja. Un caso sin cifras pero con buen proceso es creíble; uno
+          con resultados vagos para rellenar, no.
+
+      - label: Enlace al caso en Behance
+        name: urlBehance
+        widget: string
+        required: false
+
+      - label: Frase de cierre
+        name: cta
+        widget: string
+        required: false
+        hint: >-
+          Remata la ficha con la frase que le corresponde a este caso. Si lo
+          dejas vacío se usa el "¿Empezamos?" genérico.
 
       - label: Servicios aplicados
         name: tags

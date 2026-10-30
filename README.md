@@ -166,10 +166,14 @@ En `public/images/portafolio/`, o súbelas desde el panel al editar cada proyect
 | Apaisada | 1320 × 990 px |
 | Cuadrada | 1200 × 1200 px |
 
-Nombres esperados (`.webp`):
+Ya instaladas: `altamediq` y `alti-home`, rescatadas de Behance.
 
-- **En la portada, súbelas primero:** `pop-arte`, `revista-ruido`, `galeria-sol-de-media-noche`, `sambula-spa`, `empolychem`, `masa-y-salsa`
+Nombres esperados del resto (`.webp`):
+
+- **Casos nuevos, los que más venden:** `altamediq-seo`, `arrendamiento-contigo`, `grounded-outdoor`, `mi-prepa-hoy`, `plataforma-lazaro-cardenas`, `bamboo-house`, `amoraa-mex`, `cortando-historias`
+- **En la portada:** `pop-arte`, `revista-ruido`, `galeria-sol-de-media-noche`, `sambula-spa`, `empolychem`, `masa-y-salsa`
 - **Resto:** `cia-escenicas-lurvik`, `cobi-education`, `tacos-birria-tijuana`, `cqda`, `corporativo-fumix`, `essenzuoils`, `maitreya`, `arauz`, `be74`, `miekki`
+- **En borrador:** `sistema-comedor-escolar`, `gio-gourmet`, `gauduchef`
 
 También puedes subirlas desde el panel al editar cada proyecto, con el nombre que quieras.
 
@@ -274,7 +278,8 @@ Van juntos a propósito: el precio de un paquete aparece también en la landing 
 
 - **Precios** ([`src/lib/pricing.ts`](src/lib/pricing.ts)): las cifras son una referencia de mercado, no tus costos reales.
 - **Testimonios** ([`src/lib/projects.ts`](src/lib/projects.ts)): los recuperé de tu sitio anterior. Solo el primero decía explícitamente de quién era; los otros tres los asocié por el orden en que aparecían. **Verifica que cada frase sea de la persona correcta.**
-- **Casos de estudio**: 8 de los 16 proyectos ya tienen el texto escrito, a partir de lo publicado en Behance. Los otros 8 —Cobi Education, CQDA, Corporativo Fumix, Essenzu Oils, Maitreya, Arauz, Be74 y Miękki— siguen con el texto marcado como `PENDIENTE`. Escribirlos desde el panel es lo que más va a convertir.
+- **Casos de estudio**: el portafolio tiene 25 proyectos publicados y 4 en borrador. 17 ya tienen el texto escrito; los 8 restantes —Cobi Education, CQDA, Corporativo Fumix, Essenzu Oils, Maitreya, Arauz, Be74 y Miękki— siguen marcados como `PENDIENTE`. Escribirlos desde el panel es lo que más va a convertir.
+- **Avisos por caso**: lo que falta resolver en cada uno (autorizaciones, métricas, cuidados de redacción) está en [`docs/casos-pendientes.md`](docs/casos-pendientes.md). Los cuatro borradores no se publican hasta cerrar lo que indica ese documento.
 - **Aviso de privacidad**: revísalo con tu contador y completa el domicilio fiscal.
 - **Redes sociales** ([`src/lib/site.ts`](src/lib/site.ts)): las URLs de LinkedIn y Behance son supuestas. Corrígelas o bórralas.
 

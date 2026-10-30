@@ -11,7 +11,7 @@ tags:
 image: "/images/portafolio/revista-ruido.webp"
 aspect: "square"
 featured: true
-order: 2
+order: 15
 ---
 
 ## El reto
